@@ -1,0 +1,513 @@
+<!-- HTML5 doctype declaration -->
+<!doctype html>
+
+<!-- Primary language of the HTML document -->
+<html lang="en">
+
+<head>
+	<!-- Character encoding to support different languages for web, default English -->
+	<meta charset="utf-8">
+	<!-- Browser support for IE9 or IE8 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Responsive meta tag properties -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- For SEO -->
+	<meta name="Description"
+		content="TwinStack is your go-to Salesforce consultant agency to enhance sales growth and skyrocket your business.">
+	<title>TwinStack - Salesforce Consultant Agency</title>
+
+	<!-- Favicon icon -->
+	<link type="image/png" href="images/favicon/favicon.png" rel="icon">
+	<link type="image/png" href="images/favicon/apple-touch-icon.png" rel="apple-touch-icon">
+
+	<!--Font icon-->
+	<link rel="stylesheet" href="css/font-awesome-4.7.0.min.css">
+
+	<!-- Bootstrap4.3.1 CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<!-- Google fonts CSS -->
+	<link rel="stylesheet" href="css/fonts.css">
+
+	<!-- Scroll animation CSS -->
+	<link rel="stylesheet" href="css/aos.css">
+
+	<!-- Nav menu CSS -->
+	<link rel="stylesheet" href="css/nav_menu.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="css/theme.css">
+
+	<!-- Responsive CSS -->
+	<link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="preloader_animation">
+			<div class="spinner"></div>
+		</div>
+	</div>
+
+	<!-- Top Bar -->
+	<div id="topbar" class="fixed-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="top_bar_list-item media_display-no">
+						<li>
+							<span>
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+							</span>
+							<span>
+								<a href="mailto:info@twinstack.net">info@twinstack.net</a>
+							</span>
+						</li>
+						<li>
+							<span>
+								<i class="fa fa-phone" aria-hidden="true"></i> <i class="fa fa-whatsapp"></i>
+							</span>
+							<span>
+								<a href="tel:(+88) 01681820959"> (+88) 01681820959</a>
+							</span>
+						</li>
+					</ul>
+
+					<!-- For mobile view -->
+					<ul class="top_bar_list-item media_display-yes">
+						<li>
+							<span>
+								<i class="fa fa-phone" aria-hidden="true"></i><i class="fa fa-whatsapp"></i>
+							</span>
+							<span>
+								<a href="tel:(+88) 01681820959"><i class="fa fa-whatsapp"></i> 01681820959</a>
+							</span>
+						</li>
+						<li>
+							<span>
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+							</span>
+							<span>
+								<a href="mailto:info@twinstack.net">info@twinstack.net</a>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Header -->
+	<header id="header" class="fixed-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- TwinStack Logo -->
+					<a href="https://twinstack.net">
+						<img src="images/twinstack-logo-limited.png" alt="TwinStack Logo" class="img-fluid header_logo">
+					</a>
+					<!-- Top Nav -->
+					<nav id="navbar" class="navbar">
+						<ul>
+							<li>
+								<a class="nav-link scrollto active" href="https://twinstack.net">Home</a>
+							</li>
+							<li>
+								<a class="nav-link scrollto" href="https://twinstack.net/experiencecloud"><span
+										style="font-size:20px; color: #009EDB">Experience Cloud Templates</span></a>
+							</li>
+
+						</ul>
+						<!-- Toggle Icon-->
+						<i class="fa fa-bars mobile-nav-toggle" aria-hidden="true"></i>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Body content -->
+	<div class="body_content">
+		<!-- Banner -->
+		<section id="home" class="banner">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>TwinStack</h1>
+						<h2>
+							Thank you for contacting with us. We will get back to you soon.
+						</h2>
+
+						<a class="nav-link scrollto button" href="https://twinstack.net">Home</a>
+					</div>
+				</div>
+			</div>
+			<img class="banner_cloud" src="images/banner_cloud.png" alt="Banner Cloud">
+		</section>
+		<!-- About Us -->
+		<section id="about_us" class="about_us">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>About Us</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-5 col-md-12">
+						<img src="images/about_us-img.png" alt="About Us Img" class="img-fluid about_us-img">
+					</div>
+					<div class="col-lg-7 col-md-12">
+						<p>
+							TwinStack is a leading provider of Salesforce development, support, and training
+							services. With a team of over 20 experts, TwinStack has extensive experience in
+							various Salesforce cloud services, including Sales Cloud, Service Cloud, Experience Cloud,
+							Field Service Lightning, Nonprofit Cloud, Marketing Cloud, MuleSoft, and more.
+						</p>
+						<p>
+							TwinStack has worked with a range of US-based companies, including BearRobotics,
+							Rouxbe Culinary, TSOGIANTS, and others, providing customized solutions tailored to each
+							client's unique business needs. Our Salesforce experts work closely with clients to
+							understand their business processes and goals, develop a Salesforce strategy that drives
+							results and maximizes ROI, and provide ongoing support and training to ensure that clients
+							can fully leverage the capabilities of Salesforce.
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<p>
+							At TwinStack , we pride ourselves on delivering high-quality, results-driven
+							solutions that help our clients achieve their business objectives. Whether you're looking
+							for Salesforce development and customization, integration with other systems, ongoing
+							support and maintenance, or training and certification programs, we have the skills and
+							expertise to help you get the most out of your Salesforce investment.
+						</p>
+						<p>
+							If you're looking to optimize your sales processes and drive growth through the power of
+							Salesforce, TwinStack is the partner you can trust to deliver. Contact us today to
+							learn more about how we can help your business succeed.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Services -->
+		<section id="services" class="services">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>Services</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-12">
+						<div class="panel">
+							<h3>
+								<span>
+									<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+								</span>
+								<span>
+									Customized Solutions
+								</span>
+							</h3>
+							<p>
+								We deliver an exclusive layout of personalized solutions, uniquely best fitted to your
+								business needs.
+							</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12">
+						<div class="panel">
+							<h3>
+								<span>
+									<i class="fa fa-link" aria-hidden="true"></i>
+								</span>
+								<span>
+									Seamless Collaboration​
+								</span>
+							</h3>
+							<p>
+								Get accompanied by our experts while chasing through the different stages of growth and
+								change, working closely with your team to keep you in the loop at all times.
+							</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12">
+						<div class="panel no_padding">
+							<h3>
+								<span>
+									<i class="fa fa-briefcase" aria-hidden="true"></i>
+								</span>
+								<span>
+									Reliable Delivery
+								</span>
+							</h3>
+							<p>
+								We believe time is money. It is our highest priority to make sure you get your solutions
+								when you need them, optimizing your business and getting the most optimal output out of
+								your investment.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Why Us -->
+		<section id="why_us" class="why_us">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>Why Work With TwinStack </h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-12">
+						<h3>
+							<span>
+								<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+							</span>
+							<span>
+								Design Making
+							</span>
+						</h3>
+						<p>
+							We develop catchy and charming designs with the latest tools of designing to make it a best
+							user-friendly experience.
+						</p>
+					</div>
+					<div class="col-lg-6 col-md-12">
+						<h3 class="media_pt">
+							<span>
+								<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+							</span>
+							<span>
+								Building Application
+							</span>
+						</h3>
+						<p>
+							Development of applications started using the latest tools and technologies with
+							transparency.
+						</p>
+					</div>
+				</div>
+				<div class="row row_pt">
+					<div class="col-lg-6 col-md-12">
+						<h3 class="media_pt">
+							<span>
+								<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+							</span>
+							<span>
+								Quality Assurance
+							</span>
+						</h3>
+						<p>
+							Hyperlink values quality and provides 100% bug free application with no compromisation in
+							it.
+						</p>
+					</div>
+					<div class="col-lg-6 col-md-12">
+						<h3 class="media_pt">
+							<span>
+								<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+							</span>
+							<span>
+								Shipment
+							</span>
+						</h3>
+						<p>
+							We think that applications that are not shipped or in production do not add value to your
+							organization. So we focus on effective techniques that ensure overall project success.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Contact -->
+		<section id="contact" class="contact">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>Contact</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-12">
+						<ul class="contact_list-item">
+							<li>
+								<span>
+									<i class="fa fa-phone" aria-hidden="true"></i> <i class="fa fa-whatsapp"></i>
+								</span>
+								<span>
+									<a href="tel:(+88) 01681820959">(+88) 01681820959</a>
+								</span>
+							</li>
+							<li>
+								<span>
+									<i class="fa fa-envelope" aria-hidden="true"></i>
+								</span>
+								<span>
+									<a href="mailto:info@twinstack.net">info@twinstack.net</a>
+								</span>
+							</li>
+
+							<li>
+								<span>
+									<i class="fa fa-skype" aria-hidden="true"></i>
+								</span>
+								<span>
+									twinstack.web
+								</span>
+							</li>
+
+							<li>
+								<span>
+									<i class="fa fa-linkedin" aria-hidden="true"></i>
+								</span>
+								<span>
+									<a href="https://www.linkedin.com/company/83490025/">&nbsp;&nbsp;LinkedIn</a>
+								</span>
+							</li>
+							<li>
+								<span>
+									<i class="fa fa-whatsapp" aria-hidden="true"></i>
+								</span>
+								<span>
+									(+880) 01681820959
+								</span>
+							</li>
+
+							<li>
+								<label>Office Location</label>
+							</li>
+							<li style="margin-right: 2px;">
+								Ramzannesa Super Market, 2 No. Harunabad, Mirpur Cantonment Road,
+								Mirpur-12, Pallabi, Dhaka - 1216
+							</li>
+						</ul>
+					</div>
+					<div class="col-lg-8 col-md-12">
+
+
+
+
+
+
+						<form class="media_pt"
+							action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
+							method="POST">
+
+							<input type=hidden name="oid" value="00D28000001GPAj">
+							<input type=hidden name="retURL" value="https://twinstack.net/thank-you">
+
+
+							<div class="row">
+								<div class="col-md-6">
+									<input type="text" name="last_name" id="last_name" placeholder="*Name" required>
+								</div>
+								<div class="col-md-6">
+									<input type="email" name="email" id="email" placeholder="*Email" required>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<input type="tel" name="phone" id="phone" placeholder="Phone Number">
+									<input id="company" maxlength="40" name="company" size="20" type="hidden"
+										value="web" />
+								</div>
+								<div class="col-md-6">
+									<input type="text" name="00N0K00000LkflK" id="00N0K00000LkflK"
+										placeholder="*Subject" required>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<textarea name="description" id="description" rows="4"
+										placeholder="Description"></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="submit" name="button" id="" value="Submit">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					© 2025 TwinStack . All Rights Reserved.
+				</div>
+				<div class="col-lg-6 col-md-12">
+					<ul>
+						<li>
+							<a href="https://www.facebook.com/twinforcesolutions" target="_blank">
+								<i class="fa fa-facebook-square" aria-hidden="true"></i>
+							</a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/company/83490025/" target="_blank">
+								<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Calendly badge widget begin -->
+	<link href="css/widget.css" rel="stylesheet">
+	<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+	<script
+		type="text/javascript">window.onload = function () { Calendly.initBadgeWidget({ url: 'https://calendly.com/twinstack-solutions/twinstack-solutions-salesforce-consultancy', text: 'Book a free consultation', color: '#389edb', textColor: '#ffffff' }); }</script>
+	<!-- Calendly badge widget end -->
+
+	<!-- Back to top-->
+	<a id="scroll" href="#">
+		<span>
+			<i class="fa fa-arrow-up" aria-hidden="true"></i>
+			<!-- &uarr; -->
+		</span>
+	</a>
+
+
+
+	<!-- JS libraries -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+
+	<!-- For tooltips, popovers, and drop-downs suggested by Bootstrap4.3.1 -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap4.3.1 JS -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Scroll animation JS -->
+	<script src="js/aos.js"></script>
+	<script>
+		AOS.init({
+			offset: 120, // offset (in px) from the original trigger point
+			delay: 500, // values from 0 to 3000, with step 50ms
+			duration: 1000, // values from 0 to 3000, with step 50ms
+			easing: 'ease', // default easing for AOS animations
+			once: false, // whether animation should happen only once - while scrolling down
+			mirror: false, // whether elements should animate out while scrolling past them
+			anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+		});
+	</script>
+
+	<!-- Nav menu JS -->
+	<script src="js/nav_menu.js"></script>
+
+	<!-- Theme JS -->
+	<script src="js/theme.js"></script>
+</body>
+
+</html>
