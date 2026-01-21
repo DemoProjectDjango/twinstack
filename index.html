@@ -1,604 +1,905 @@
-<!-- HTML5 doctype declaration -->
-<!doctype html>
-
-<!-- Primary language of the HTML document -->
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-	<!-- Character encoding to support different languages for web -->
-	<meta charset="utf-8">
-	<!-- Browser support for IE9 or IE8 -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- Responsive meta tag properties -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwinStack Solutions | Salesforce & AppExchange Experts</title>
+    <meta name="description" content="Accelerate your Salesforce success with TwinStack Solutions. Consulting, Managed Services, and Native AppExchange Products.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            500: '#0ea5e9', // Salesforce-ish Blue
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-	<!-- SEO Optimization -->
-	<meta name="description"
-		content="TwinStack Solutions - Your trusted Salesforce Non-Profit Consultancy, empowering charities and non-profits with Salesforce excellence.">
-	<title>TwinStack Solutions | Salesforce Non-Profit Consultancy</title>
+    <style>
+        /* Custom Styles for Advanced UI Elements */
+        body {
+            cursor: none; /* Hiding default cursor for custom one */
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
 
-	<!-- Favicon -->
-	<link type="image/png" href="images/favicon/favicon.png" rel="icon">
-	<link type="image/png" href="images/favicon/apple-touch-icon.png" rel="apple-touch-icon">
+        /* Custom Cursor */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
 
-	<!-- Font Icons -->
-	<link rel="stylesheet" href="css/font-awesome-4.7.0.min.css">
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #0ea5e9;
+        }
 
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #0ea5e9;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
 
-	<!-- Google Fonts -->
-	<link rel="stylesheet" href="css/fonts.css">
+        /* Hover state for cursor */
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(14, 165, 233, 0.1);
+            border-color: transparent;
+        }
 
-	<!-- Scroll Animation -->
-	<link rel="stylesheet" href="css/aos.css">
+        /* Hero Background Pattern */
+        .hero-bg {
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            position: relative;
+        }
 
-	<!-- Navigation Menu -->
-	<link rel="stylesheet" href="css/nav_menu.css">
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
 
-	<!-- Theme Styles -->
-	<link rel="stylesheet" href="css/theme.css">
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: #0ea5e9;
+        }
 
-	<!-- Responsive Styles -->
-	<link rel="stylesheet" href="css/responsive.css">
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #0ea5e9, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Video Embed Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Scroll Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(to right, #0ea5e9, #6366f1);
+            z-index: 10001;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* Mobile Menu Animation */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Navbar Transition Properties */
+        #navbar {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Tech Tags in Cards */
+        .tech-tag {
+            display: inline-block;
+            background: #f0f9ff;
+            color: #0284c7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            border: 1px solid #e0f2fe;
+        }
+    </style>
 </head>
+<body class="font-sans antialiased text-slate-800">
 
-<body>
-	<!-- Preloader -->
-	<div class="preloader">
-		<div class="preloader_animation">
-			<div class="spinner"></div>
-		</div>
-	</div>
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
 
-	<!-- Top Bar -->
-	<div id="topbar" class="fixed-top">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<ul class="top_bar_list-item media_display-no">
-						<li>
-							<span>
-								<i class="fa fa-envelope" aria-hidden="true"></i>
-							</span>
-							<span>
-								<a href="mailto:info@twinstack.net">info@twinstack.net</a>
-							</span>
-						</li>
-						<li>
-							<span>
-								<i class="fa fa-phone" aria-hidden="true"></i> <i class="fa fa-whatsapp"></i>
-							</span>
-							<span>
-								<a href="tel:(+88) 01681820959"> (+88) 01681820959</a>
-							</span>
-						</li>
-					</ul>
+    <div id="progress-bar"></div>
 
-					<!-- For mobile view -->
-					<ul class="top_bar_list-item media_display-yes">
-						<li>
-							<span>
-								<i class="fa fa-phone" aria-hidden="true"></i><i class="fa fa-whatsapp"></i>
-							</span>
-							<span>
-								<a href="tel:(+88) 01681820959"><i class="fa fa-whatsapp"></i> 01681820959</a>
-							</span>
-						</li>
-						<li>
-							<span>
-								<i class="fa fa-envelope" aria-hidden="true"></i>
-							</span>
-							<span>
-								<a href="mailto:info@twinstack.net">info@twinstack.net</a>
-							</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+    <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl flex justify-between items-center px-6 lg:px-8 h-20 transition-all duration-300">
+        <div class="flex-shrink-0 flex items-center gap-2 interactive-element cursor-pointer" onclick="window.scrollTo(0,0)">
+            <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                TS
+            </div>
+            <span class="font-bold text-2xl text-slate-900 tracking-tight hidden sm:block">TwinStack</span>
+        </div>
 
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="#services" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Services</a>
+            <a href="#products" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Products</a>
+            <a href="#demos" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Demos</a>
+            <a href="#about" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">About</a>
+            <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-600 text-white font-semibold hover:bg-brand-900 transition shadow-lg hover:shadow-brand-500/30 interactive-element">
+                Contact Us
+            </a>
+        </div>
 
-	<!-- Header -->
-	<header id="header" class="fixed-top">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<!-- TwinStack Logo -->
-					<a href="https://twinstack.net">
-						<img src="images/twinstack-logo-limited.png" alt="TwinStack Logo" class="img-fluid header_logo">
-					</a>
-					<!-- Top Nav -->
-					<nav id="navbar" class="navbar">
-						<ul>
-							<li>
-								<a class="nav-link scrollto active" href="#home">Home</a>
-							</li>
-							<!-- <li>
-								<a class="nav-link scrollto" href="#about_us">About Us</a>
-							</li>
-							<li>
-								<a class="nav-link scrollto" href="#services">Services</a>
-							</li>
-							<li>
-								<a class="nav-link scrollto" href="#why_us">Why Us</a>
-							</li> -->
-							<li>
-								<a class="nav-link scrollto"
-									href="https://www.twinstack.net/experience-cloud-templates.html">Experience Cloud
-									Templates</a>
-							</li>
-							<li>
-								<a class="nav-link scrollto" href="#contact">Contact</a>
-							</li>
-						</ul>
-						<!-- Toggle Icon-->
-						<i class="fa fa-bars mobile-nav-toggle" aria-hidden="true"></i>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</header>
+        <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none interactive-element p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
 
-	<!-- Body content -->
-	<div class="body_content">
-		<!-- Banner -->
-		<section id="home" class="banner">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<h1>TwinStack Solutions</h1>
-						<h2>
-							Your trusted Salesforce Non-Profit Consultancy, empowering charities and non-profits with
-							Salesforce excellence.
-						</h2>
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-64 bg-white/95 backdrop-blur-xl shadow-2xl z-[60] flex flex-col p-6 md:hidden">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-btn" class="text-slate-500 hover:text-slate-900 interactive-element">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+            <a href="#services" class="text-lg font-medium text-slate-800 hover:text-brand-600">Services</a>
+            <a href="#products" class="text-lg font-medium text-slate-800 hover:text-brand-600">Products</a>
+            <a href="#demos" class="text-lg font-medium text-slate-800 hover:text-brand-600">Demos</a>
+            <a href="#about" class="text-lg font-medium text-slate-800 hover:text-brand-600">About</a>
+            <a href="#contact" class="px-5 py-3 rounded-lg bg-brand-600 text-white text-center font-semibold">Contact Us</a>
+        </div>
+    </div>
 
-						<div class="d-inline-block">
-							<a class="nav-link scrollto button" href="#contact">Contact Us</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<img class="banner_cloud" src="images/banner_cloud.png" alt="Banner Cloud">
-		</section>
-		<!-- About Us -->
-		<section id="about_us" class="about_us">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>About Us</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-5 col-md-12">
-						<img src="images/about_us-img.png" alt="About Us Img" class="img-fluid about_us-img">
-					</div>
-					<div class="col-lg-7 col-md-12">
-						<p>
-							TwinStack Solutions is a dedicated Salesforce Non-Profit Consultancy, helping charities and
-							mission-driven organizations leverage Salesforce for donor management, fundraising,
-							volunteer coordination, and program tracking.
-						</p>
-						<p>
-							Our team of over 20 Salesforce specialists works with Nonprofit Cloud, Experience Cloud,
-							Marketing Cloud, and custom integrations to simplify operations and improve efficiency. We
-							assist non-profits in securing and fully utilizing Salesforce’s 10 free licenses through the
-							Power of Us Program, ensuring cost-effective digital transformation.
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<p>
-							At TwinStack Solutions, we design practical, scalable, and future-proof Salesforce solutions
-							that enable non-profits to focus on their mission. From automating fundraising and donor
-							engagement to streamlining grant management and reporting, we provide tailored solutions
-							that drive measurable impact.
-						</p>
-						<p>
-							If you’re looking to optimize operations, enhance stakeholder engagement, or improve
-							fundraising effectiveness, TwinStack Solutions is your trusted partner. Contact us today to
-							explore how we can support your mission with Salesforce.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Services -->
-		<section id="services" class="services">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Services</h2>
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-lg-4 col-md-12">
-						<div class="panel">
-							<h3>
-								<span>
-									<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-								</span>
-								<span>
-									Tailored Non-Profit Solutions
-								</span>
-							</h3>
-							<p>
-								We provide customized Salesforce solutions designed specifically for non-profits,
-								ensuring efficiency and impact.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-12">
-						<div class="panel">
-							<h3>
-								<span>
-									<i class="fa fa-link" aria-hidden="true"></i>
-								</span>
-								<span>
-									Seamless Collaboration
-								</span>
-							</h3>
-							<p>
-								We work closely with non-profits at every stage, ensuring transparency and alignment
-								with their mission goals.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-12">
-						<div class="panel">
-							<h3>
-								<span>
-									<i class="fa fa-briefcase" aria-hidden="true"></i>
-								</span>
-								<span>
-									Reliable Implementation & Support
-								</span>
-							</h3>
-							<p>
-								We ensure timely delivery of Salesforce solutions while providing continuous support to
-								help non-profits maximize their impact.
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-lg-4 col-md-12">
-						<div class="panel">
-							<h3>
-								<span>
-									<i class="fa fa-handshake-o" aria-hidden="true"></i>
-								</span>
-								<span>
-									Salesforce License Assistance
-								</span>
-							</h3>
-							<p>
-								We help non-profits apply for and maximize Salesforce’s 10 free licenses, reducing
-								software costs and increasing efficiency.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-12">
-						<div class="panel">
-							<h3>
-								<span>
-									<i class="fa fa-users" aria-hidden="true"></i>
-								</span>
-								<span>
-									Volunteer & Program Management
-								</span>
-							</h3>
-							<p>
-								We implement Salesforce solutions to track volunteer activities, automate scheduling,
-								and measure program impact.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-12">
-						<div class="panel">
-							<h3>
-								<span>
-									<i class="fa fa-line-chart" aria-hidden="true"></i>
-								</span>
-								<span>
-									Data & Impact Reporting
-								</span>
-							</h3>
-							<p>
-								We create custom dashboards and reports, enabling non-profits to measure impact, track
-								donations, and make data-driven decisions.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Why Us -->
-		<section id="why_us" class="why_us">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Why Choose TwinStack Solutions?</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6 col-md-12">
-						<h3>
-							<span>
-								<i class="fa fa-check-circle" aria-hidden="true"></i>
-							</span>
-							<span>
-								Non-Profit Expertise
-							</span>
-						</h3>
-						<p>
-							We specialize in Salesforce solutions tailored for non-profits, ensuring mission-aligned
-							strategies and impact-driven results.
-						</p>
-					</div>
-					<div class="col-lg-6 col-md-12">
-						<h3>
-							<span>
-								<i class="fa fa-check-circle" aria-hidden="true"></i>
-							</span>
-							<span>
-								Reliable Implementation
-							</span>
-						</h3>
-						<p>
-							We ensure seamless Salesforce implementation, providing long-term solutions that help
-							non-profits operate efficiently.
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6 col-md-12">
-						<h3>
-							<span>
-								<i class="fa fa-cogs" aria-hidden="true"></i>
-							</span>
-							<span>
-								Seamless Integrations
-							</span>
-						</h3>
-						<p>
-							We integrate Salesforce with your existing tools, creating a unified system for better data
-							management and efficiency.
-						</p>
-					</div>
-					<div class="col-lg-6 col-md-12">
-						<h3>
-							<span>
-								<i class="fa fa-users" aria-hidden="true"></i>
-							</span>
-							<span>
-								Ongoing Support & Training
-							</span>
-						</h3>
-						<p>
-							We provide continuous support and training to empower non-profits to fully utilize
-							Salesforce without technical barriers.
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6 col-md-12">
-						<h3>
-							<span>
-								<i class="fa fa-line-chart" aria-hidden="true"></i>
-							</span>
-							<span>
-								Data-Driven Decision Making
-							</span>
-						</h3>
-						<p>
-							We help non-profits harness data insights through custom dashboards and reports, improving
-							strategic decision-making.
-						</p>
-					</div>
-					<div class="col-lg-6 col-md-12">
-						<h3>
-							<span>
-								<i class="fa fa-heart" aria-hidden="true"></i>
-							</span>
-							<span>
-								Impact-Focused Technology
-							</span>
-						</h3>
-						<p>
-							We implement technology solutions that enhance donor engagement, streamline processes, and
-							increase nonprofit impact.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Contact -->
-		<section id="contact" class="contact">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Contact</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-4 col-md-12">
-						<ul class="contact_list-item">
-							<li>
-								<span>
-									<i class="fa fa-phone" aria-hidden="true"></i> <i class="fa fa-whatsapp"></i>
-								</span>
-								<span>
-									<a href="tel:(+88) 01681820959">(+88) 01681820959</a>
-								</span>
-							</li>
-							<li>
-								<span>
-									<i class="fa fa-envelope" aria-hidden="true"></i>
-								</span>
-								<span>
-									<a href="mailto:info@twinstack.net">info@twinstack.net</a>
-								</span>
-							</li>
+    <section class="hero-bg min-h-screen flex items-center pt-40 pb-20 relative overflow-hidden">
+        <div class="absolute top-20 right-0 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
 
-							<li>
-								<span>
-									<i class="fa fa-skype" aria-hidden="true"></i>
-								</span>
-								<span>
-									twinstack.web
-								</span>
-							</li>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-500/30 text-brand-100 text-sm font-semibold mb-8">
+                        <i class="fas fa-rocket mr-2 text-brand-400"></i> Salesforce Partner & AppExchange Expert
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-8">
+                        Accelerate your <br>
+                        <span class="text-gradient">Salesforce Success with TwinStack</span>
+                    </h1>
+                    
+                    <p class="text-xl lg:text-2xl text-blue-100 font-light leading-relaxed mb-10 max-w-xl">
+                        Expert consulting, managed services across multiple clouds, and native AppExchange products designed to empower your business growth.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-5 mb-12">
+                        <a href="#contact" class="interactive-element px-8 py-4 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-bold text-lg shadow-xl shadow-brand-500/20 transition transform hover:-translate-y-1 text-center">
+                            Get Free Consultation
+                        </a>
+                        <a href="#products" class="interactive-element px-8 py-4 rounded-lg bg-white/5 hover:bg-white/10 border border-white/20 backdrop-blur-sm text-white font-semibold text-lg transition text-center flex items-center justify-center gap-2">
+                            <i class="fas fa-box-open"></i> Explore Products
+                        </a>
+                    </div>
+                    
+                    <div class="pt-6 border-t border-white/10 flex flex-wrap items-center gap-x-8 gap-y-4 text-slate-400 text-sm">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-brand-400"></i> <span class="text-slate-300">7+ Verified Projects</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-certificate text-brand-400"></i> <span class="text-slate-300">Certified Experts</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-star text-yellow-400"></i> <span class="text-slate-300">5.0 AppExchange Rating</span>
+                        </div>
+                    </div>
+                </div>
 
-							<li>
-								<span>
-									<i class="fa fa-linkedin" aria-hidden="true"></i>
-								</span>
-								<span>
-									<a href="https://www.linkedin.com/company/83490025/">&nbsp;&nbsp;LinkedIn</a>
-								</span>
-							</li>
-							<li>
-								<span>
-									<i class="fa fa-whatsapp" aria-hidden="true"></i>
-								</span>
-								<span>
-									(+880) 01681820959
-								</span>
-							</li>
+                <div class="relative hidden lg:block" data-aos="fade-left" data-aos-delay="200">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-800/50 backdrop-blur-xl p-3 group transform hover:scale-[1.01] transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Salesforce Dashboard Analytics" 
+                             class="rounded-xl w-full h-auto opacity-90 group-hover:opacity-100 transition duration-500">
+                        
+                        <div class="absolute -bottom-8 -left-8 bg-white p-5 rounded-2xl shadow-2xl flex items-center gap-4 animate-bounce" style="animation-duration: 4s;">
+                            <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 text-2xl">
+                                <i class="fab fa-salesforce"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Partner Since 2018</p>
+                                <p class="text-slate-900 font-extrabold text-lg">Official Partner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-0 w-full leading-none">
+            <svg class="block w-full h-24 text-slate-50" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="currentColor" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1248,320,1152,320,1056,320C960,320,864,320,768,320C672,320,576,320,480,320C384,320,288,320,192,320C96,320,48,320,0,320Z"></path>
+            </svg>
+        </div>
+    </section>
 
-							<li>
-								<label>Office Location</label>
-							</li>
-							<li style="margin-right: 2px;">
-								Ramzannesa Super Market, 2 No. Harunabad, Mirpur Cantonment Road,
-								Mirpur-12, Pallabi, Dhaka - 1216
-							</li>
-						</ul>
-					</div>
-					<div class="col-lg-8 col-md-12">
+    <section class="py-20 bg-white border-b border-slate-100 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                <div class="md:w-5/12 flex justify-center md:justify-end" data-aos="fade-right">
+                    <div class="relative group cursor-pointer interactive-element">
+                         <div class="absolute inset-0 bg-brand-200 rounded-full blur-3xl opacity-40 transform translate-y-4 group-hover:opacity-60 transition duration-500"></div>
+                         
+                         <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-2 bg-white border border-slate-100 shadow-2xl transition-all duration-500 group-hover:shadow-[0_20px_60px_-15px_rgba(14,165,233,0.5)]">
+                             <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1768997856/Untitled_design_1_hlwm8m.png" 
+                                  alt="Saiful Islam - Salesforce Architect" 
+                                  class="w-full h-full object-cover rounded-full transition duration-500 ease-in-out transform group-hover:scale-105">
+                         </div>
 
+                         <div class="absolute bottom-6 right-0 md:-right-4 bg-white px-4 py-3 rounded-xl shadow-xl z-20 flex items-center gap-3 border border-slate-100 transform group-hover:scale-105 transition">
+                             <div class="w-10 h-10 bg-brand-50 rounded-full flex items-center justify-center text-brand-600">
+                                 <i class="fas fa-certificate text-lg"></i>
+                             </div>
+                             <div>
+                                 <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Certified</p>
+                                 <p class="text-sm font-bold text-slate-900">System Architect</p>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-7/12 text-center md:text-left" data-aos="fade-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-xs font-bold uppercase tracking-wide mb-4">
+                        <span class="w-2 h-2 bg-brand-500 rounded-full"></span> Leadership
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
+                        Built by Architects, <br>
+                        <span class="text-brand-600">Driven by Innovation.</span>
+                    </h2>
+                    
+                    <div class="relative">
+                        <i class="fas fa-quote-left text-4xl text-brand-100 absolute -top-6 -left-4 opacity-50"></i>
+                        <p class="text-lg text-slate-600 leading-relaxed mb-6 relative z-10 italic">
+                            "At TwinStack, we don't just implement technology; we build ecosystems that grow with your vision. My goal is to bridge the gap between complex technical requirements and seamless user experiences."
+                        </p>
+                    </div>
+                    
+                    <div class="border-t border-slate-100 pt-6 mt-6 flex flex-col md:flex-row items-center gap-4">
+                        <div class="text-center md:text-left">
+                            <h3 class="text-xl font-bold text-slate-900">Saiful Islam</h3>
+                            <p class="text-brand-600 font-medium text-sm">Founder & Salesforce Architect</p>
+                        </div>
+                        <div class="flex gap-3 md:ml-auto">
+                            <a href="#" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition interactive-element">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition interactive-element">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="services" class="py-24 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Our Expertise</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-4">Comprehensive Salesforce Solutions</h3>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    From implementation to optimization, we cover the full Salesforce ecosystem to drive your business forward.
+                </p>
+            </div>
 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Core CRM & Finance</h4>
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">End-to-end implementation and optimization for your critical business operations.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Sales Cloud</span><span class="tech-tag">Service Cloud</span><span class="tech-tag">Financial Service Cloud</span>
+                    </div>
+                </div>
 
+                <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Enterprise Integration</h4>
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Connect Salesforce with your ERP and third-party systems using industry-leading middleware.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">MuleSoft</span><span class="tech-tag">Dell Boomi</span><span class="tech-tag">APIs</span>
+                    </div>
+                </div>
 
+                <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center text-teal-600 text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Data & Intelligence</h4>
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Unlock actionable insights and visualize your data to drive smarter decisions.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Tableau</span><span class="tech-tag">CRM Analytics</span><span class="tech-tag">Data Cloud</span>
+                    </div>
+                </div>
 
-						<form class="media_pt"
-							action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
-							method="POST">
+                <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Digital Engagement</h4>
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Build beautiful portals and automate marketing journeys to engage customers.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Experience Cloud</span><span class="tech-tag">Marketing Cloud</span>
+                    </div>
+                </div>
+                
+                 <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Social Impact</h4>
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Specialized tools for fundraising, volunteer management, and program delivery.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Nonprofit Cloud</span><span class="tech-tag">NPSP</span>
+                    </div>
+                </div>
+                
+                 <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Custom Development</h4>
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Complex Apex development, LWC, and custom automation solutions.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Apex</span><span class="tech-tag">LWC</span><span class="tech-tag">Flow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-							<input type=hidden name="oid" value="00D28000001GPAj">
-							<input type=hidden name="retURL" value="https://twinstack.net/thank-you">
+    <section id="products" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="flex items-center gap-2">
+                            <i class="fab fa-salesforce text-[#00A1E0] text-4xl"></i>
+                            <span class="text-2xl font-bold text-slate-800">AppExchange</span>
+                        </div>
+                        <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full ml-2">FREE TOOL</span>
+                    </div>
+                    
+                    <h2 class="text-4xl font-bold text-slate-900 mb-6">Smart Lookup Data Loader</h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Simplify your data migration. Our 100% native tool simplifies CSV imports into Salesforce, supporting upserts and intelligent lookups without leaving the platform.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span class="text-slate-700"><strong>Rapid Data Import:</strong> Intelligent auto-mapping for faster processing.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span class="text-slate-700"><strong>Smart Matching:</strong> Flexible multi-field upsert matching logic.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span class="text-slate-700"><strong>Native Security:</strong> Data never leaves your Salesforce org.</span>
+                        </li>
+                    </ul>
 
+                    <a href="#" class="interactive-element inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-bold rounded-lg shadow-lg hover:bg-brand-700 transition gap-2">
+                        Get it on AppExchange <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
 
-							<div class="row">
-								<div class="col-md-6">
-									<input type="text" name="last_name" id="last_name" placeholder="*Name" required>
-								</div>
-								<div class="col-md-6">
-									<input type="email" name="email" id="email" placeholder="*Email" required>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<input type="tel" name="phone" id="phone" placeholder="Phone Number">
-									<input id="company" maxlength="40" name="company" size="20" type="hidden"
-										value="web" />
-								</div>
-								<div class="col-md-6">
-									<input type="text" name="00N0K00000LkflK" id="00N0K00000LkflK"
-										placeholder="*Subject" required>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<textarea name="description" id="description" rows="4"
-										placeholder="Description"></textarea>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<input type="submit" name="button" id="" value="Submit">
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
+                <div class="lg:w-1/2 w-full" data-aos="fade-left">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-400 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                        <div class="relative bg-white ring-1 ring-gray-900/5 rounded-2xl shadow-2xl p-4">
+                            <div class="video-container bg-slate-100 rounded-lg overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition cursor-pointer interactive-element">
+                                    <div class="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center pl-2 shadow-2xl scale-100 group-hover:scale-110 transition">
+                                        <i class="fas fa-play text-brand-600 text-3xl"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-3 rounded-lg text-white">
+                                    <p class="text-sm font-semibold">Demo: Importing 10k Records in Seconds</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<!-- Footer -->
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					© 2025 TwinStack . All Rights Reserved.
-				</div>
-				<div class="col-lg-6 col-md-12">
-					<ul>
-						<li>
-							<a href="https://www.facebook.com/twinforcesolutions" target="_blank">
-								<i class="fa fa-facebook-square" aria-hidden="true"></i>
-							</a>
-						</li>
-						<li>
-							<a href="https://www.linkedin.com/company/83490025/" target="_blank">
-								<i class="fa fa-linkedin-square" aria-hidden="true"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
+    <section id="demos" class="py-24 bg-slate-900 text-white relative">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+        </div>
 
-	<!-- Calendly badge widget begin -->
-	<link href="css/widget.css" rel="stylesheet">
-	<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-	<script
-		type="text/javascript">window.onload = function () { Calendly.initBadgeWidget({ url: 'https://calendly.com/twinstack-solutions/twinstack-solutions-salesforce-consultancy', text: 'Book a free consultation', color: '#389edb', textColor: '#ffffff' }); }</script>
-	<!-- Calendly badge widget end -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-brand-400 font-bold tracking-wide uppercase text-sm mb-3">Live Demos</h2>
+                <h3 class="text-4xl font-bold mb-4">Experience Cloud Templates</h3>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Why use WordPress? Host beautiful, secure websites directly on Salesforce. Check out our pre-built templates.
+                </p>
+            </div>
 
-	<!-- Back to top-->
-	<a id="scroll" href="#">
-		<span>
-			<i class="fa fa-arrow-up" aria-hidden="true"></i>
-			<!-- &uarr; -->
-		</span>
-	</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 interactive-element" data-aos="zoom-in" data-aos-delay="0">
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-bold mb-2">Business Website Template</h4>
+                        <p class="text-slate-400 text-sm mb-4">A fully responsive corporate site structure with lead generation forms integrated directly to Salesforce Leads.</p>
+                        <button class="text-brand-400 font-semibold hover:text-brand-300 text-sm">View Live Demo &rarr;</button>
+                    </div>
+                </div>
 
+                <div class="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 interactive-element" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/lxS1t5F1oI4?mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-bold mb-2">Customer Support Portal</h4>
+                        <p class="text-slate-400 text-sm mb-4">Self-service knowledge base, ticket logging, and case status tracking. Reduce support costs instantly.</p>
+                        <button class="text-brand-400 font-semibold hover:text-brand-300 text-sm">View Live Demo &rarr;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="py-16 bg-brand-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-brand-500/50">
+                <div data-aos="fade-up" data-aos-delay="0">
+                    <div class="text-4xl font-extrabold mb-2 counter" data-target="7">0</div>
+                    <div class="text-brand-100 text-sm font-medium">Verified Projects</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl font-extrabold mb-2 counter" data-target="100">0</div>
+                    <div class="text-brand-100 text-sm font-medium">% Salesforce Native</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl font-extrabold mb-2 counter" data-target="5">0</div>
+                    <div class="text-brand-100 text-sm font-medium">Star Rating</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl font-extrabold mb-2 counter" data-target="2">0</div>
+                    <div class="text-brand-100 text-sm font-medium">Certified Architects</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<!-- JS libraries -->
-	<script src="js/jquery-3.4.1.min.js"></script>
+    <section id="reviews" class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-30 pointer-events-none">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-200 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-80 h-80 bg-purple-200 rounded-full blur-3xl"></div>
+        </div>
 
-	<!-- For tooltips, popovers, and drop-downs suggested by Bootstrap4.3.1 -->
-	<script src="js/popper.min.js"></script>
-	<!-- Bootstrap4.3.1 JS -->
-	<script src="js/bootstrap.min.js"></script>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Testimonials</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-4">What Our Clients Say</h3>
+                <p class="text-slate-600 max-w-2xl mx-auto">Don't just take our word for it. Here is feedback from teams we've helped succeed.</p>
+            </div>
 
-	<!-- Scroll animation JS -->
-	<script src="js/aos.js"></script>
-	<script>
-		AOS.init({
-			offset: 120, // offset (in px) from the original trigger point
-			delay: 500, // values from 0 to 3000, with step 50ms
-			duration: 1000, // values from 0 to 3000, with step 50ms
-			easing: 'ease', // default easing for AOS animations
-			once: false, // whether animation should happen only once - while scrolling down
-			mirror: false, // whether elements should animate out while scrolling past them
-			anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
-		});
-	</script>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 relative group hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="0">
+                    <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-slate-600 mb-6 relative z-10 italic">"TwinStack transformed our non-profit operations. The implementation of NPSP was seamless."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 font-bold">JD</div>
+                        <div><h4 class="font-bold text-slate-900 text-sm">Jane Doe</h4><p class="text-xs text-slate-500">Executive Director</p></div>
+                    </div>
+                </div>
+                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 relative group hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-slate-600 mb-6 relative z-10 italic">"The Smart Lookup Data Loader is a game-changer. We migrated 50,000 records without a single error."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 font-bold">MS</div>
+                        <div><h4 class="font-bold text-slate-900 text-sm">Michael Smith</h4><p class="text-xs text-slate-500">Sales Ops Manager</p></div>
+                    </div>
+                </div>
+                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 relative group hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-slate-600 mb-6 relative z-10 italic">"Their expertise in Experience Cloud is unmatched. They built a customer portal that perfectly matches our brand."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 font-bold">AL</div>
+                        <div><h4 class="font-bold text-slate-900 text-sm">Sarah Lee</h4><p class="text-xs text-slate-500">CTO</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<!-- Nav menu JS -->
-	<script src="js/nav_menu.js"></script>
+    <section id="blogs" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Resources</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-4">Latest Insights</h3>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    Expert guides and tutorials to help you master Salesforce data management.
+                </p>
+            </div>
 
-	<!-- Theme JS -->
-	<script src="js/theme.js"></script>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100 group hover:-translate-y-2 transition duration-300 cursor-pointer interactive-element" data-aos="fade-up" data-aos-delay="0">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-900/10 group-hover:bg-transparent transition z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Organized Workflow" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full z-20">Product Guide</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-slate-900 mb-3 text-lg leading-tight group-hover:text-brand-600 transition">
+                            <a href="blog-smart-lookup-intro.html">How to Effortlessly Import Data into Salesforce</a>
+                        </h4>
+                        <p class="text-slate-500 text-sm mb-4 line-clamp-3">
+                            Discover how Smart Lookup Data Loader simplifies complex imports. A step-by-step walkthrough for cleaner data.
+                        </p>
+                        <a href="blog-smart-lookup-intro.html" class="text-brand-600 text-sm font-semibold flex items-center gap-2 hover:underline">Read Article <i class="fas fa-arrow-right text-xs transition transform group-hover:translate-x-1"></i></a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100 group hover:-translate-y-2 transition duration-300 cursor-pointer interactive-element" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-900/10 group-hover:bg-transparent transition z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Manual Paperwork" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full z-20">Comparison</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-slate-900 mb-3 text-lg leading-tight group-hover:text-brand-600 transition">
+                            <a href="blog-manual-vs-automated.html">Say Goodbye to Manual Data Imports</a>
+                        </h4>
+                        <p class="text-slate-500 text-sm mb-4 line-clamp-3">
+                            Stop wasting hours on spreadsheets. See how automation reduces errors and saves your team valuable time.
+                        </p>
+                        <a href="blog-manual-vs-automated.html" class="text-brand-600 text-sm font-semibold flex items-center gap-2 hover:underline">Read Article <i class="fas fa-arrow-right text-xs transition transform group-hover:translate-x-1"></i></a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100 group hover:-translate-y-2 transition duration-300 cursor-pointer interactive-element" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-900/10 group-hover:bg-transparent transition z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Massive Archive" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full z-20">Ultimate Guide</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-slate-900 mb-3 text-lg leading-tight group-hover:text-brand-600 transition">
+                            <a href="blog-bulk-data-guide.html">The Ultimate Guide to Bulk Data Imports</a>
+                        </h4>
+                        <p class="text-slate-500 text-sm mb-4 line-clamp-3">
+                            Managing large datasets? Learn the best practices for bulk operations and why efficient loaders matter.
+                        </p>
+                        <a href="blog-bulk-data-guide.html" class="text-brand-600 text-sm font-semibold flex items-center gap-2 hover:underline">Read Article <i class="fas fa-arrow-right text-xs transition transform group-hover:translate-x-1"></i></a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100 group hover:-translate-y-2 transition duration-300 cursor-pointer interactive-element" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-900/10 group-hover:bg-transparent transition z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Connection" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full z-20">Integration</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-slate-900 mb-3 text-lg leading-tight group-hover:text-brand-600 transition">
+                            <a href="blog-data-integration.html">Streamline Data Integration with Salesforce</a>
+                        </h4>
+                        <p class="text-slate-500 text-sm mb-4 line-clamp-3">
+                            Understand the larger data ecosystem. How to sync, integrate, and maintain data integrity across platforms.
+                        </p>
+                        <a href="blog-data-integration.html" class="text-brand-600 text-sm font-semibold flex items-center gap-2 hover:underline">Read Article <i class="fas fa-arrow-right text-xs transition transform group-hover:translate-x-1"></i></a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="tsblog.html" class="inline-block px-8 py-3 rounded-full border-2 border-brand-600 text-brand-600 font-bold hover:bg-brand-600 hover:text-white transition interactive-element">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2 relative" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Collaboration" class="rounded-2xl shadow-2xl z-10 relative">
+                    <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-dots-pattern opacity-20 z-0"></div> </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Built on Trust, Delivered with Excellence.</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Founded in 2018 in Dhaka, Bangladesh, TwinStack began with a mission to empower non-profits through technology. Today, we have evolved into a full-service consultancy serving both commercial and non-profit sectors globally.
+                    </p>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        We believe in rapid, efficient solutions. Whether you need a complex MuleSoft integration or a simple data loader tool, our certified experts are dedicated to your success.
+                    </p>
+                    <div class="flex gap-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Salesforce_logo.svg/1200px-Salesforce_logo.svg.png" alt="Salesforce" class="h-12 opacity-80 grayscale hover:grayscale-0 transition">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Let's Discuss Your Project</h2>
+                <p class="text-slate-600">
+                    Ready to transform your business? Reach out to us directly via email or WhatsApp.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="zoom-in-up">
+                <a href="mailto:info@twinstack.net" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-500 rounded-2xl transition-all duration-300 group interactive-element shadow-lg hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-3xl mb-6 group-hover:scale-110 transition duration-300 shadow-inner">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Email Us</h3>
+                    <p class="text-slate-600 text-lg group-hover:text-brand-600 transition">info@twinstack.net</p>
+                    <span class="mt-6 text-sm font-semibold text-brand-500 opacity-0 group-hover:opacity-100 transition">Send an email &rarr;</span>
+                </a>
+
+                <a href="https://wa.me/8801681820959" target="_blank" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition-all duration-300 group interactive-element shadow-lg hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-3xl mb-6 group-hover:scale-110 transition duration-300 shadow-inner">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">WhatsApp</h3>
+                    <p class="text-slate-600 text-lg group-hover:text-green-600 transition">+880 1681820959</p>
+                    <span class="mt-6 text-sm font-semibold text-green-500 opacity-0 group-hover:opacity-100 transition">Chat now &rarr;</span>
+                </a>
+            </div>
+            
+            <div class="mt-12 text-center text-sm text-slate-500">
+                <p><i class="fas fa-map-marker-alt text-brand-500 mr-2"></i> Dhaka, Bangladesh</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4 text-white font-bold text-2xl">
+                        <div class="w-8 h-8 bg-brand-600 rounded flex items-center justify-center text-xs">TS</div>
+                        TwinStack
+                    </div>
+                    <p class="text-sm text-slate-500 max-w-xs">
+                        Empowering charities and businesses with Salesforce excellence since 2018.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-brand-400 transition">Smart Lookup Data Loader</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition">Experience Templates</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition">Salesforce Connectors</a></li>
+                        <li><a href="#blogs" class="hover:text-brand-400 transition text-brand-200 font-semibold">Latest Blogs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <p>&copy; 2026 TwinStack Solutions. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 1. Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // 2. Custom "Smart" Cursor Logic (Desktop Only)
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        const interactiveElements = document.querySelectorAll('.interactive-element, a, button, input, textarea');
+
+        if (window.matchMedia("(min-width: 768px)").matches) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                // Dot follows instantly
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                // Outline follows with slight delay
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            });
+
+            // Add hover effect for interactive elements
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    document.body.classList.add('hovering');
+                });
+                el.addEventListener('mouseleave', () => {
+                    document.body.classList.remove('hovering');
+                });
+            });
+        }
+
+        // 3. FLOATING TO FIXED NAVBAR & PROGRESS BAR LOGIC
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            
+            // Navbar Transition Logic
+            if (winScroll > 50) {
+                // FIXED STATE: Full width, top 0, no rounds, slightly more opaque
+                navbar.classList.remove('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
+                navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
+            } else {
+                // FLOATING STATE: Top 6, restricted width, rounded, glass effect
+                navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
+                navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
+            }
+
+            // Scroll Progress Bar Logic
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        });
+
+        // 4. Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        const toggleMenu = () => mobileMenu.classList.toggle('open');
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        // 5. Animated Counters
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; 
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                        if(target === 7) counter.innerText = "7+";
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger counters when Stats section is in view
+        let counted = false;
+        const statsSection = document.querySelector('.counter').closest('section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting && !counted) {
+                animateCounters();
+                counted = true;
+            }
+        });
+        
+        observer.observe(statsSection);
+
+    </script>
 </body>
-
 </html>
