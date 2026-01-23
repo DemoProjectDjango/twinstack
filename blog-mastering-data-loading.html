@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Data Loading: Best Practices - TwinStack Insights</title>
+    <meta name="description" content="Maximize your use of Smart Lookup Data Loader with these best practices for data preparation, field mapping, and error handling.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            500: '#0ea5e9', // Salesforce-ish Blue
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '3rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Shared Styles */
+        body {
+            cursor: none;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%; z-index: 9999; pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: #0ea5e9; }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 2px solid #0ea5e9;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        body.hovering .cursor-outline {
+            width: 60px; height: 60px;
+            background-color: rgba(14, 165, 233, 0.1); border-color: transparent;
+        }
+
+        /* Navbar Transition */
+        #navbar {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Color Shifting Animation for "Stack" */
+        @keyframes colorShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .color-shift-text {
+            background: linear-gradient(270deg, #0ea5e9, #2563eb, #4f46e5, #0ea5e9);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: colorShift 5s ease infinite;
+        }
+
+        /* Article specific styling */
+        article h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        article h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        article p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #334155;
+        }
+        article ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #334155;
+        }
+        article li {
+            margin-bottom: 0.5rem;
+        }
+        article strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        /* Free Zoom Image Class */
+        .zoom-image {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27), z-index 0s;
+            cursor: zoom-in;
+            position: relative;
+            z-index: 10;
+        }
+        .zoom-image:hover {
+            transform: scale(1.5); /* 1.5x Zoom */
+            z-index: 50; /* Bring to front when zoomed */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-800">
+
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl flex justify-between items-center px-6 lg:px-8 h-20 transition-all duration-300">
+        <a href="index.html" class="flex-shrink-0 flex items-center gap-2 interactive-element">
+            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769166087/Black_White_Minimalist_Professional_Initial_Logo_1_f9efiz.png" alt="TwinStack Logo" class="h-14 w-auto">
+            <span class="font-bold text-2xl tracking-tight hidden sm:block">
+                <span class="text-[#343453]">Twin</span><span class="color-shift-text">Stack</span>
+            </span>
+        </a>
+
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="index.html#services" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Services</a>
+            <a href="index.html#products" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Products</a>
+            <a href="tsblog.html" class="text-brand-600 font-bold transition interactive-element">Blog</a>
+            <a href="index.html#contact" class="px-5 py-2.5 rounded-full bg-brand-600 text-white font-semibold hover:bg-brand-900 transition shadow-lg hover:shadow-brand-500/30 interactive-element">
+                Contact Us
+            </a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none interactive-element p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white/95 backdrop-blur-xl shadow-2xl z-[60] flex flex-col p-6 transition-transform duration-300 translate-x-full md:hidden">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-btn" class="text-slate-500 hover:text-slate-900 interactive-element">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+            <a href="index.html" class="text-lg font-medium text-slate-800 hover:text-brand-600">Home</a>
+            <a href="tsblog.html" class="text-lg font-medium text-brand-600 font-bold">Blog</a>
+            <a href="index.html#contact" class="px-5 py-3 rounded-lg bg-brand-600 text-white text-center font-semibold">Contact Us</a>
+        </div>
+    </div>
+
+    <header class="pt-40 pb-16 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-500 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/50 border border-brand-500/30 text-brand-200 text-sm font-semibold mb-6">
+                <span class="w-2 h-2 rounded-full bg-brand-400"></span>
+                Guide
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                Mastering Data Loading: Best Practices for Using Smart Lookup Data Loader
+            </h1>
+            <div class="flex items-center justify-center gap-6 text-slate-400 text-sm">
+                <div class="flex items-center gap-2">
+                    <i class="far fa-calendar"></i> January 23, 2026
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="far fa-user"></i> TwinStack Team
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 bg-white relative">
+        <div class="max-w-3xl mx-auto px-6">
+            
+            <a href="tsblog.html" class="inline-flex items-center gap-2 text-brand-600 font-semibold mb-8 hover:underline interactive-element">
+                <i class="fas fa-arrow-left"></i> Back to Blog
+            </a>
+
+            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                 alt="Mastering Data Loading" 
+                 class="w-full h-64 md:h-96 object-cover rounded-xl shadow-lg mb-10"
+                 data-aos="fade-up">
+
+            <article data-aos="fade-up">
+                <p class="text-xl text-slate-600 font-medium mb-8">
+                    Salesforce administrators and developers need to do data loading. It is essential in data migration, bulk update and maintaining your Salesforce environment clean and up-to-date.
+                </p>
+
+                <p>
+                    Although Smart Lookup Data Loader makes the data import process very easy, there are best practices that you can observe in order to make sure that you are using the tool to the full potential. Here, we are going to present some useful tricks on how to maximize the use of Smart Lookup Data Loader that includes field mapping, preparing data, and dealing with errors, etc.
+                </p>
+
+                <h2>1. Proper Data Preparation: The Key to Successful Imports</h2>
+                <p>
+                    It is important to prepare data before even you start the process of importing data into Salesforce. Well-laid-out, clean data will be time-saving in the import process and its accuracy will be guaranteed.
+                </p>
+                <p><strong>Best Practices for Data Preparation:</strong></p>
+                <ul>
+                    <li><strong>Eliminate Duplicates:</strong> The data you have should not have any duplicates. In case of need, determine and delete duplicates in Excel or other programs and then import.</li>
+                    <li><strong>Check Data Consistency:</strong> Be sure that your data is consistent. As an example, you should have similar phone numbers, dates, and email addresses in all your CSV file. Irregular data types are subject to errors at the time of importing.</li>
+                    <li><strong>Check Required Fields:</strong> Before proceeding with the import, be sure that all the necessary fields in Salesforce (such as Account Name, Contact Email, or Opportunity Stage) are included in the CSV file.</li>
+                    <li><strong>Split Large Files into Smaller Pieces:</strong> In cases where the dataset size is huge, the idea of breaking the file into small pieces is a good option. It has the ability to accelerate the import and find it easier to troubleshoot in case there is some trouble.</li>
+                </ul>
+                
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Clean CSV Structure" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h2>2. Automate Field Mapping for Efficiency</h2>
+                <p>
+                    Field mapping - connecting your CSV columns with Salesforce fields is one of the most tiresome aspects of data loading. To a large extent, this is automated by Smart Lookup Data Loader, still, it is important to be aware of the process to include the data appropriately.
+                </p>
+                <p><strong>Best Practices for Field Mapping:</strong></p>
+                <ul>
+                    <li><strong>Review the Auto-Mapping:</strong> Most of the fields are automatically mapped by Smart Lookup Data Loader but before beginning the import, it is always best to review the field mappings. Make sure that all the columns are assigned to the right Salesforce ones (e.g., First Name into FirstName, Last Name into LastName).</li>
+                    <li><strong>Manually Map Unmatched Fields:</strong> In case the tool fails to map a field automatically, then it is simple to map it manually by choosing the right Salesforce field in the dropdown menu. These fields should be checked, in particular with custom objects or with custom fields.</li>
+                    <li><strong>Leverage Field Aliases:</strong> In case your CSV file has other terminologies than Salesforce (e.g., Phone Number in place of Phone), you can use the field alias option to align the terminologies and make the mapping process quicker.</li>
+                </ul>
+
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Field Mapping Interface" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h2>3. Validate Your Data Before Importing</h2>
+                <p>
+                    One of the most important stages in the importing process is data validation to make sure that the information on your CSV file is up to the required standards. Smart Lookup Data Loader provides internal validation tests to assist in making sure that your data is the right kind and it is importable.
+                </p>
+                <p><strong>Best Practices for Data Validation:</strong></p>
+                <ul>
+                    <li><strong>Check Missing Necessary Fields:</strong> Make sure that all the necessary fields on Salesforce are included in the CSV file. The failure of the import may occur because of the missing information regarding such important fields as Account Name or Email.</li>
+                    <li><strong>Use Data Types and Formats:</strong> Make sure that all the fields in your CSV file are the correct type of data in Salesforce. e.g. in your CSV, Date fields must be in Salesforce-compatible date format (MM/DD/YYYY).</li>
+                    <li><strong>Use the Validation Feature of Smart Lookup Data Loader:</strong> The product will automatically alert you of whatever is wrong with the data prior to the importation. Should data be missing, an invalid value, or there be an error in the formatting then the tool will point you to the problems and will not allow you to progress until you correct the problems.</li>
+                </ul>
+
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Validation Process" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h2>4. Start with a Small Data Set for Testing</h2>
+                <p>
+                    It is always good to start an import process with a small dataset before you run it on a full scale. It will enable you to identify any possible mistakes in time and optimize your import policy.
+                </p>
+                <p><strong>Best Practices for Testing:</strong></p>
+                <ul>
+                    <li><strong>Test on a Small Sample:</strong> Start out with a small sample of your data (e.g. 5-10 records). This will aid in discovering any mapping errors or validation errors prior to a large scale import.</li>
+                    <li><strong>Confirm Logic:</strong> When the small import is complete, inspect the logs and determine whether the data was imported properly. Ensure that all relationships (e.g. Contact to Account) were created appropriately.</li>
+                    <li><strong>Select and Modify:</strong> According to the outcomes of the test, you are able to modify the mappings, format, and structure of the CSV file and then continue to make a larger import.</li>
+                </ul>
+
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Test Import Log" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h2>5. Monitor the Import Process and Handle Errors</h2>
+                <p>
+                    Even given all the preparation and validation, errors may still arise at times of data imports. The best thing is that Smart Lookup Data Loader gives good feedback and error logs to assist you to monitor and troubleshoot the import process.
+                </p>
+                <p><strong>Best Practices for Monitoring and Troubleshooting:</strong></p>
+                <ul>
+                    <li><strong>Track Progress:</strong> Smart Lookup Data Loader gives you a progress bar to be able to understand how far you have gone through the import process. In case the import is not taking the expected time, then you could check the progress and know whether there is a problem or not.</li>
+                    <li><strong>Review Error Logs:</strong> In case of an error, the tool will create an error log with a lot of information of what records failed and the reason. Some of the common problems may consist of the mismatch of data type, the absence of needed fields, and the problem of lookups.</li>
+                    <li><strong>Fix and Re-import:</strong> In case of any errors, correct the errors in the CSV file and re-import the corrected data. This is because the tool enables you to re-upload a corrected file without having to repeat the entire process.</li>
+                </ul>
+
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Import Progress and Error Log" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h2>6. Use the Import History for Ongoing Monitoring</h2>
+                <p>
+                    After the import process has been done, you may view the past import logs using Import History tab. It will help you to trace your imports throughout the time, investigate their status, and find out whether there are some constant problems.
+                </p>
+                <p><strong>Best Practices for Import History:</strong></p>
+                <ul>
+                    <li><strong>Check Import History:</strong> The Import History section enables you to look through all the past attempts of importing and the success/failure of the importing and the details of errors.</li>
+                    <li><strong>Audit to Accuracy:</strong> Check that your data imports are correct using the history logs to verify that over time the imports are accurate.</li>
+                    <li><strong>Export Logs to Documentation:</strong> You may export the logs so as to further document or analyze them. This particularly comes in handy when dealing with bigger projects or when dealing with more than one stakeholder.</li>
+                </ul>
+
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Import History Tab" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h2>Conclusion</h2>
+                <p>
+                    These are the best practices that you can use to make sure that you are using Smart Lookup Data Loader to its maximum. The automated field mapping capabilities as well as the upsert feature of the tool, the automatic validation feature, and the error handling features all come together to ensure that your data imports are more efficient and more accurate than ever.
+                </p>
+                <p>
+                    It can be the first information that you import or a continuous process of importing data, in any case, Smart Lookup Data Loader can save you time and minimize the number of errors and facilitate your Salesforce processes.
+                </p>
+
+                <div class="bg-brand-50 border border-brand-200 rounded-xl p-6 mt-8">
+                    <p class="font-bold text-brand-900 mb-2">Are you willing to automate your data import?</p>
+                    <p class="text-brand-800 mb-4">Install Smart Lookup Data Loader now and make the first step towards the perfection of data loading in Salesforce.</p>
+                    <a href="#" class="inline-block px-6 py-3 bg-brand-600 text-white font-semibold rounded-lg hover:bg-brand-700 transition interactive-element">
+                        Get it on AppExchange
+                    </a>
+                </div>
+
+            </article>
+
+            <div class="mt-16 pt-8 border-t border-slate-200">
+                <a href="tsblog.html" class="inline-flex items-center gap-2 text-brand-600 font-bold hover:underline interactive-element">
+                    <i class="fas fa-arrow-left"></i> Return to All Insights
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="relative bg-slate-900 text-slate-300 py-12 border-t border-slate-800 overflow-hidden">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                
+                <div class="col-span-1 md:col-span-2 mt-4">
+                    
+                    <div class="relative w-fit">
+                        
+                        <div class="absolute -top-6 -bottom-6 -right-12 left-[-100vw] bg-white rounded-r-[50px] z-0"></div>
+
+                        <div class="relative z-10">
+                            <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl interactive-element">
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769166087/Black_White_Minimalist_Professional_Initial_Logo_1_f9efiz.png" alt="TwinStack Logo" class="h-12 w-auto">
+                                <span><span class="text-[#343453]">Twin</span><span class="color-shift-text">Stack</span></span>
+                            </a>
+                            <p class="text-sm text-slate-600 max-w-xs font-medium">
+                                Empowering charities and businesses with Salesforce excellence since 2018.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-4 md:mt-0">
+                    <h4 class="text-white font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#products" class="hover:text-brand-400 transition">Smart Lookup Data Loader</a></li>
+                        <li><a href="index.html#demos" class="hover:text-brand-400 transition">Experience Templates</a></li>
+                        <li><a href="index.html#services" class="hover:text-brand-400 transition">Salesforce Connectors</a></li>
+                        <li><a href="tsblog.html" class="hover:text-brand-400 transition text-brand-200 font-semibold">Latest Blogs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="mt-4 md:mt-0">
+                    <h4 class="text-white font-semibold mb-4">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 relative z-10">
+                <p>&copy; 2026 TwinStack Solutions. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Init AOS
+        AOS.init({ once: true, offset: 100, duration: 800 });
+
+        // --- MOUSE CURSOR ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        if (window.matchMedia("(min-width: 768px)").matches) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            });
+            
+            document.querySelectorAll('.interactive-element, a, button, input').forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+            });
+        }
+
+        // --- FLOATING MENU LOGIC ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
+                navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
+            } else {
+                navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
+                navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
+            }
+        });
+
+        // --- MOBILE MENU ---
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        const toggleMenu = () => mobileMenu.classList.toggle('translate-x-full');
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+    </script>
+</body>
+</html>

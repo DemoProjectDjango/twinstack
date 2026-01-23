@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say Goodbye to Manual Data Imports in Salesforce - TwinStack Insights</title>
+    <meta name="description" content="Compare manual Salesforce imports vs. Smart Lookup Data Loader. Discover how to save time and eliminate errors.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            500: '#0ea5e9', // Salesforce-ish Blue
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '3rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Shared Styles */
+        body {
+            cursor: none;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%; z-index: 9999; pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: #0ea5e9; }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 2px solid #0ea5e9;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        body.hovering .cursor-outline {
+            width: 60px; height: 60px;
+            background-color: rgba(14, 165, 233, 0.1); border-color: transparent;
+        }
+
+        /* Navbar Transition */
+        #navbar {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Color Shifting Animation for "Stack" */
+        @keyframes colorShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .color-shift-text {
+            background: linear-gradient(270deg, #0ea5e9, #2563eb, #4f46e5, #0ea5e9);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: colorShift 5s ease infinite;
+        }
+
+        /* Article specific styling */
+        article h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        article h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        article p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #334155;
+        }
+        article ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #334155;
+        }
+        article li {
+            margin-bottom: 0.5rem;
+        }
+        article strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        /* Free Zoom Image Class */
+        .zoom-image {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27), z-index 0s;
+            cursor: zoom-in;
+            position: relative;
+            z-index: 10;
+        }
+        .zoom-image:hover {
+            transform: scale(1.5); /* 1.5x Zoom */
+            z-index: 50; /* Bring to front when zoomed */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-800">
+
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl flex justify-between items-center px-6 lg:px-8 h-20 transition-all duration-300">
+        <a href="index.html" class="flex-shrink-0 flex items-center gap-2 interactive-element">
+            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769166087/Black_White_Minimalist_Professional_Initial_Logo_1_f9efiz.png" alt="TwinStack Logo" class="h-14 w-auto">
+            <span class="font-bold text-2xl tracking-tight hidden sm:block">
+                <span class="text-[#343453]">Twin</span><span class="color-shift-text">Stack</span>
+            </span>
+        </a>
+
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="index.html#services" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Services</a>
+            <a href="index.html#products" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Products</a>
+            <a href="tsblog.html" class="text-brand-600 font-bold transition interactive-element">Blog</a>
+            <a href="index.html#contact" class="px-5 py-2.5 rounded-full bg-brand-600 text-white font-semibold hover:bg-brand-900 transition shadow-lg hover:shadow-brand-500/30 interactive-element">
+                Contact Us
+            </a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none interactive-element p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white/95 backdrop-blur-xl shadow-2xl z-[60] flex flex-col p-6 transition-transform duration-300 translate-x-full md:hidden">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-btn" class="text-slate-500 hover:text-slate-900 interactive-element">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+            <a href="index.html" class="text-lg font-medium text-slate-800 hover:text-brand-600">Home</a>
+            <a href="tsblog.html" class="text-lg font-medium text-brand-600 font-bold">Blog</a>
+            <a href="index.html#contact" class="px-5 py-3 rounded-lg bg-brand-600 text-white text-center font-semibold">Contact Us</a>
+        </div>
+    </div>
+
+    <header class="pt-40 pb-16 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-500 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/50 border border-brand-500/30 text-brand-200 text-sm font-semibold mb-6">
+                <span class="w-2 h-2 rounded-full bg-brand-400"></span>
+                Guide
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                Say Goodbye to Manual Data Imports in Salesforce: Smart Lookup Data Loader Makes It Easy
+            </h1>
+            <div class="flex items-center justify-center gap-6 text-slate-400 text-sm">
+                <div class="flex items-center gap-2">
+                    <i class="far fa-calendar"></i> January 23, 2026
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="far fa-user"></i> TwinStack Team
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 bg-white relative">
+        <div class="max-w-3xl mx-auto px-6">
+            
+            <a href="tsblog.html" class="inline-flex items-center gap-2 text-brand-600 font-semibold mb-8 hover:underline interactive-element">
+                <i class="fas fa-arrow-left"></i> Back to Blog
+            </a>
+
+            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                 alt="Salesforce Data Import" 
+                 class="w-full h-64 md:h-96 object-cover rounded-xl shadow-lg mb-10"
+                 data-aos="fade-up">
+
+            <article data-aos="fade-up">
+                <p class="text-xl text-slate-600 font-medium mb-8">
+                    One of the most significant and, at the same time, most frustrating Salesforce admin task is data importation.
+                </p>
+
+                <p>
+                    The manual process may be tedious, time-consuming, and has the possibility of errors whether you are importing records in a CSV file, updating existing records or a complex data mapping. You may have been using manual data imports in Salesforce and are likely to know how difficult and inefficient it can be.
+                </p>
+
+                <p>
+                    Luckily, there is a tool that may simplify this process and help you to save time and even headache: <strong>Smart Lookup Data Loader</strong>. In this blog post, we will make a comparison between manual data import process and the Smart Lookup Data Loader, we will also make it clear how a tool can save a lot of errors and make your work process a lot easier.
+                </p>
+
+                <h2>The Pain of Manual Data Imports in Salesforce</h2>
+                <p>
+                    In cases whereby data are being imported into Salesforce manually, it may prove to be slow, cumbersome, and prone to errors. These are some of the pitfalls experienced by Salesforce users in performing manual imports:
+                </p>
+                <ul>
+                    <li><strong>Manual Field Mapping:</strong> Creating CSV column to Salesforce fields may be tedious. In many cases, one can simply overlook a field or make errors during matching the incorrect columns, thus importing incorrect data.</li>
+                    <li><strong>Duplicate Records:</strong> Duplicates represent one of the greatest headaches in the manual imports. The admins do not have an automated process, and thus they need to cross-check records manually, which may be time-consuming and error-prone.</li>
+                    <li><strong>Data Validation:</strong> It is important to make sure that the information in your CSV file is compatible with Salesforce data needs (e.g. it includes the necessary fields, has the right type of fields, etc.). By validation of the data by hand it is necessary to take time to review the data prior to and after importing the data, which generally leaves errors overlooked.</li>
+                    <li><strong>Error Troubleshooting:</strong> In case of any failure in a manual import, it may take hours to troubleshoot. It is a tedious and annoying task to determine which record resulted in the error and correct it and re-upload the file.</li>
+                    <li><strong>Time-Consuming:</strong> The amount of time needed to carry out the manual imports increases with the volume of data. A small file may take an hour but then it may need a day to be done with large datasets.</li>
+                </ul>
+
+                <h2>How Smart Lookup Data Loader Solves These Problems</h2>
+                <p>
+                    Smart Lookup Data Loader saves time, simplifies and corrects the process of importing the data. This is how it handles the issue of manual imports of data:
+                </p>
+
+                <h3>1. Automated Field Mapping</h3>
+                <p>
+                    The Smart Lookup Data Loader automatically matches the CSV column with Salesforce fields, which saves time and with accuracy unlike manual imports. The tool asserts intelligent algorithms to find and identify the CSV column headers with the appropriate Salesforce fields to reduce the chances of mismatch.
+                </p>
+                <div class="bg-slate-50 border-l-4 border-brand-500 p-4 my-4">
+                    <p class="mb-2"><strong>Manual Import:</strong> You have to manually match every CSV column to the corresponding Salesforce field.</p>
+                    <p><strong>Smart Lookup Data Loader:</strong> The tool automatically matches your CSV columns to Salesforce fields, allowing you to confirm or adjust the mapping with a few clicks.</p>
+                </div>
+
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Field Mapping Interface" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h3>2. Duplicate Detection and Upsert Capabilities</h3>
+                <p>
+                    Duplicate records are one of the most frequent issues of manual data imports. The Smart Lookup Data Loader is used to make sure it does not create duplicates using the upsert logic. It will automatically validate records of existing records and update them where necessary so that you do not get duplicate records in your Salesforce database.
+                </p>
+                <div class="bg-slate-50 border-l-4 border-brand-500 p-4 my-4">
+                    <p class="mb-2"><strong>Manual Import:</strong> You have to manually check for duplicates, which often results in missed records.</p>
+                    <p><strong>Smart Lookup Data Loader:</strong> Automatically detects duplicates and handles upserts, ensuring that existing records are updated rather than duplicated.</p>
+                </div>
+
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Upsert Functionality" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h3>3. Data Validation Built-In</h3>
+                <p>
+                    The Smart Lookup Data Loader checks your data before you can even start importing it to make sure it is compatible with the Salesforce data structure. In case of any errors in your CSV file (such as the absence of mandatory fields, incorrect data types, etc.), the tool will notify you prior to the importing process, avoiding unnecessary errors and wasting time in the long-term perspective.
+                </p>
+                <div class="bg-slate-50 border-l-4 border-brand-500 p-4 my-4">
+                    <p class="mb-2"><strong>Manual Import:</strong> You manually validate each field, checking for errors and fixing them before or after the import.</p>
+                    <p><strong>Smart Lookup Data Loader:</strong> The tool automatically checks your data for validation errors and gives you feedback before you import, so you can correct issues upfront.</p>
+                </div>
+
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Data Validation Interface" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h3>4. Fast and Easy Error Troubleshooting</h3>
+                <p>
+                    In case of an error that occurs during the import, Smart Lookup Data Loader would give a detailed log of the errors, which would allow you to locate the point where the actual problem is. The log is easy to download, edit the required changes and re-import the data without going through the whole process once more.
+                </p>
+                <div class="bg-slate-50 border-l-4 border-brand-500 p-4 my-4">
+                    <p class="mb-2"><strong>Manual Import:</strong> Errors can take hours to troubleshoot, especially if you have a large dataset.</p>
+                    <p><strong>Smart Lookup Data Loader:</strong> Provides an easy-to-read error log that helps you quickly identify and fix problems.</p>
+                </div>
+
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Import History and Errors" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h3>5. Save Time and Effort</h3>
+                <p>
+                    Smart Lookup Data Loader can help you finish the import process in several minutes, even with large datasets, by automating the tiresome process of data importing, including field mapping, error detection, and duplicate detection. This is a drastic change over the manual imports that may take hours and sometimes days to complete, particularly when the data structure is of complex nature.
+                </p>
+                <div class="bg-slate-50 border-l-4 border-brand-500 p-4 my-4">
+                    <p class="mb-2"><strong>Manual Import:</strong> Time-consuming, error-prone, and requires constant attention.</p>
+                    <p><strong>Smart Lookup Data Loader:</strong> Fast, efficient, and reduces the time needed to import data by automating key steps.</p>
+                </div>
+
+                <div class="my-10">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769160719/Screenshot_2026-01-23_at_3.31.25_PM_ry2h63.png" 
+                         alt="Progress Bar" 
+                         class="zoom-image rounded-xl border border-slate-200 shadow-sm w-full interactive-element">
+                </div>
+
+                <h2>The Benefits of Smart Lookup Data Loader</h2>
+                <ul>
+                    <li><strong>Time-Saving:</strong> Data is imported in minutes and not hours with automated field mapping, duplicate detection and data validation.</li>
+                    <li><strong>Minimized Error:</strong> Goodbye to any manual errors Smart Lookup Data Loader keeps your data error free even before you have had a chance to begin the importing process.</li>
+                    <li><strong>Uninterrupted Integration:</strong> It connects well with Salesforce and so your data is updated or inserted where it is required.</li>
+                    <li><strong>Free and Simple to install:</strong> Even better is that Smart Lookup Data Loader is free and thus you can simplify your data import process without paying even a single penny.</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>
+                    The whole process of data importing manually can become irritating and time-consuming, but with Smart Lookup Data Loader, it is possible to make the whole process simpler. Smart Lookup Data Loader simplifies the effortless importation of large volumes of data into Salesforce through automation of tedious processes such as field mapping, duplicate detection and data validation. Savings of time, prevent mistakes, and enhance your workflow, at the same time, with a free tool that is meant to make your life simple.
+                </p>
+
+                <div class="bg-brand-50 border border-brand-200 rounded-xl p-6 mt-8">
+                    <p class="font-bold text-brand-900 mb-2">Ready to make the switch?</p>
+                    <p class="text-brand-800 mb-4">Introducing Smart Lookup Data Loader which will allow you to never again have to manually import data!</p>
+                    <a href="#" class="inline-block px-6 py-3 bg-brand-600 text-white font-semibold rounded-lg hover:bg-brand-700 transition interactive-element">
+                        Get it on AppExchange
+                    </a>
+                </div>
+
+            </article>
+
+            <div class="mt-16 pt-8 border-t border-slate-200">
+                <a href="tsblog.html" class="inline-flex items-center gap-2 text-brand-600 font-bold hover:underline interactive-element">
+                    <i class="fas fa-arrow-left"></i> Return to All Insights
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="relative bg-slate-900 text-slate-300 py-12 border-t border-slate-800 overflow-hidden">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                
+                <div class="col-span-1 md:col-span-2 mt-4">
+                    
+                    <div class="relative w-fit">
+                        
+                        <div class="absolute -top-6 -bottom-6 -right-12 left-[-100vw] bg-white rounded-r-[50px] z-0"></div>
+
+                        <div class="relative z-10">
+                            <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl interactive-element">
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769166087/Black_White_Minimalist_Professional_Initial_Logo_1_f9efiz.png" alt="TwinStack Logo" class="h-12 w-auto">
+                                <span><span class="text-[#343453]">Twin</span><span class="color-shift-text">Stack</span></span>
+                            </a>
+                            <p class="text-sm text-slate-600 max-w-xs font-medium">
+                                Empowering charities and businesses with Salesforce excellence since 2018.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-4 md:mt-0">
+                    <h4 class="text-white font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#products" class="hover:text-brand-400 transition">Smart Lookup Data Loader</a></li>
+                        <li><a href="index.html#demos" class="hover:text-brand-400 transition">Experience Templates</a></li>
+                        <li><a href="index.html#services" class="hover:text-brand-400 transition">Salesforce Connectors</a></li>
+                        <li><a href="tsblog.html" class="hover:text-brand-400 transition text-brand-200 font-semibold">Latest Blogs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="mt-4 md:mt-0">
+                    <h4 class="text-white font-semibold mb-4">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 relative z-10">
+                <p>&copy; 2026 TwinStack Solutions. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Init AOS
+        AOS.init({ once: true, offset: 100, duration: 800 });
+
+        // --- MOUSE CURSOR ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        if (window.matchMedia("(min-width: 768px)").matches) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            });
+            
+            document.querySelectorAll('.interactive-element, a, button, input').forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+            });
+        }
+
+        // --- FLOATING MENU LOGIC ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
+                navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
+            } else {
+                navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
+                navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
+            }
+        });
+
+        // --- MOBILE MENU ---
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        const toggleMenu = () => mobileMenu.classList.toggle('translate-x-full');
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+    </script>
+</body>
+</html>
