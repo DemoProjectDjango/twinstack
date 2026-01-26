@@ -132,7 +132,6 @@
         }
 
         .color-shift-text {
-            /* Gradient: Cyan -> Royal Blue -> Deep Indigo -> Cyan */
             background: linear-gradient(270deg, #0ea5e9, #2563eb, #4f46e5, #0ea5e9);
             background-size: 300% 300%;
             -webkit-background-clip: text;
@@ -184,15 +183,23 @@
         
         .tech-tag {
             display: inline-block;
-            background: #f0f9ff;
-            color: #0284c7;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-right: 4px;
-            margin-bottom: 4px;
-            border: 1px solid #e0f2fe;
+            background: rgba(255, 255, 255, 0.1);
+            color: #bae6fd;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        .tech-tag:hover {
+            background: #0ea5e9;
+            color: white;
+            border-color: #0ea5e9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
         }
     </style>
 </head>
@@ -215,10 +222,10 @@
         <div class="hidden md:flex space-x-8 items-center">
             <a href="#services" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Services</a>
             <a href="#products" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Products</a>
-            <a href="#demos" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Demos</a>
+            <a href="#case-studies" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Case Studies</a>
             <a href="#about" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">About</a>
-            <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-600 text-white font-semibold hover:bg-brand-900 transition shadow-lg hover:shadow-brand-500/30 interactive-element">
-                Contact Us
+            <a href="https://calendar.app.google/HP3LiuNFisCt6xLo6" target="_blank" class="px-5 py-2.5 rounded-full bg-brand-600 text-white font-semibold hover:bg-brand-900 transition shadow-lg hover:shadow-brand-500/30 interactive-element">
+                Book a Call
             </a>
         </div>
 
@@ -238,9 +245,9 @@
         <div class="flex flex-col space-y-6">
             <a href="#services" class="text-lg font-medium text-slate-800 hover:text-brand-600">Services</a>
             <a href="#products" class="text-lg font-medium text-slate-800 hover:text-brand-600">Products</a>
-            <a href="#demos" class="text-lg font-medium text-slate-800 hover:text-brand-600">Demos</a>
+            <a href="#case-studies" class="text-lg font-medium text-slate-800 hover:text-brand-600">Case Studies</a>
             <a href="#about" class="text-lg font-medium text-slate-800 hover:text-brand-600">About</a>
-            <a href="#contact" class="px-5 py-3 rounded-lg bg-brand-600 text-white text-center font-semibold">Contact Us</a>
+            <a href="https://calendar.app.google/HP3LiuNFisCt6xLo6" target="_blank" class="px-5 py-3 rounded-lg bg-brand-600 text-white text-center font-semibold">Book a Call</a>
         </div>
     </div>
 
@@ -249,7 +256,8 @@
         <div class="absolute bottom-0 left-0 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                
                 <div data-aos="fade-up" data-aos-duration="1000">
                     <div class="inline-block px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-500/30 text-brand-100 text-sm font-semibold mb-8">
                         <i class="fas fa-rocket mr-2 text-brand-400"></i> Salesforce Partner & AppExchange Expert
@@ -286,19 +294,23 @@
                     </div>
                 </div>
 
-                <div class="relative hidden lg:block" data-aos="fade-left" data-aos-delay="200">
-                    <div id="robot-container" class="relative p-0 interactive-element h-[600px] w-full cursor-pointer flex items-center justify-center">
-                        
-                        <div class="absolute bottom-10 -left-8 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg flex items-center gap-4 animate-bounce z-20 border border-white/40" style="animation-duration: 4s;">
-                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 text-2xl">
-                                <i class="fab fa-salesforce"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Partner Since 2018</p>
-                                <p class="text-slate-900 font-extrabold text-md">Official Partner</p>
-                            </div>
+                <div class="relative mt-8 lg:mt-0 flex justify-center lg:block" data-aos="fade-left" data-aos-delay="200">
+                    
+                    <div id="robot-container" class="relative p-0 interactive-element h-[600px] w-full cursor-pointer hidden lg:flex items-center justify-center">
                         </div>
-                    </div>
+
+                    <a href="https://appexchange.salesforce.com/appxConsultingListingDetail?listingId=a0NHu00000ozjVfMAI" target="_blank" 
+                       class="relative lg:absolute lg:bottom-10 lg:-left-8 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg flex items-center gap-4 animate-bounce z-20 border border-white/40 hover:scale-105 transition max-w-xs lg:max-w-none" 
+                       style="animation-duration: 4s;">
+                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 text-2xl flex-shrink-0">
+                            <i class="fab fa-salesforce"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Partner Since 2018</p>
+                            <p class="text-slate-900 font-extrabold text-md">Official Partner</p>
+                        </div>
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -355,9 +367,15 @@
                         <div class="text-center md:text-left">
                             <h3 class="text-xl font-bold text-slate-900">Saiful Islam</h3>
                             <p class="text-brand-600 font-medium text-sm">Founder & Salesforce Architect</p>
+                            
+                            <div class="mt-4">
+                                <a href="https://calendar.app.google/HP3LiuNFisCt6xLo6" target="_blank" class="inline-flex items-center px-6 py-2.5 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-semibold transition shadow-md hover:shadow-lg interactive-element gap-2">
+                                    <i class="far fa-calendar-alt"></i> Book a Call
+                                </a>
+                            </div>
                         </div>
-                        <div class="flex gap-3 md:ml-auto">
-                            <a href="#" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition interactive-element">
+                        <div class="flex gap-3 md:ml-auto mt-4 md:mt-0">
+                            <a href="https://www.linkedin.com/in/saiful-neo/" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition interactive-element">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                             <a href="#" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition interactive-element">
@@ -373,84 +391,123 @@
     <section id="services" class="py-24 bg-slate-50 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Our Expertise</h2>
-                <h3 class="text-4xl font-bold text-slate-900 mb-4">Comprehensive Salesforce Solutions</h3>
+                <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Our Services</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-4">What We Provide</h3>
                 <p class="text-slate-600 max-w-2xl mx-auto">
-                    From implementation to optimization, we cover the full Salesforce ecosystem to drive your business forward.
+                    Comprehensive solutions tailored for your business growth.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="0">
-                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Core CRM & Finance</h4>
-                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">End-to-end implementation and optimization for your critical business operations.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-tag">Sales Cloud</span><span class="tech-tag">Service Cloud</span><span class="tech-tag">Financial Service Cloud</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Enterprise Integration</h4>
-                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Connect Salesforce with your ERP and third-party systems using industry-leading middleware.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-tag">MuleSoft</span><span class="tech-tag">Dell Boomi</span><span class="tech-tag">APIs</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center text-teal-600 text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Data & Intelligence</h4>
-                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Unlock actionable insights and visualize your data to drive smarter decisions.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-tag">Tableau</span><span class="tech-tag">CRM Analytics</span><span class="tech-tag">Data Cloud</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Digital Engagement</h4>
-                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Build beautiful portals and automate marketing journeys to engage customers.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-tag">Experience Cloud</span><span class="tech-tag">Marketing Cloud</span>
-                    </div>
-                </div>
+            <div class="flex flex-wrap justify-center gap-8 mb-16">
                 
-                 <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fas fa-hand-holding-heart"></i>
+                <div class="w-full md:w-[45%] lg:w-[30%] glass-card p-8 rounded-2xl interactive-element group text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-3xl mb-6 group-hover:scale-110 transition">
+                        <i class="fab fa-app-store-ios"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Social Impact</h4>
-                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Specialized tools for fundraising, volunteer management, and program delivery.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-tag">Nonprofit Cloud</span><span class="tech-tag">NPSP</span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Custom AppExchange App Development</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Turn your ideas into ready-to-publish AppExchange products with our expert PDO services.</p>
+                </div>
+
+                <div class="w-full md:w-[45%] lg:w-[30%] glass-card p-8 rounded-2xl interactive-element group text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 text-3xl mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Managed Services</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Monthly contract-based Salesforce support and ongoing optimization for your org.</p>
+                </div>
+
+                <div class="w-full md:w-[45%] lg:w-[30%] glass-card p-8 rounded-2xl interactive-element group text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center text-teal-600 text-3xl mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Salesforce Implementation</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">End-to-end setup and configuration of Salesforce Clouds tailored to your unique business processes.</p>
+                </div>
+
+                <div class="w-full md:w-[45%] lg:w-[30%] glass-card p-8 rounded-2xl interactive-element group text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 text-3xl mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Custom Mobile App Development</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Extend your CRM with custom mobile applications fully integrated with Salesforce data.</p>
+                </div>
+
+                <div class="w-full md:w-[45%] lg:w-[30%] glass-card p-8 rounded-2xl interactive-element group text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 text-3xl mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">System Integration</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Seamlessly connect Salesforce with 3rd party apps using Custom APIs, Zapier, or n8n.</p>
+                </div>
+
+            </div>
+
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 p-10 rounded-3xl shadow-2xl border border-slate-700 relative overflow-hidden" data-aos="fade-up">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+                
+                <h4 class="text-2xl font-bold text-white mb-8 text-center relative z-10">Technologies & Platforms We Master</h4>
+                
+                <div class="flex flex-wrap justify-center gap-4 relative z-10">
+                    <span class="tech-tag">AppExchange App</span>
+                    <span class="tech-tag">AgentForce</span>
+                    <span class="tech-tag">Tableau</span>
+                    <span class="tech-tag">MuleSoft</span>
+                    <span class="tech-tag">Boomi</span>
+                    <span class="tech-tag">Nonprofit Cloud</span>
+                    <span class="tech-tag">Service Cloud</span>
+                    <span class="tech-tag">Experience Cloud</span>
+                    <span class="tech-tag">Marketing Cloud</span>
+                    <span class="tech-tag">Apex/LWC Customization</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="case-studies" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Our Work</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-4">Case Studies</h3>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    See how we've helped businesses transform their operations.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="group relative bg-slate-50 rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300 interactive-element" data-aos="fade-right">
+                    <div class="h-64 overflow-hidden bg-slate-200">
+                        <div class="w-full h-full bg-gradient-to-br from-brand-100 to-purple-100 flex items-center justify-center text-slate-400">
+                            <i class="fas fa-project-diagram text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-xs font-bold text-brand-600 uppercase mb-2">Non-Profit Success</div>
+                        <h4 class="text-2xl font-bold text-slate-900 mb-4">Global Charity Digital Transformation</h4>
+                        <p class="text-slate-600 mb-6">Streamlined donor management and fundraising operations for a major international NGO using NPSP and Experience Cloud.</p>
+                        <a href="#" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800">View Case Study <i class="fas fa-arrow-right ml-2"></i></a>
                     </div>
                 </div>
-                
-                 <div class="glass-card p-8 rounded-2xl interactive-element group" data-aos="fade-up" data-aos-delay="500">
-                    <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fas fa-code"></i>
+
+                <div class="group relative bg-slate-50 rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300 interactive-element" data-aos="fade-left">
+                    <div class="h-64 overflow-hidden bg-slate-200">
+                        <div class="w-full h-full bg-gradient-to-br from-blue-100 to-teal-100 flex items-center justify-center text-slate-400">
+                            <i class="fas fa-code-branch text-4xl"></i>
+                        </div>
                     </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Custom Development</h4>
-                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Complex Apex development, LWC, and custom automation solutions.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-tag">Apex</span><span class="tech-tag">LWC</span><span class="tech-tag">Flow</span>
+                    <div class="p-8">
+                        <div class="text-xs font-bold text-brand-600 uppercase mb-2">FinTech App Development</div>
+                        <h4 class="text-2xl font-bold text-slate-900 mb-4">Native AppExchange Payment Solution</h4>
+                        <p class="text-slate-600 mb-6">Designed and developed a 100% native payment processing app listed on Salesforce AppExchange with 5-star ratings.</p>
+                        <a href="#" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800">View Case Study <i class="fas fa-arrow-right ml-2"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="products" class="py-24 bg-white overflow-hidden">
+    <section id="products" class="py-24 bg-slate-50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="lg:w-1/2" data-aos="fade-right">
@@ -482,7 +539,7 @@
                         </li>
                     </ul>
 
-                    <a href="#" class="interactive-element inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-bold rounded-lg shadow-lg hover:bg-brand-700 transition gap-2">
+                    <a href="https://appexchange.salesforce.com/appxListingDetail?listingId=f020d7cb-6467-4dcc-adda-c1ce6c620257" target="_blank" class="interactive-element inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-bold rounded-lg shadow-lg hover:bg-brand-700 transition gap-2">
                         Get it on AppExchange <i class="fas fa-external-link-alt text-sm"></i>
                     </a>
                 </div>
@@ -503,47 +560,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="demos" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-brand-400 font-bold tracking-wide uppercase text-sm mb-3">Live Demos</h2>
-                <h3 class="text-4xl font-bold mb-4">Experience Cloud Templates</h3>
-                <p class="text-slate-400 max-w-2xl mx-auto">
-                    Why use WordPress? Host beautiful, secure websites directly on Salesforce. Check out our pre-built templates.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 interactive-element" data-aos="zoom-in" data-aos-delay="0">
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="text-2xl font-bold mb-2">Business Website Template</h4>
-                        <p class="text-slate-400 text-sm mb-4">A fully responsive corporate site structure with lead generation forms integrated directly to Salesforce Leads.</p>
-                        <button class="text-brand-400 font-semibold hover:text-brand-300 text-sm">View Live Demo &rarr;</button>
-                    </div>
-                </div>
-
-                <div class="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 interactive-element" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/lxS1t5F1oI4?mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="text-2xl font-bold mb-2">Customer Support Portal</h4>
-                        <p class="text-slate-400 text-sm mb-4">Self-service knowledge base, ticket logging, and case status tracking. Reduce support costs instantly.</p>
-                        <button class="text-brand-400 font-semibold hover:text-brand-300 text-sm">View Live Demo &rarr;</button>
                     </div>
                 </div>
             </div>
@@ -573,7 +589,7 @@
         </div>
     </section>
 
-    <section id="reviews" class="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="reviews" class="py-24 bg-white relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-30 pointer-events-none">
             <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-200 rounded-full blur-3xl"></div>
             <div class="absolute bottom-0 right-0 w-80 h-80 bg-purple-200 rounded-full blur-3xl"></div>
@@ -615,7 +631,7 @@
         </div>
     </section>
 
-    <section id="blogs" class="py-24 bg-white relative overflow-hidden">
+    <section id="blogs" class="py-24 bg-slate-50 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Resources</h2>
@@ -701,25 +717,6 @@
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-slate-50 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="md:w-1/2 relative" data-aos="fade-right">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Collaboration" class="rounded-2xl shadow-2xl z-10 relative">
-                    <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-dots-pattern opacity-20 z-0"></div> </div>
-                <div class="md:w-1/2" data-aos="fade-left">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Built on Trust, Delivered with Excellence.</h2>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        Founded in 2018 in Dhaka, Bangladesh, TwinStack began with a mission to empower non-profits through technology. Today, we have evolved into a full-service consultancy serving both commercial and non-profit sectors globally.
-                    </p>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
-                        We believe in rapid, efficient solutions. Whether you need a complex MuleSoft integration or a simple data loader tool, our certified experts are dedicated to your success.
-                    </p>
-                    </div>
-            </div>
-        </div>
-    </section>
-
     <section id="contact" class="py-24 bg-white relative overflow-hidden">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12" data-aos="fade-up">
@@ -739,12 +736,12 @@
                     <span class="mt-6 text-sm font-semibold text-brand-500 opacity-0 group-hover:opacity-100 transition">Send an email &rarr;</span>
                 </a>
 
-                <a href="https://wa.me/8801681820959" target="_blank" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition-all duration-300 group interactive-element shadow-lg hover:shadow-2xl hover:-translate-y-2">
+                <a href="https://wa.me/8801556777043" target="_blank" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition-all duration-300 group interactive-element shadow-lg hover:shadow-2xl hover:-translate-y-2">
                     <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-3xl mb-6 group-hover:scale-110 transition duration-300 shadow-inner">
                         <i class="fab fa-whatsapp"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-slate-900 mb-2">WhatsApp</h3>
-                    <p class="text-slate-600 text-lg group-hover:text-green-600 transition">+880 1681820959</p>
+                    <p class="text-slate-600 text-lg group-hover:text-green-600 transition">+880 1556-777043</p>
                     <span class="mt-6 text-sm font-semibold text-green-500 opacity-0 group-hover:opacity-100 transition">Chat now &rarr;</span>
                 </a>
             </div>
@@ -1077,5 +1074,3 @@
     </script>
 </body>
 </html>
-
-
