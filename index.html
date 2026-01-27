@@ -10,12 +10,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://res.cloudinary.com">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
@@ -143,7 +147,7 @@
 
     <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl flex justify-between items-center px-4 md:px-8 h-20 transition-all duration-300">
         <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769180623/Black_White_Minimalist_Professional_Initial_Logo_3_p5ccfa.png" alt="TwinStack Logo" class="h-10 md:h-14 w-auto">
+            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769180623/Black_White_Minimalist_Professional_Initial_Logo_3_p5ccfa.png" alt="TwinStack Logo" width="56" height="56" class="h-10 md:h-14 w-auto">
             <span class="font-bold text-xl md:text-2xl tracking-tight">
                 <span class="text-[#343453]">Twin</span><span class="color-shift-text">Stack</span>
             </span>
@@ -161,7 +165,7 @@
         </div>
 
         <div class="md:hidden flex items-center">
-            <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none p-2">
+            <button id="mobile-menu-btn" aria-label="Open mobile menu" class="text-slate-600 hover:text-slate-900 focus:outline-none p-2">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
@@ -169,7 +173,7 @@
 
     <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white/95 backdrop-blur-xl shadow-2xl z-[60] flex flex-col p-6 transition-transform duration-300 translate-x-full md:hidden">
         <div class="flex justify-end mb-8">
-            <button id="close-menu-btn" class="text-slate-500 hover:text-slate-900">
+            <button id="close-menu-btn" aria-label="Close mobile menu" class="text-slate-500 hover:text-slate-900">
                 <i class="fas fa-times text-2xl"></i>
             </button>
         </div>
@@ -223,11 +227,11 @@
 
                     <div class="bg-white/95 backdrop-blur-xl p-8 md:p-10 rounded-3xl shadow-2xl border border-white/20 max-w-lg w-full relative z-10 transform hover:scale-[1.02] transition duration-300">
                         <div class="flex items-center gap-5 mb-6">
-                            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1768997876/Untitled_design_1_fgdzai.png" alt="Saiful Islam" class="w-24 h-24 rounded-full object-cover border-4 border-brand-500 shadow-md">
+                            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1768997876/Untitled_design_1_fgdzai.png" alt="Saiful Islam" width="96" height="96" fetchpriority="high" class="w-24 h-24 rounded-full object-cover border-4 border-brand-500 shadow-md">
                             <div>
                                 <h3 class="text-2xl font-bold text-slate-900">Saiful Islam</h3>
                                 <p class="text-brand-600 font-bold text-base mb-1">Founder & Salesforce Architect</p>
-                                <a href="https://www.linkedin.com/in/saifulislamtwinstack/" target="_blank" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition">
+                                <a href="https://www.linkedin.com/in/saifulislamtwinstack/" target="_blank" aria-label="LinkedIn Profile" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             </div>
@@ -265,7 +269,7 @@
                         
                         <div class="flex justify-center mb-8 mt-4">
                             <div class="tech-item w-auto px-8 py-3 bg-white/10 border-blue-500/30">
-                                <img src="https://www.vectorlogo.zone/logos/salesforce/salesforce-icon.svg" alt="Salesforce" style="height: 60px;">
+                                <img src="https://www.vectorlogo.zone/logos/salesforce/salesforce-icon.svg" alt="Salesforce" width="85" height="60" loading="lazy" style="height: 60px;">
                                 <span class="text-lg">Salesforce Core</span>
                             </div>
                         </div>
@@ -289,15 +293,15 @@
                         
                         <div class="grid grid-cols-1 gap-6 mt-4">
                             <div class="tech-item flex-row justify-start pl-6 gap-4">
-                                <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau" style="height: 40px;">
+                                <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau" width="40" height="40" loading="lazy" style="height: 40px;">
                                 <span class="text-left">Tableau<br><small class="text-slate-400 font-normal">Analytics</small></span>
                             </div>
                             <div class="tech-item flex-row justify-start pl-6 gap-4">
-                                <img src="https://www.vectorlogo.zone/logos/mulesoft/mulesoft-icon.svg" alt="MuleSoft" style="height: 40px;">
+                                <img src="https://www.vectorlogo.zone/logos/mulesoft/mulesoft-icon.svg" alt="MuleSoft" width="40" height="40" loading="lazy" style="height: 40px;">
                                 <span class="text-left">MuleSoft<br><small class="text-slate-400 font-normal">Integration</small></span>
                             </div>
                             <div class="tech-item flex-row justify-start pl-6 gap-4">
-                                <img src="https://cdn.worldvectorlogo.com/logos/boomi-1.svg" alt="Boomi" style="height: 35px;">
+                                <img src="https://cdn.worldvectorlogo.com/logos/boomi-1.svg" alt="Boomi" width="35" height="35" loading="lazy" style="height: 35px;">
                                 <span class="text-left">Boomi<br><small class="text-slate-400 font-normal">Connectors</small></span>
                             </div>
                         </div>
@@ -354,66 +358,53 @@
     <section id="products" class="bg-white overflow-hidden py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
-                
                 <div class="lg:w-1/2" data-aos="fade-right">
-                    
                     <div class="mb-8">
                         <h3 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600 mb-2">
                             AppExchange Products
                         </h3>
                         <div class="h-1.5 w-24 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full"></div>
                     </div>
-
-                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769502627/Untitled_design_3_sgiog8.png" alt="Smart Lookup Data Loader" class="h-20 w-auto mb-6 block">
-                    
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769502627/Untitled_design_3_sgiog8.png" alt="Smart Lookup Data Loader" width="100" height="80" loading="lazy" class="h-20 w-auto mb-6 block">
                     <h2 class="text-4xl font-bold text-slate-900 mb-6">Smart Lookup Data Loader</h2>
                     <p class="text-lg text-slate-600 mb-8 leading-relaxed">
                         Simplify your data migration. Our 100% native tool simplifies CSV imports into Salesforce, supporting upserts and intelligent lookups without leaving the platform.
                     </p>
-                    
                     <div class="bg-blue-50 border-l-4 border-brand-500 p-4 mb-8 rounded-r-lg">
                         <p class="text-sm text-brand-800 font-semibold mb-1">Featured Guide:</p>
                         <a href="blog-smart-lookup-intro.html" class="text-slate-900 hover:text-brand-600 font-bold underline decoration-brand-300 decoration-2 underline-offset-2">
                             How to Effortlessly Import Data into Salesforce with Smart Lookup Data Loader
                         </a>
                     </div>
-
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://appexchange.salesforce.com/appxListingDetail?listingId=f020d7cb-6467-4dcc-adda-c1ce6c620257" target="_blank" class="px-8 py-4 bg-brand-600 text-white font-bold rounded-lg shadow-lg hover:bg-brand-700 transition gap-2 text-center">
-                            Get it on AppExchange <i class="fas fa-external-link-alt text-sm ml-1"></i>
+                        <a href="https://appexchange.salesforce.com/appxListingDetail?listingId=f020d7cb-6467-4dcc-adda-c1ce6c620257" target="_blank" class="px-8 py-3 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-bold text-lg shadow-lg text-center">
+                            Get it Now on AppExchange
                         </a>
-                        <a href="tsblog.html" class="px-8 py-4 bg-white border-2 border-brand-100 text-brand-600 font-bold rounded-lg hover:border-brand-600 transition gap-2 text-center">
-                            More about Smart Loader
+                        <a href="#" class="px-8 py-3 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-lg text-center">
+                            Watch Demo
                         </a>
                     </div>
                 </div>
-
                 <div class="lg:w-1/2 w-full" data-aos="fade-left">
-                    <div class="relative group">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-400 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                        <div class="relative bg-white p-2 rounded-2xl shadow-2xl">
-                            <div class="video-container bg-slate-100 rounded-lg overflow-hidden relative">
-                                <iframe src="https://www.youtube.com/embed/f6H8cGLyKwo" title="Smart Lookup Data Loader Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Nick2?autoplay=0&mute=1&loop=1&playlist=Nick2" title="Smart Lookup Data Loader Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="case-studies" class="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="case-studies" class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Our Work</h2>
-                <h3 class="text-4xl font-bold text-slate-900 mb-4">Case Studies</h3>
-                <p class="text-slate-600 max-w-2xl mx-auto">See how we've helped businesses transform their operations.</p>
+                <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Case Studies</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-4">Success Stories</h3>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300 interactive-element" data-aos="fade-right">
                     <div class="h-64 overflow-hidden bg-slate-200 relative">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Travel & Hospitality Case Study" width="800" height="600" loading="lazy" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-brand-900/20"></div>
                     </div>
                     <div class="p-8">
@@ -428,7 +419,7 @@
 
                 <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300 interactive-element" data-aos="fade-left">
                     <div class="h-64 overflow-hidden bg-slate-200 relative">
-                        <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Agribusiness Case Study" width="800" height="600" loading="lazy" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-purple-900/20"></div>
                     </div>
                     <div class="p-8">
@@ -446,46 +437,38 @@
 
     <section class="py-16 bg-brand-600 text-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-brand-500/50">
-                <div data-aos="fade-up" data-aos-delay="0">
-                    <div class="text-4xl font-extrabold mb-2 counter" data-target="7">0</div>
-                    <div class="text-brand-100 text-sm font-medium">Verified Projects</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/20">
+                <div data-aos="zoom-in">
+                    <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="50">0</div>
+                    <div class="text-sm md:text-base font-medium opacity-80">Projects Delivered</div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-4xl font-extrabold mb-2 counter" data-target="100">0</div>
-                    <div class="text-brand-100 text-sm font-medium">% Salesforce Native</div>
+                <div data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="5">0</div>
+                    <div class="text-sm md:text-base font-medium opacity-80">Certified Experts</div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-4xl font-extrabold mb-2 counter" data-target="5">0</div>
-                    <div class="text-brand-100 text-sm font-medium">Star Rating</div>
+                <div data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="7">0</div>
+                    <div class="text-sm md:text-base font-medium opacity-80">Years Experience</div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-4xl font-extrabold mb-2 counter" data-target="2">0</div>
-                    <div class="text-brand-100 text-sm font-medium">Certified Architects</div>
+                <div data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="100">0</div>
+                    <div class="text-sm md:text-base font-medium opacity-80">% Client Satisfaction</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="reviews" class="py-24 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="testimonials" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Testimonials</h2>
-                <h3 class="text-4xl font-bold text-slate-900 mb-4">Real Feedback from AppExchange</h3>
+                <h3 class="text-4xl font-bold text-slate-900 mb-4">Trusted by Clients Worldwide</h3>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200" data-aos="fade-up">
-                    <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-slate-700 italic mb-4">"They are our go-to Salesforce dev partners. Highly recommend!"</p>
-                    <div class="text-sm text-slate-500">
-                        <p class="font-bold text-slate-900">Healthcare & Life Sciences</p>
-                        <p>United States &bull; 6 months project</p>
-                    </div>
-                </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-slate-700 italic mb-4">"Saiful was very personable and helped with our needs within our time constraints. I would recommend him for more projects."</p>
+                    <p class="text-slate-700 italic mb-4">"Saiful was very professional, personable and helped with our needs within our time constraints. I would recommend him for more projects."</p>
                     <div class="text-sm text-slate-500">
                         <p class="font-bold text-slate-900">Education</p>
                         <p>United States &bull; 39 months project</p>
@@ -519,51 +502,46 @@
                     Ready to transform your business? Reach out to us directly via email or WhatsApp.
                 </p>
             </div>
-
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="zoom-in-up">
-                <a href="mailto:info@twinstack.net" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-500 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-2">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-3xl mb-6 shadow-inner">
+                <a href="mailto:info@twinstack.net" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-500 rounded-2xl transition group cursor-pointer">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Email Us</h3>
-                    <p class="text-slate-600 text-lg">info@twinstack.net</p>
-                    <span class="mt-6 text-sm font-semibold text-brand-500">Send an email &rarr;</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">Email Us</h3>
+                    <p class="text-slate-600">info@twinstack.net</p>
                 </a>
-
-                <a href="https://wa.me/8801556777043" target="_blank" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-2">
-                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-3xl mb-6 shadow-inner">
+                
+                <a href="https://wa.me/8801977051772" target="_blank" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition group cursor-pointer">
+                    <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                         <i class="fab fa-whatsapp"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-900 mb-2">WhatsApp</h3>
-                    <p class="text-slate-600 text-lg">+880 1556-777043</p>
-                    <span class="mt-6 text-sm font-semibold text-green-500">Chat now &rarr;</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">WhatsApp</h3>
+                    <p class="text-slate-600">+880 1977 051772</p>
                 </a>
-            </div>
-            
-            <div class="mt-12 text-center text-sm text-slate-500">
-                <p><i class="fas fa-map-marker-alt text-brand-500 mr-2"></i> Dhaka, Bangladesh</p>
             </div>
         </div>
     </section>
 
-    <footer class="relative bg-slate-900 text-slate-300 py-12 border-t border-slate-800 overflow-hidden">
+    <footer class="bg-slate-900 text-slate-300 py-12 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div class="col-span-1 md:col-span-2 mt-4">
-                    <div class="relative w-fit">
-                        <div class="absolute -top-6 -bottom-6 -right-12 left-[-100vw] bg-white rounded-r-[50px] z-0"></div>
-                        <div class="relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="relative mb-6">
+                        <div class="absolute -top-6 -left-12 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
+                         <div class="absolute inset-y-0 -right-12 left-[-100vw] bg-white rounded-r-[50px] z-0"></div>
+                         <div class="relative z-10">
                             <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl">
-                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769180623/Black_White_Minimalist_Professional_Initial_Logo_3_p5ccfa.png" alt="TwinStack Logo" class="h-12 w-auto">
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769180623/Black_White_Minimalist_Professional_Initial_Logo_3_p5ccfa.png" alt="TwinStack Logo" width="48" height="48" class="h-12 w-auto">
                                 <span><span class="text-[#343453]">Twin</span><span class="color-shift-text">Stack</span></span>
                             </a>
                             <p class="text-sm text-slate-600 max-w-xs font-medium">
                                 Empowering charities and businesses with Salesforce excellence since 2018.
                             </p>
-                        </div>
+                         </div>
                     </div>
                 </div>
-
+                
                 <div class="mt-4 md:mt-0">
                     <h4 class="text-white font-semibold mb-4">Products</h4>
                     <ul class="space-y-2 text-sm">
@@ -573,132 +551,158 @@
                         <li><a href="tsblog.html" class="hover:text-brand-400 transition text-brand-200 font-semibold">Latest Blogs</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="mt-4 md:mt-0">
                     <h4 class="text-white font-semibold mb-4">Connect</h4>
                     <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                        <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                        <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
-                            <i class="fab fa-github"></i>
+                        <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
                     </div>
                 </div>
             </div>
-
-            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 relative z-10">
+            
+            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
                 <p>&copy; 2026 TwinStack Solutions. All rights reserved.</p>
-                <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white">Privacy Policy</a>
-                    <a href="#" class="hover:text-white">Terms of Service</a>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <script>
-        AOS.init({ once: true, offset: 100, duration: 800, easing: 'ease-out-cubic' });
+        // Init AOS
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+        });
 
-        // Mobile Menu
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const closeBtn = document.getElementById('close-menu-btn');
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const toggleMenu = () => mobileMenu.classList.toggle('translate-x-full');
-        menuBtn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-
-        // Navbar Scroll
         const navbar = document.getElementById('navbar');
+        const progressBar = document.getElementById('progress-bar');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+        });
+
+        // Close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+            });
+        });
+
+        // Scroll Effect for Navbar & Progress Bar
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.remove('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
-                navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
+            const scrollTop = window.scrollY;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+
+            if (scrollTop > 50) {
+                navbar.classList.add('bg-white/90', 'shadow-lg', 'py-2');
+                navbar.classList.remove('h-20');
+                navbar.classList.add('h-16');
             } else {
-                navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
-                navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
+                navbar.classList.remove('bg-white/90', 'shadow-lg', 'py-2');
+                navbar.classList.remove('h-16');
+                navbar.classList.add('h-20');
             }
         });
 
-        // 3D Sphere Interactive Logic
+        // Three.js Globe Animation (Optimized to wait for load)
         const initGlobe = () => {
             const container = document.getElementById('robot-container');
-            if(!container) return;
+            if (!container) return;
 
             const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.z = 10; 
-            
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
             renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.setPixelRatio(window.devicePixelRatio);
             container.appendChild(renderer.domElement);
 
-            const globeGroup = new THREE.Group();
+            const geometry = new THREE.IcosahedronGeometry(3, 2);
+            const material = new THREE.MeshBasicMaterial({ color: 0x0ea5e9, wireframe: true, transparent: true, opacity: 0.3 });
+            const sphere = new THREE.Mesh(geometry, material);
             
-            const wireframeMaterial = new THREE.MeshBasicMaterial({ color: 0x0ea5e9, wireframe: true, transparent: true, opacity: 0.3 });
-            const particleMaterial = new THREE.PointsMaterial({ color: 0x6366f1, size: 0.15, transparent: true, opacity: 0.8 });
-            const coreMaterial = new THREE.MeshBasicMaterial({ color: 0x0284c7, transparent: true, opacity: 0.1 });
+            const globeGroup = new THREE.Group();
+            globeGroup.add(sphere);
 
-            const geometry = new THREE.IcosahedronGeometry(3.2, 1);
-            const wireframeMesh = new THREE.Mesh(geometry, wireframeMaterial);
+            // Add more complexity
+            const wireframeMaterial = new THREE.MeshBasicMaterial({ color: 0x6366f1, wireframe: true, transparent: true, opacity: 0.1 });
+            const wireframeMesh = new THREE.Mesh(new THREE.IcosahedronGeometry(3.2, 1), wireframeMaterial);
             globeGroup.add(wireframeMesh);
-
-            const geometry2 = new THREE.IcosahedronGeometry(3.6, 0);
+            
             const wireframeMaterial2 = new THREE.MeshBasicMaterial({ color: 0xbae6fd, wireframe: true, transparent: true, opacity: 0.15 });
-            const wireframeMesh2 = new THREE.Mesh(geometry2, wireframeMaterial2);
+            const wireframeMesh2 = new THREE.Mesh(new THREE.IcosahedronGeometry(3.6, 0), wireframeMaterial2);
             globeGroup.add(wireframeMesh2);
 
-            const coreGeometry = new THREE.IcosahedronGeometry(2.5, 1);
-            const coreMesh = new THREE.Mesh(coreGeometry, coreMaterial);
+            const coreMaterial = new THREE.MeshBasicMaterial({ color: 0x0ea5e9, opacity: 0.8 });
+            const coreMesh = new THREE.Mesh(new THREE.IcosahedronGeometry(2.5, 1), coreMaterial);
             globeGroup.add(coreMesh);
 
+            const particleMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 });
             const particles = new THREE.Points(geometry, particleMaterial);
             globeGroup.add(particles);
 
             scene.add(globeGroup);
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-            scene.add(ambientLight);
 
-            // Interaction Logic Restored
-            let mouseX = 0;
-            let mouseY = 0;
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
             
-            const handleMouseMove = (event) => {
-                const windowHalfX = window.innerWidth / 2;
-                const windowHalfY = window.innerHeight / 2;
-                mouseX = (event.clientX - windowHalfX) / 100;
-                mouseY = (event.clientY - windowHalfY) / 100;
-            };
-            document.addEventListener('mousemove', handleMouseMove);
+            const pointLight = new THREE.PointLight(0x0ea5e9, 1);
+            pointLight.position.set(10, 10, 10);
+            scene.add(pointLight);
+
+            camera.position.z = 8;
 
             const animate = () => {
                 requestAnimationFrame(animate);
+                globeGroup.rotation.y += 0.003;
+                globeGroup.rotation.x += 0.001;
                 
-                // Base Rotation
-                wireframeMesh.rotation.y += 0.002;
-                particles.rotation.y = wireframeMesh.rotation.y;
-                wireframeMesh2.rotation.y -= 0.002;
-
-                // Interactive Tilt
-                globeGroup.rotation.y += 0.05 * (mouseX - globeGroup.rotation.y);
-                globeGroup.rotation.x += 0.05 * (mouseY - globeGroup.rotation.x);
-
+                // Gentle float
+                globeGroup.position.y = Math.sin(Date.now() * 0.001) * 0.2;
+                
                 renderer.render(scene, camera);
             };
             animate();
 
             window.addEventListener('resize', () => {
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(container.clientWidth, container.clientHeight);
+                if (container) {
+                   camera.aspect = container.clientWidth / container.clientHeight;
+                   camera.updateProjectionMatrix();
+                   renderer.setSize(container.clientWidth, container.clientHeight);
+                }
             });
         };
-        window.addEventListener('load', initGlobe);
+        
+        // Defer heavy JS execution
+        if (window.requestIdleCallback) {
+            requestIdleCallback(() => window.addEventListener('load', initGlobe));
+        } else {
+            window.addEventListener('load', initGlobe);
+        }
 
         // Stats Counter
         const counters = document.querySelectorAll('.counter');
@@ -720,7 +724,7 @@
                 });
             }
         });
-        const statsSection = document.querySelector('.counter').closest('section');
+        const statsSection = document.querySelector('.counter')?.closest('section');
         if(statsSection) observer.observe(statsSection);
     </script>
 </body>
