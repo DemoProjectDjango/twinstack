@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth overflow-x-hidden">
+<html lang="en" class="scroll-smooth overflow-x-hidden w-full">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TwinStack Solutions | Salesforce & AppExchange Experts</title>
     <meta name="description" content="Accelerate your Salesforce success with TwinStack Solutions. Consulting, Managed Services, and Native AppExchange Products.">
     
@@ -31,7 +31,14 @@
     </script>
 
     <style>
-        html, body { overflow-x: hidden; width: 100%; }
+        /* CRITICAL FIX: Prevent horizontal scroll and layout shift on mobile */
+        html, body { 
+            overflow-x: hidden; 
+            width: 100%; 
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
         body { background-color: #f8fafc; }
         
         /* Optimized Hero Background */
@@ -227,7 +234,7 @@
                             <div>
                                 <h3 class="text-2xl font-bold text-slate-900">Saiful Islam</h3>
                                 <p class="text-brand-600 font-bold text-base mb-1">Founder & Salesforce Architect</p>
-                                <a href="https://www.linkedin.com/in/saiful-neo/" target="_blank" aria-label="LinkedIn Profile" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition">
+                                <a href="https://www.linkedin.com/in/saifulislamtwinstack/" target="_blank" aria-label="LinkedIn Profile" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             </div>
@@ -514,7 +521,7 @@
                         <i class="fab fa-whatsapp"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-1">WhatsApp</h3>
-                    <p class="text-slate-600">+880 1556-777043</p>
+                    <p class="text-slate-600">+880 1977 051772</p>
                 </a>
             </div>
         </div>
@@ -526,7 +533,7 @@
                 <div class="col-span-1 md:col-span-2">
                     <div class="relative mb-6 inline-block">
                          <div class="absolute -top-6 -left-12 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
-                         <div class="absolute inset-y-0 left-[-100vw] right-[-3rem] bg-white rounded-r-3xl z-0"></div>
+                         <div class="absolute inset-y-0 left-[-3000px] right-[-3rem] bg-white rounded-r-3xl z-0"></div>
                          <div class="relative z-10 pl-2">
                             <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl">
                                 <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769180623/Black_White_Minimalist_Professional_Initial_Logo_3_p5ccfa.png" alt="TwinStack Logo" width="48" height="48" class="h-12 w-auto">
@@ -552,7 +559,7 @@
                 <div class="mt-4 md:mt-0">
                     <h4 class="text-white font-semibold mb-4">Connect</h4>
                     <div class="flex gap-4">
-                        <a href="https://www.linkedin.com/company/twinforce-solutions" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
+                        <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                         <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
@@ -665,4 +672,3 @@
     </script>
 </body>
 </html>
-
