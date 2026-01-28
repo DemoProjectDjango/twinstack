@@ -16,10 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Setup basic font and body to prevent invisible text */
         body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f8fafc; color: #1e293b; }
-        
-        /* Critical Hero Styling (Matches your Original Design) */
         .hero-critical {
             background-color: #0f172a;
             position: relative;
@@ -28,7 +25,6 @@
             align-items: center;
             overflow: hidden;
         }
-        /* Pre-render the gradient background so screen isn't white on load */
         .hero-bg-gradient {
             position: absolute; inset: 0;
             background-image: 
@@ -36,14 +32,11 @@
                 radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
                 radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
         }
-        /* Ensure text is white and visible immediately */
-        .hero-text-critical { color: white; font-weight: 800; line-height: 1.1; }
+        .hero-text-critical { color: white; font-weight: 800; line-height: 1.1; text-align: center; }
+        @media (min-width: 1024px) { .hero-text-critical { text-align: left; } }
         
-        /* Fallback for animations if JS delays */
         [data-aos] { visibility: hidden; }
         body.aos-ready [data-aos] { visibility: visible; }
-        /* High Contrast Utility for Accessibility */
-        .text-access-dark { color: #334155 !important; } /* slate-700 */
     </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -71,7 +64,7 @@
 
 <body class="font-sans antialiased text-slate-800">
 
-    <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl flex justify-between items-center px-4 md:px-8 h-20 transition-all duration-300">
+    <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl flex justify-between items-center px-4 md:px-8 h-20 transition-all duration-500 ease-in-out">
         <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
             <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769586320/Black_White_Minimalist_Professional_Initial_Logo_3_tlovgh.webp" alt="TwinStack Solutions Logo" width="56" height="56" class="h-10 md:h-14 w-auto">
             <span class="font-bold text-xl md:text-2xl tracking-tight">
@@ -119,7 +112,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     
-                    <div data-aos="fade-right" data-aos-duration="800">
+                    <div data-aos="fade-right" data-aos-duration="800" class="text-center lg:text-left flex flex-col items-center lg:items-start">
                         <div class="inline-block px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-500/30 text-white text-sm font-semibold mb-8">
                             <i class="fas fa-rocket mr-2 text-brand-400"></i> Salesforce Partner & AppExchange Expert
                         </div>
@@ -129,11 +122,11 @@
                             <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-indigo-500">Salesforce Success with TwinStack</span>
                         </h1>
                         
-                        <p class="text-lg lg:text-2xl text-white font-light leading-relaxed mb-10 max-w-xl opacity-90">
+                        <p class="text-lg lg:text-2xl text-white font-light leading-relaxed mb-10 max-w-xl opacity-90 mx-auto lg:mx-0">
                             Expert consulting, managed services across multiple clouds, and native AppExchange products designed to empower your business growth.
                         </p>
                         
-                        <div class="flex flex-col sm:flex-row gap-5 mb-12">
+                        <div class="flex flex-col sm:flex-row gap-5 mb-12 w-full justify-center lg:justify-start">
                             <a href="#products" class="px-8 py-4 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-bold text-lg shadow-xl shadow-brand-500/20 transition transform hover:-translate-y-1 text-center flex items-center justify-center gap-2">
                                 <i class="fas fa-box-open"></i> Explore Products
                             </a>
@@ -144,7 +137,7 @@
                     </div>
 
                     <div class="relative flex flex-col items-center lg:items-end" data-aos="fade-left" data-aos-delay="100">
-                        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 text-center lg:text-right drop-shadow-lg leading-tight">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 text-center lg:text-right drop-shadow-lg leading-tight w-full">
                             Solve your <br> <span class="text-brand-300">Salesforce Problems</span>
                         </h2>
 
@@ -522,7 +515,7 @@
                 disable: 'mobile' 
             });
 
-            // Mobile Menu Logic
+            // Mobile Menu
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const closeMenuBtn = document.getElementById('close-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -549,17 +542,17 @@
                 });
             });
 
-            // Navbar Scroll Effect
+            // Smart Navbar Transformation
             window.addEventListener('scroll', () => {
                 const scrollTop = window.scrollY;
                 if (scrollTop > 50) {
-                    navbar.classList.add('bg-white/90', 'shadow-lg', 'py-2');
-                    navbar.classList.remove('h-20');
-                    navbar.classList.add('h-16');
+                    // Merged State
+                    navbar.classList.remove('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'h-20');
+                    navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'h-16', 'bg-white/95', 'shadow-md');
                 } else {
-                    navbar.classList.remove('bg-white/90', 'shadow-lg', 'py-2');
-                    navbar.classList.remove('h-16');
-                    navbar.classList.add('h-20');
+                    // Floating State
+                    navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'h-16', 'bg-white/95', 'shadow-md');
+                    navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'h-20', 'bg-white/80');
                 }
             });
 
