@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -137,9 +135,9 @@
                 <h3 class="text-2xl font-bold text-white mb-4 text-center">Tell us about you</h3>
                 
                 <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DdN00000roILE" method="POST" id="leadForm">
-                    <input type=hidden name='captcha_settings' value='{"keyname":"twinstack","fallback":"true","orgId":"00DdN00000roILE","ts":""}'>
+                    
                     <input type=hidden name="oid" value="00DdN00000roILE">
-                    <input type=hidden name="retURL" id="retURL_field">
+                    <input type=hidden name="retURL" id="retURL_field"> <input type="hidden" name="company" value="Individual">
 
                     <div class="grid grid-cols-2 gap-4 mb-3">
                         <div>
@@ -162,16 +160,10 @@
                             <input id="phone" name="phone" type="text" class="w-full px-4 py-2 rounded-lg glass-input text-sm" placeholder="+1 555 000 0000" maxlength="40">
                         </div>
                     </div>
-                    
-                    <input id="company" name="company" type="hidden" value="Not Provided">
 
-                    <div class="mb-4">
+                    <div class="mb-6">
                         <label for="description" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">Message</label>
                         <textarea name="description" id="description" rows="3" class="w-full px-4 py-2 rounded-lg glass-input text-sm resize-none" placeholder="Briefly describe your idea..." oninput="checkForm()"></textarea>
-                    </div>
-
-                    <div class="mb-4 flex justify-center transform scale-75 origin-center">
-                        <div class="g-recaptcha" data-sitekey="6Le4DGEsAAAAAIdScufk5mCyKa5_LH29wfePtMOg"></div>
                     </div>
 
                     <div class="flex gap-4 items-center">
@@ -465,24 +457,16 @@
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12" data-aos="fade-up">
                     <h2 class="text-3xl font-bold text-slate-900 mb-4">Let's Discuss Your Project</h2>
-                    <p class="text-slate-700">
-                        Ready to transform your business? Reach out to us directly via email or WhatsApp.
-                    </p>
+                    <p class="text-slate-700">Ready to transform your business? Reach out to us directly via email or WhatsApp.</p>
                 </div>
-                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="zoom-in-up">
                     <a href="mailto:info@twinstack.net" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-500 rounded-2xl transition group cursor-pointer shadow-sm">
-                        <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
-                            <i class="fas fa-envelope"></i>
-                        </div>
+                        <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition"><i class="fas fa-envelope"></i></div>
                         <h3 class="text-xl font-bold text-slate-900 mb-1">Email Us</h3>
                         <p class="text-slate-700">info@twinstack.net</p>
                     </a>
-                    
                     <a href="https://wa.me/8801556777043" target="_blank" rel="noopener" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition group cursor-pointer shadow-sm">
-                        <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
+                        <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition"><i class="fab fa-whatsapp"></i></div>
                         <h3 class="text-xl font-bold text-slate-900 mb-1">WhatsApp</h3>
                         <p class="text-slate-700">+880 1556-777043</p>
                     </a>
@@ -556,36 +540,21 @@
             }
         }
 
-        function timestamp() { 
-            var response = document.getElementById("g-recaptcha-response"); 
-            if (response == null || response.value.trim() == "") {
-                var elems = document.getElementsByName("captcha_settings");
-                if(elems.length > 0) {
-                    var jsonVal = JSON.parse(elems[0].value);
-                    jsonVal["ts"] = JSON.stringify(new Date().getTime());
-                    elems[0].value = JSON.stringify(jsonVal);
-                }
-            } 
-        } 
-        setInterval(timestamp, 500); 
-        
-        // --- LOGIC: Check for successful submission param ---
-        const urlParams = new URLSearchParams(window.location.search);
-        // Set dynamic return URL to include ?submitted=true
+        // Return URL Logic (Appends ?submitted=true to hide modal on reload)
         const baseUrl = window.location.href.split('?')[0];
         document.getElementById('retURL_field').value = baseUrl + '?submitted=true';
 
+        const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('submitted') === 'true') {
             modal.style.display = 'none'; // Instant hide
             body.style.overflow = 'auto';
-            
             // Show Success Toast
             setTimeout(() => {
-                document.getElementById('success-toast').classList.remove('toast-hidden');
-                document.getElementById('success-toast').classList.add('toast-visible');
+                document.getElementById('success-toast').classList.remove('hidden');
+                document.getElementById('success-toast').classList.remove('translate-y-20');
                 setTimeout(() => {
-                    document.getElementById('success-toast').classList.remove('toast-visible');
-                    document.getElementById('success-toast').classList.add('toast-hidden');
+                    document.getElementById('success-toast').classList.add('translate-y-20');
+                    setTimeout(() => document.getElementById('success-toast').classList.add('hidden'), 500);
                 }, 5000);
             }, 500);
         }
