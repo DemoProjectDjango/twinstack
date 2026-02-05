@@ -137,9 +137,7 @@
                 <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DdN00000roILE" method="POST" id="leadForm">
                     
                     <input type=hidden name="oid" value="00DdN00000roILE">
-                    <input type=hidden name="retURL" id="retURL_field"> <input type="hidden" name="company" value="Individual">
-
-                    <div class="grid grid-cols-2 gap-4 mb-3">
+                    <input type=hidden name="retURL" id="retURL_field"> <div class="grid grid-cols-2 gap-4 mb-3">
                         <div>
                             <label for="first_name" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">First Name</label>
                             <input id="first_name" name="first_name" type="text" class="w-full px-4 py-2 rounded-lg glass-input text-sm" placeholder="John" maxlength="40" required oninput="checkForm()">
@@ -160,10 +158,15 @@
                             <input id="phone" name="phone" type="text" class="w-full px-4 py-2 rounded-lg glass-input text-sm" placeholder="+1 555 000 0000" maxlength="40">
                         </div>
                     </div>
+                    
+                    <div class="mb-3">
+                        <label for="company" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">Company</label>
+                        <input id="company" name="company" type="text" class="w-full px-4 py-2 rounded-lg glass-input text-sm" placeholder="Company Name" maxlength="40" required oninput="checkForm()">
+                    </div>
 
-                    <div class="mb-6">
+                    <div class="mb-4">
                         <label for="description" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">Message</label>
-                        <textarea name="description" id="description" rows="3" class="w-full px-4 py-2 rounded-lg glass-input text-sm resize-none" placeholder="Briefly describe your idea..." oninput="checkForm()"></textarea>
+                        <textarea name="description" id="description" rows="2" class="w-full px-4 py-2 rounded-lg glass-input text-sm resize-none" placeholder="Briefly describe your idea..." oninput="checkForm()"></textarea>
                     </div>
 
                     <div class="flex gap-4 items-center">
@@ -236,7 +239,7 @@
                                 <div><h3 class="text-2xl font-bold text-slate-900">Saiful I.</h3><p class="text-brand-600 font-bold text-base mb-1">Salesforce Architect</p><a href="https://www.linkedin.com/in/saiful-neo" target="_blank" rel="noopener" aria-label="Saiful Islam LinkedIn" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition"><i class="fab fa-linkedin"></i></a></div>
                             </div>
                             <p class="text-slate-700 italic mb-8 text-base leading-relaxed font-medium">"We don't just write code; we navigate the entire ISV lifecycle. Let's get your product listed and generating revenue."</p>
-                            <a href="https://calendar.app.google/HP3LiuNFisCt6xLo6" target="_blank" rel="noopener" class="w-full px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg text-center transition shadow-lg flex items-center justify-center gap-3"><i class="far fa-calendar-alt"></i> Book a Consult</a>
+                            <a href="https://calendar.app.google/HP3LiuNFisCt6xLo6" target="_blank" rel="noopener" class="w-full px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg text-center transition shadow-lg flex items-center justify-center gap-3"><i class="far fa-calendar-alt"></i> Book a FREE Call</a>
                         </div>
                     </div>
                 </div>
@@ -525,6 +528,7 @@
         }
 
         function checkForm() {
+            // Check all visible required inputs
             const inputs = document.querySelectorAll('#leadForm input[required], #leadForm textarea[required]');
             let allFilled = true;
             inputs.forEach(input => { if (!input.value.trim()) allFilled = false; });
@@ -540,14 +544,29 @@
             }
         }
 
-        // Return URL Logic (Appends ?submitted=true to hide modal on reload)
+        function timestamp() { 
+            var response = document.getElementById("g-recaptcha-response"); 
+            if (response == null || response.value.trim() == "") {
+                var elems = document.getElementsByName("captcha_settings");
+                if(elems.length > 0) {
+                    var jsonVal = JSON.parse(elems[0].value);
+                    jsonVal["ts"] = JSON.stringify(new Date().getTime());
+                    elems[0].value = JSON.stringify(jsonVal);
+                }
+            } 
+        } 
+        setInterval(timestamp, 500); 
+        
+        // --- LOGIC: Check for successful submission param ---
+        const urlParams = new URLSearchParams(window.location.search);
+        // Set dynamic return URL to include ?submitted=true
         const baseUrl = window.location.href.split('?')[0];
         document.getElementById('retURL_field').value = baseUrl + '?submitted=true';
 
-        const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('submitted') === 'true') {
             modal.style.display = 'none'; // Instant hide
             body.style.overflow = 'auto';
+            
             // Show Success Toast
             setTimeout(() => {
                 document.getElementById('success-toast').classList.remove('hidden');
