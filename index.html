@@ -24,22 +24,32 @@
     
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
-        .hero-section { position: relative; background-color: #0f172a; padding-top: 8rem; padding-bottom: 10rem; /* Added padding for wave */ overflow: hidden; }
+        
+        /* Hero Styling */
+        .hero-section { position: relative; background-color: #0f172a; padding-top: 8rem; padding-bottom: 10rem; overflow: hidden; }
         .hero-bg-gradient {
             position: absolute; inset: 0;
             background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
         }
+        
+        /* Ensure text visibility during font load */
         .font-loaded body { font-family: 'Inter', sans-serif; }
+        
+        /* Core Layout Helpers */
         img { max-width: 100%; height: auto; }
+        
+        /* Modal & UI */
         #intro-modal { transition: opacity 0.5s ease-in-out, visibility 0.5s; }
         #intro-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
         .modal-step { transition: opacity 0.4s ease, transform 0.4s ease; }
         .hidden-step { display: none; opacity: 0; transform: translateX(20px); }
         .active-step { display: block; opacity: 1; transform: translateX(0); }
+        
+        /* Form Inputs */
         .glass-input { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; transition: all 0.3s; }
         .glass-input:focus { background: rgba(255, 255, 255, 0.1); border-color: #0ea5e9; outline: none; }
         
-        /* Bot */
+        /* Chatbot Animation */
         .bot-container { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 70px; height: 70px; cursor: pointer; animation: floatBot 3s ease-in-out infinite; }
         .bot-head { width: 100%; height: 100%; background: linear-gradient(135deg, #0ea5e9, #2563eb); border-radius: 24px; position: relative; box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.6); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; }
         .bot-ears { position: absolute; top: -10px; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; }
@@ -48,7 +58,10 @@
         .eye { width: 12px; height: 12px; background: white; border-radius: 50%; position: relative; overflow: hidden; }
         .pupil { width: 5px; height: 5px; background: #0f172a; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
         @keyframes floatBot { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
         .scrollbar-hide::-webkit-scrollbar { display: none; }
+        
+        /* Prevent CLS on scroll animations */
         [data-aos] { visibility: hidden; }
         body.aos-ready [data-aos] { visibility: visible; }
     </style>
@@ -202,13 +215,13 @@
     </nav>
 
     <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white/95 backdrop-blur-xl shadow-2xl z-[60] flex flex-col p-6 transition-transform duration-300 translate-x-full md:hidden">
-        <div class="flex justify-end mb-8"><button id="close-menu-btn" aria-label="Close mobile menu" class="text-slate-500 hover:text-slate-900"><i class="fas fa-times text-2xl"></i></button></div>
-        <div class="flex flex-col space-y-6">
-            <a href="#pdo-journey" class="text-lg font-medium text-slate-800 hover:text-brand-600 p-2">Expertise</a>
-            <a href="#products" class="text-lg font-medium text-slate-800 hover:text-brand-600 p-2">Products</a>
-            <a href="#case-studies" class="text-lg font-medium text-slate-800 hover:text-brand-600 p-2">Case Studies</a>
-            <a href="#about" class="text-lg font-medium text-slate-800 hover:text-brand-600 p-2">About</a>
-            <a href="#contact" class="px-5 py-3 rounded-lg bg-brand-600 text-white text-center font-semibold">Contact Us</a>
+        <div class="flex justify-end mb-8"><button id="close-menu-btn" aria-label="Close mobile menu" class="text-slate-500 hover:text-slate-900 p-2"><i class="fas fa-times text-2xl"></i></button></div>
+        <div class="flex flex-col space-y-4">
+            <a href="#pdo-journey" class="block text-lg font-medium text-slate-800 hover:text-brand-600 py-3">Expertise</a>
+            <a href="#products" class="block text-lg font-medium text-slate-800 hover:text-brand-600 py-3">Products</a>
+            <a href="#case-studies" class="block text-lg font-medium text-slate-800 hover:text-brand-600 py-3">Case Studies</a>
+            <a href="#about" class="block text-lg font-medium text-slate-800 hover:text-brand-600 py-3">About</a>
+            <a href="#contact" class="block px-5 py-3 rounded-lg bg-brand-600 text-white text-center font-semibold mt-2">Contact Us</a>
         </div>
     </div>
 
@@ -223,9 +236,9 @@
                         <p class="text-lg lg:text-2xl text-white font-light leading-relaxed mb-10 max-w-xl opacity-90 mx-auto lg:mx-0">Turn your concept into a 5-Star AppExchange Solution. We architect, build, and pass Security Review for B2B ISV partners.</p>
                         
                         <div class="flex flex-col sm:flex-row gap-6 mb-12 w-full justify-center lg:justify-start items-center">
-                            <a href="#products" class="h-14 px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-base shadow-xl shadow-brand-500/20 transition transform hover:-translate-y-1 text-center flex items-center justify-center gap-2 w-full sm:w-auto min-w-[200px]"><i class="fas fa-box-open"></i> Explore Products</a>
+                            <a href="#products" class="flex items-center justify-center gap-2 h-14 px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-base shadow-xl shadow-brand-500/20 transition transform hover:-translate-y-1 w-full sm:w-auto min-w-[200px]"><i class="fas fa-box-open"></i> Explore Products</a>
                             
-                            <a href="https://appexchange.salesforce.com/appxConsultingListingDetail?listingId=a0NHu00000ozjVfMAI" target="_blank" rel="noopener" class="relative group h-14 px-8 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white font-semibold text-base transition text-center flex flex-col items-center justify-center leading-tight w-full sm:w-auto min-w-[200px]">
+                            <a href="https://appexchange.salesforce.com/appxConsultingListingDetail?listingId=a0NHu00000ozjVfMAI" target="_blank" rel="noopener" class="relative group flex flex-col items-center justify-center leading-tight h-14 px-8 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white font-semibold text-base transition w-full sm:w-auto min-w-[200px]">
                                 <div class="absolute -top-3 -right-3 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 z-10">
                                     <i class="fab fa-salesforce text-2xl text-[#00a1e0]"></i>
                                 </div>
@@ -325,26 +338,26 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300" data-aos="fade-right">
                         <div class="h-64 overflow-hidden bg-slate-200 relative">
-                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Travel & Hospitality Case Study" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Travel and Hospitality Case Study with laptop" class="w-full h-full object-cover">
                             <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_200,f_auto,q_auto/v1769696008/Screenshot_2026-01-29_at_8.11.35_PM_idx7w6.webp" alt="RARO Logo" class="h-8 w-auto"></div>
                         </div>
                         <div class="p-8">
                             <div class="text-xs font-bold text-brand-600 uppercase mb-2">Travel & Hospitality</div>
                             <h4 class="text-2xl font-bold text-slate-900 mb-4">RARO Case Study</h4>
                             <p class="text-slate-700 mb-6">A travel agent company facilitating bookings for Italy, Greece, and the Philippines.</p>
-                            <a href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V000017sXnLUAU" target="_blank" rel="noopener" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800">View RARO Case Study <i class="fas fa-arrow-right ml-2"></i></a>
+                            <a href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V000017sXnLUAU" target="_blank" rel="noopener" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800" aria-label="View RARO Case Study">View Case Study <i class="fas fa-arrow-right ml-2"></i></a>
                         </div>
                     </div>
                     <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300" data-aos="fade-left">
                         <div class="h-64 overflow-hidden bg-slate-200 relative">
-                            <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Agribusiness Case Study" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Agribusiness Case Study with tractor" class="w-full h-full object-cover">
                             <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_200,f_auto,q_auto/v1769696008/Agvantage_logo_bdf8fh.webp" alt="AgVantage Logo" class="h-8 w-auto"></div>
                         </div>
                         <div class="p-8">
                             <div class="text-xs font-bold text-brand-600 uppercase mb-2">Agribusiness</div>
                             <h4 class="text-2xl font-bold text-slate-900 mb-4">AgVantage Commodities Pty Ltd</h4>
                             <p class="text-slate-700 mb-6">Streamlined trading processes for a leading agribusiness player.</p>
-                            <a href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V000017sXnQUAU" target="_blank" rel="noopener" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800">View AgVantage Case Study <i class="fas fa-arrow-right ml-2"></i></a>
+                            <a href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V000017sXnQUAU" target="_blank" rel="noopener" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800" aria-label="View AgVantage Case Study">View Case Study <i class="fas fa-arrow-right ml-2"></i></a>
                         </div>
                     </div>
                 </div>
@@ -403,15 +416,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
                         <div class="h-48 bg-blue-600 flex items-center justify-center text-white text-5xl"><i class="fab fa-salesforce"></i></div>
-                        <div class="p-6"><span class="text-xs font-bold text-brand-500 uppercase">Spring '26 Release</span><h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">Top 5 Features in the New Release</h4><a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800">Read about Spring '26</a></div>
+                        <div class="p-6"><span class="text-xs font-bold text-brand-500 uppercase">Spring '26 Release</span><h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">Top 5 Features in the New Release</h4><a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800" aria-label="Read article about Spring '26 Release">Read Article</a></div>
                     </article>
                     <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
                         <div class="h-48 bg-indigo-600 flex items-center justify-center text-white text-5xl"><i class="fas fa-robot"></i></div>
-                        <div class="p-6"><span class="text-xs font-bold text-brand-500 uppercase">AI & Automation</span><h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">AgentForce: The Future of Service</h4><a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800">Read about AgentForce</a></div>
+                        <div class="p-6"><span class="text-xs font-bold text-brand-500 uppercase">AI & Automation</span><h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">AgentForce: The Future of Service</h4><a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800" aria-label="Read article about AgentForce">Read Article</a></div>
                     </article>
                     <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="300">
                         <div class="h-48 bg-teal-600 flex items-center justify-center text-white text-5xl"><i class="fas fa-shield-alt"></i></div>
-                        <div class="p-6"><span class="text-xs font-bold text-brand-500 uppercase">Security</span><h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">Best Practices for Data Security</h4><a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800">Read Security Guide</a></div>
+                        <div class="p-6"><span class="text-xs font-bold text-brand-500 uppercase">Security</span><h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">Best Practices for Data Security</h4><a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800" aria-label="Read article about Data Security">Read Article</a></div>
                     </article>
                 </div>
             </div>
@@ -469,12 +482,12 @@
                     <p class="text-slate-700">Ready to transform your business? Reach out to us directly via email or WhatsApp.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="zoom-in-up">
-                    <a href="mailto:info@twinstack.net" id="emailLink" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-500 rounded-2xl transition group cursor-pointer shadow-sm">
+                    <a href="mailto:info@twinstack.net" id="emailLink" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-500 rounded-2xl transition group cursor-pointer shadow-sm" aria-label="Email Us">
                         <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition"><i class="fas fa-envelope"></i></div>
                         <h3 class="text-xl font-bold text-slate-900 mb-1">Email Us</h3>
                         <p class="text-slate-700">info@twinstack.net</p>
                     </a>
-                    <a href="https://wa.me/8801556777043" id="whatsappLink" target="_blank" rel="noopener" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition group cursor-pointer shadow-sm">
+                    <a href="https://wa.me/8801556777043" id="whatsappLink" target="_blank" rel="noopener" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition group cursor-pointer shadow-sm" aria-label="Message on WhatsApp">
                         <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition"><i class="fab fa-whatsapp"></i></div>
                         <h3 class="text-xl font-bold text-slate-900 mb-1">WhatsApp</h3>
                         <p class="text-slate-700">+880 1556-777043</p>
@@ -492,13 +505,13 @@
                          <div class="absolute -top-6 -left-12 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
                          <div class="absolute inset-y-0 left-[-3000px] right-[-3rem] bg-white rounded-r-3xl z-0"></div>
                          <div class="relative z-10 pl-2">
-                            <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_100,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" loading="lazy" alt="TwinStack Logo" width="48" height="48" class="h-12 w-12 rounded-full object-cover"><span><span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span></span></a>
+                            <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl" aria-label="TwinStack Solutions Home"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_100,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" loading="lazy" alt="TwinStack Logo" width="48" height="48" class="h-12 w-12 rounded-full object-cover"><span><span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span></span></a>
                             <p class="text-sm text-slate-700 max-w-xs font-medium">Empowering charities and businesses with Salesforce excellence since 2018.</p>
                          </div>
                     </div>
                 </div>
-                <div class="mt-4 md:mt-0"><h4 class="text-white font-semibold mb-4">Products</h4><ul class="space-y-4 text-sm"><li><a href="#" class="hover:text-brand-400 transition p-2">Smart Lookup Data Loader</a></li><li><a href="#" class="hover:text-brand-400 transition p-2">Experience Templates</a></li></ul></div>
-                <div class="mt-4 md:mt-0"><h4 class="text-white font-semibold mb-4">Connect</h4><div class="flex gap-4"><a href="https://www.linkedin.com/company/twinforce-solutions" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white"><i class="fab fa-linkedin-in"></i></a></div></div>
+                <div class="mt-4 md:mt-0"><h4 class="text-white font-semibold mb-4">Products</h4><ul class="space-y-4 text-sm"><li><a href="#" class="hover:text-brand-400 transition p-2 block" aria-label="View Smart Lookup Data Loader">Smart Lookup Data Loader</a></li><li><a href="#" class="hover:text-brand-400 transition p-2 block" aria-label="View Experience Templates">Experience Templates</a></li></ul></div>
+                <div class="mt-4 md:mt-0"><h4 class="text-white font-semibold mb-4">Connect</h4><div class="flex gap-4"><a href="https://www.linkedin.com/company/twinforce-solutions" aria-label="Follow us on LinkedIn" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white"><i class="fab fa-linkedin-in text-xl"></i></a></div></div>
             </div>
             <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500"><p>&copy; 2026 TwinStack Solutions. All rights reserved.</p></div>
         </div>
@@ -565,7 +578,6 @@
         } 
         setInterval(timestamp, 500); 
         
-        // --- LOGIC: Check for successful submission param ---
         const urlParams = new URLSearchParams(window.location.search);
         const baseUrl = window.location.href.split('?')[0];
         document.getElementById('retURL_field').value = baseUrl + '?submitted=true';
@@ -611,7 +623,7 @@
             const data = blueprintData[index];
             contentDiv.style.opacity = '0';
             setTimeout(() => {
-                contentDiv.innerHTML = `<div class="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-brand-500/50 mx-auto"><i class="fas ${data.icon}"></i></div><h3 class="text-3xl font-bold text-white mb-4">${data.title}</h3><p class="text-slate-300 text-lg leading-relaxed max-w-sm mx-auto">${data.desc}</p>`;
+                contentDiv.innerHTML = `<div class="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-brand-500/50 mx-auto"><i class="fas ${data.icon}"></i></div><h4 class="text-3xl font-bold text-white mb-4">${data.title}</h4><p class="text-slate-300 text-lg leading-relaxed max-w-sm mx-auto">${data.desc}</p>`;
                 contentDiv.style.opacity = '1';
             }, 200);
         }
