@@ -268,13 +268,23 @@
                         <div class="inline-block px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-500/30 text-white text-sm font-semibold mb-8"><i class="fas fa-rocket mr-2 text-brand-400"></i> Premier Salesforce PDO Partner</div>
                         <h1 class="text-4xl sm:text-5xl lg:text-7xl mb-8 text-white font-extrabold leading-tight text-center lg:text-left">Build your <br><span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-indigo-500">Salesforce product with us</span></h1>
                         <p class="text-lg lg:text-2xl text-white font-light leading-relaxed mb-10 max-w-xl opacity-90 mx-auto lg:mx-0">Turn your concept into a 5-Star AppExchange Solution. We architect, build, and pass Security Review for B2B ISV partners.</p>
-                        <div class="flex flex-col sm:flex-row gap-5 mb-12 w-full justify-center lg:justify-start">
+                        
+                        <div class="flex flex-col sm:flex-row gap-6 mb-12 w-full justify-center lg:justify-start items-center">
                             <a href="#products" class="px-8 py-3 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-bold text-base shadow-xl shadow-brand-500/20 transition transform hover:-translate-y-1 text-center flex items-center justify-center gap-2"><i class="fas fa-box-open"></i> Explore Products</a>
-                            <a href="https://appexchange.salesforce.com/appxConsultingListingDetail?listingId=a0NHu00000ozjVfMAI" target="_blank" rel="noopener" class="px-8 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white font-semibold text-base transition text-center flex flex-col items-center justify-center leading-tight">
-                                Salesforce Partner <span class="flex text-yellow-400 text-xs gap-0.5 mt-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            
+                            <a href="https://appexchange.salesforce.com/appxConsultingListingDetail?listingId=a0NHu00000ozjVfMAI" target="_blank" rel="noopener" class="relative group px-10 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white font-semibold text-base transition text-center flex flex-col items-center justify-center leading-tight">
+                                <div class="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 z-10">
+                                    <i class="fab fa-salesforce text-3xl text-[#00a1e0]"></i>
+                                </div>
+                                
+                                <span class="tracking-wide">Salesforce Partner</span>
+                                <span class="flex text-yellow-400 text-xs gap-0.5 mt-1">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </span>
                             </a>
                         </div>
                     </div>
+                    
                     <div class="relative flex flex-col items-center lg:items-end" data-aos="fade-left" data-aos-delay="100">
                         <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 text-center lg:text-right drop-shadow-lg leading-tight w-full">Launch on <br> <span class="text-brand-300">AppExchange</span></h2>
                         <div class="bg-white/95 backdrop-blur-xl border border-white/20 p-8 md:p-10 rounded-3xl w-full max-w-lg relative z-10 shadow-2xl">
@@ -316,7 +326,7 @@
                     <div class="relative h-[400px] w-full bg-slate-900 rounded-3xl p-8 shadow-2xl flex flex-col items-center justify-center text-center overflow-hidden border border-slate-800">
                         <div class="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-900/40 via-slate-900 to-slate-900 animate-spin-slow pointer-events-none"></div>
                         <div id="blueprint-content" class="relative z-10 transition-all duration-300">
-                            <div class="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-brand-500/50 mx-auto"><i class="fas fa-chess-knight"></i></div>
+                            <div class="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-brand-500/50 mx-auto"><i class="fas ${data.icon}"></i></div>
                             <h3 class="text-3xl font-bold text-white mb-4">Strategy & Architecture</h3>
                             <p class="text-slate-300 text-lg leading-relaxed max-w-sm mx-auto">We validate your idea against Salesforce governor limits and design a data model that scales from 10 to 10k users.</p>
                         </div>
@@ -343,8 +353,8 @@
                             <div class="bg-brand-500 text-white rounded-full p-2 mt-1"><i class="fas fa-book-open"></i></div>
                             <div><p class="text-xs text-brand-800 font-bold uppercase tracking-wide mb-1">Featured Guide</p><a href="blog-smart-lookup-intro.html" class="text-slate-900 hover:text-brand-600 font-bold leading-tight block">How to Effortlessly Import Data into Salesforce with Smart Lookup Data Loader</a></div>
                         </div>
-                        <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer group" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/f6H8cGLyKwo?autoplay=1\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen class=\'w-full h-full\'></iframe>'">
-                            <img src="https://img.youtube.com/vi/f6H8cGLyKwo/maxresdefault.jpg" loading="lazy" alt="Smart Lookup Demo Video" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                        <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer group" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/R3W4xx4F_xo?autoplay=1\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen class=\'w-full h-full\'></iframe>'">
+                            <img src="https://img.youtube.com/vi/R3W4xx4F_xo/maxresdefault.jpg" loading="lazy" alt="Smart Lookup Demo Video" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-16 h-12 bg-red-600 rounded-lg flex items-center justify-center group-hover:bg-red-700 transition shadow-lg"><div class="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1"></div></div>
                             </div>
@@ -590,12 +600,27 @@
             }
         }
 
-        // Return URL Logic (Appends ?submitted=true to hide modal on reload)
+        function timestamp() { 
+            var response = document.getElementById("g-recaptcha-response"); 
+            if (response == null || response.value.trim() == "") {
+                var elems = document.getElementsByName("captcha_settings");
+                if(elems.length > 0) {
+                    var jsonVal = JSON.parse(elems[0].value);
+                    jsonVal["ts"] = JSON.stringify(new Date().getTime());
+                    elems[0].value = JSON.stringify(jsonVal);
+                }
+            } 
+        } 
+        setInterval(timestamp, 500); 
+        
+        // --- LOGIC: Check for successful submission param ---
+        const urlParams = new URLSearchParams(window.location.search);
         const baseUrl = window.location.href.split('?')[0];
         document.getElementById('retURL_field').value = baseUrl + '?submitted=true';
 
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('submitted') === 'true') {
+        const isSubmitted = urlParams.get('submitted') === 'true';
+
+        if (isSubmitted) {
             modal.style.display = 'none'; // Instant hide
             body.style.overflow = 'auto';
             
