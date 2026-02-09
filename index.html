@@ -16,59 +16,47 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://twinstack.net/assets/og-home.png">
 
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/du42kbmmn/image/upload/w_64,h_64,c_fill,r_max,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png">
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/du42kbmmn/image/upload/w_32,h_32,c_fill,r_max,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://res.cloudinary.com">
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     
     <style>
         body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
+        .hero-section { position: relative; background-color: #0f172a; padding-top: 8rem; padding-bottom: 8rem; overflow: hidden; }
         .hero-bg-gradient {
             position: absolute; inset: 0;
-            background-color: #0f172a; /* Fallback color */
             background-image: 
                 radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
                 radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
                 radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
         }
-        /* Optimize LCP: Ensure text is visible during font load */
-        @font-face { font-display: swap; }
+        /* Layout shift prevention for images */
+        img { max-width: 100%; height: auto; }
         
-        /* Modal Transitions */
+        /* Modal & Animations */
         #intro-modal { transition: opacity 0.5s ease-in-out, visibility 0.5s; }
         #intro-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
         
-        .modal-step { transition: opacity 0.4s ease, transform 0.4s ease; }
-        .hidden-step { display: none; opacity: 0; transform: translateX(20px); }
-        .active-step { display: block; opacity: 1; transform: translateX(0); }
-
         .glass-input {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
             transition: all 0.3s;
         }
-        .glass-input:focus {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #0ea5e9;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
-        }
+        .glass-input:focus { background: rgba(255, 255, 255, 0.1); border-color: #0ea5e9; outline: none; }
         
-        /* Chatbot Animation */
+        /* Bot */
         .bot-container { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 70px; height: 70px; cursor: pointer; animation: floatBot 3s ease-in-out infinite; }
-        .bot-head { width: 100%; height: 100%; background: linear-gradient(135deg, #0ea5e9, #2563eb); border-radius: 24px; position: relative; box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.6); border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s; display: flex; align-items: center; justify-content: center; }
-        .bot-head:hover { transform: scale(1.05); }
+        .bot-head { width: 100%; height: 100%; background: linear-gradient(135deg, #0ea5e9, #2563eb); border-radius: 24px; position: relative; box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.6); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; }
         .bot-ears { position: absolute; top: -10px; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; }
         .bot-ear { width: 12px; height: 12px; background: #60a5fa; border-radius: 50%; border: 2px solid #fff; }
-        .bot-face { width: 50px; height: 30px; background: rgba(0,0,0,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; position: relative; }
-        .eye { width: 12px; height: 12px; background: white; border-radius: 50%; position: relative; overflow: hidden; box-shadow: 0 0 5px rgba(255,255,255,0.8); }
+        .bot-face { width: 50px; height: 30px; background: rgba(0,0,0,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .eye { width: 12px; height: 12px; background: white; border-radius: 50%; position: relative; overflow: hidden; }
         .pupil { width: 5px; height: 5px; background: #0f172a; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
         @keyframes floatBot { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* Hide scrollbar utility */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         
@@ -81,7 +69,6 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -100,7 +87,7 @@
           "@id": "https://twinstack.net/#org",
           "name": "TwinStack Solutions",
           "url": "https://twinstack.net/",
-          "logo": "https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png",
+          "logo": "https://res.cloudinary.com/du42kbmmn/image/upload/w_512,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png",
           "sameAs": ["https://www.linkedin.com/company/twinforce-solutions"]
         },
         {
@@ -157,7 +144,7 @@
             
             <div id="step-1" class="modal-step active-step">
                 <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg ring-4 ring-brand-500/30 overflow-hidden p-1">
-                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Logo" width="80" height="80" class="w-full h-full object-cover rounded-full" loading="lazy">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_150,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Logo" width="80" height="80" class="w-full h-full object-cover rounded-full" loading="lazy">
                 </div>
                 
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3 tracking-tight">Have a Product Idea?</h2>
@@ -230,14 +217,14 @@
             <h4 class="text-lg font-bold text-slate-900 mb-0.5">Submission Successful</h4>
             <p class="text-slate-600 text-sm leading-tight">Thank you. We will respond to your inquiry shortly.</p>
         </div>
-        <button onclick="closeToast()" class="shrink-0 text-slate-400 hover:text-slate-600 p-2 transition rounded-full hover:bg-slate-100">
+        <button onclick="closeToast()" aria-label="Close" class="shrink-0 text-slate-400 hover:text-slate-600 p-2 transition rounded-full hover:bg-slate-100">
             <i class="fas fa-times text-lg"></i>
         </button>
     </div>
 
     <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white border border-white/40 shadow-2xl flex justify-between items-center px-4 md:px-8 h-20 transition-all duration-500 ease-in-out">
         <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Solutions Logo" width="56" height="56" class="h-14 w-14 rounded-full object-cover shadow-sm">
+            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_100,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Solutions Logo" width="56" height="56" class="h-14 w-14 rounded-full object-cover shadow-sm">
             <span class="font-bold text-xl md:text-2xl tracking-tight">
                 <span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span>
             </span>
@@ -266,7 +253,8 @@
     </div>
 
     <main>
-        <section class="hero-bg-gradient pt-32 pb-32 relative overflow-hidden bg-slate-900">
+        <section class="hero-section text-white">
+            <div class="hero-bg-gradient"></div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     <div data-aos="fade-right" data-aos-duration="800" class="text-center lg:text-left flex flex-col items-center lg:items-start">
@@ -294,8 +282,8 @@
                         <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 text-center lg:text-right drop-shadow-lg leading-tight w-full">Launch on <br> <span class="text-brand-300">AppExchange</span></h2>
                         <div class="bg-white/95 backdrop-blur-xl border border-white/20 p-8 md:p-10 rounded-3xl w-full max-w-lg relative z-10 shadow-2xl">
                             <div class="flex items-center gap-5 mb-6">
-                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769585847/Untitled_design_1_vksti6.webp" loading="eager" fetchpriority="high" alt="Saiful I." width="96" height="96" class="w-24 h-24 rounded-full object-cover border-4 border-brand-500 shadow-md">
-                                <div><h3 class="text-2xl font-bold text-slate-900">Saiful I.</h3><p class="text-brand-600 font-bold text-base mb-1">Salesforce Architect</p><a href="https://www.linkedin.com/in/saiful-neo" target="_blank" rel="noopener" aria-label="Saiful Islam LinkedIn" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition"><i class="fab fa-linkedin"></i></a></div>
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_400,h_400,c_thumb,g_face,f_auto,q_auto/v1769585847/Untitled_design_1_vksti6.webp" width="96" height="96" loading="eager" fetchpriority="high" alt="Saiful I." class="w-24 h-24 rounded-full object-cover border-4 border-brand-500 shadow-md">
+                                <div class="text-slate-900"><h3 class="text-2xl font-bold">Saiful I.</h3><p class="text-brand-600 font-bold text-base mb-1">Salesforce Architect</p><a href="https://www.linkedin.com/in/saiful-neo" target="_blank" rel="noopener" aria-label="Saiful Islam LinkedIn" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition"><i class="fab fa-linkedin"></i></a></div>
                             </div>
                             <p class="text-slate-700 italic mb-8 text-base leading-relaxed font-medium">"We don't just write code; we navigate the entire ISV lifecycle. Let's get your product listed and generating revenue."</p>
                             <a href="https://calendar.app.google/HP3LiuNFisCt6xLo6" id="bookCallLink" target="_blank" rel="noopener" class="w-full px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg text-center transition shadow-lg flex items-center justify-center gap-3"><i class="far fa-calendar-alt"></i> Book a FREE Call</a>
@@ -303,7 +291,6 @@
                     </div>
                 </div>
             </div>
-            <div class="absolute bottom-0 w-full leading-none z-10"><svg class="block w-full h-24 text-slate-50" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="currentColor" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1248,320,1152,320,1056,320C960,320,864,320,768,320C672,320,576,320,480,320C384,320,288,320,192,320C96,320,48,320,0,320Z"></path></svg></div>
         </section>
 
         <section id="pdo-journey" class="py-24 bg-slate-50 relative overflow-hidden">
@@ -331,7 +318,7 @@
                     <div class="relative h-[400px] w-full bg-slate-900 rounded-3xl p-8 shadow-2xl flex flex-col items-center justify-center text-center overflow-hidden border border-slate-800">
                         <div class="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-900/40 via-slate-900 to-slate-900 animate-spin-slow pointer-events-none"></div>
                         <div id="blueprint-content" class="relative z-10 transition-all duration-300">
-                            <div class="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-brand-500/50 mx-auto"><i class="fas ${data.icon}"></i></div>
+                            <div class="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-brand-500/50 mx-auto"><i class="fas fa-chess-knight"></i></div>
                             <h3 class="text-3xl font-bold text-white mb-4">Strategy & Architecture</h3>
                             <p class="text-slate-300 text-lg leading-relaxed max-w-sm mx-auto">We validate your idea against Salesforce governor limits and design a data model that scales from 10 to 10k users.</p>
                         </div>
@@ -345,7 +332,7 @@
                 <div class="flex flex-col lg:flex-row items-start gap-16">
                     <div class="lg:w-1/2" data-aos="fade-right">
                         <div class="mb-8"><h3 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600 mb-2">AppExchange Products</h3><div class="h-1.5 w-24 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full"></div></div>
-                        <img src="https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769502627/Untitled_design_3_sgiog8.png" loading="lazy" alt="Smart Lookup Data Loader Logo" width="100" height="80" class="h-20 w-auto mb-6 block">
+                        <img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_600,f_auto,q_auto/v1769502627/Untitled_design_3_sgiog8.png" loading="lazy" alt="Smart Lookup Data Loader Logo" width="100" height="80" class="h-20 w-auto mb-6 block">
                         <h2 class="text-4xl font-bold text-slate-900 mb-6">Smart Lookup Data Loader</h2>
                         <p class="text-lg text-slate-700 mb-8 leading-relaxed">Simplify your data migration. Our 100% native tool simplifies CSV imports into Salesforce, supporting upserts and intelligent lookups without leaving the platform.</p>
                         <div class="flex flex-col sm:flex-row gap-4 mb-8">
@@ -379,24 +366,24 @@
                     <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300" data-aos="fade-right">
                         <div class="h-64 overflow-hidden bg-slate-200 relative">
                             <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Travel & Hospitality Case Study" class="w-full h-full object-cover">
-                            <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769696008/Screenshot_2026-01-29_at_8.11.35_PM_idx7w6.webp" alt="RARO Logo" class="h-8 w-auto"></div>
+                            <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_200,f_auto,q_auto/v1769696008/Screenshot_2026-01-29_at_8.11.35_PM_idx7w6.webp" alt="RARO Logo" class="h-8 w-auto"></div>
                         </div>
                         <div class="p-8">
                             <div class="text-xs font-bold text-brand-600 uppercase mb-2">Travel & Hospitality</div>
                             <h4 class="text-2xl font-bold text-slate-900 mb-4">RARO Case Study</h4>
-                            <p class="text-slate-700 mb-6">A travel agent company facilitating bookings for Italy, Greece, and the Philippines. Features a custom booking system with wallets, installment payments, and Stripe integration.</p>
+                            <p class="text-slate-700 mb-6">A travel agent company facilitating bookings for Italy, Greece, and the Philippines.</p>
                             <a href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V000017sXnLUAU" target="_blank" rel="noopener" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800">View Case Study <i class="fas fa-arrow-right ml-2"></i></a>
                         </div>
                     </div>
                     <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300" data-aos="fade-left">
                         <div class="h-64 overflow-hidden bg-slate-200 relative">
                             <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Agribusiness Case Study" class="w-full h-full object-cover">
-                            <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769696008/Agvantage_logo_bdf8fh.webp" alt="AgVantage Logo" class="h-8 w-auto"></div>
+                            <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_200,f_auto,q_auto/v1769696008/Agvantage_logo_bdf8fh.webp" alt="AgVantage Logo" class="h-8 w-auto"></div>
                         </div>
                         <div class="p-8">
                             <div class="text-xs font-bold text-brand-600 uppercase mb-2">Agribusiness</div>
                             <h4 class="text-2xl font-bold text-slate-900 mb-4">AgVantage Commodities Pty Ltd</h4>
-                            <p class="text-slate-700 mb-6">Streamlined trading processes for a leading agribusiness player. Replaced manual bid/offer management with a transparent, efficient, and user-friendly digital marketplace.</p>
+                            <p class="text-slate-700 mb-6">Streamlined trading processes for a leading agribusiness player.</p>
                             <a href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V000017sXnQUAU" target="_blank" rel="noopener" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800">View Case Study <i class="fas fa-arrow-right ml-2"></i></a>
                         </div>
                     </div>
@@ -410,7 +397,7 @@
                     <div data-aos="fade-right">
                          <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Seamless Connectivity</h2>
                          <h3 class="text-4xl font-bold text-slate-900 mb-6">Integration Solutions</h3>
-                         <p class="text-lg text-slate-700 mb-6">We don't just work in silos. We connect your Salesforce org to the rest of your business ecosystem. Whether it's ERP, Marketing Automation, or Payment Gateways, we bridge the gaps.</p>
+                         <p class="text-lg text-slate-700 mb-6">We don't just work in silos. We connect your Salesforce org to the rest of your business ecosystem.</p>
                          <ul class="space-y-4 mb-8">
                              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500 text-xl"></i> <span class="font-medium">REST/SOAP API Development</span></li>
                              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500 text-xl"></i> <span class="font-medium">MuleSoft Anypoint Platform</span></li>
@@ -545,7 +532,7 @@
                          <div class="absolute -top-6 -left-12 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
                          <div class="absolute inset-y-0 left-[-3000px] right-[-3rem] bg-white rounded-r-3xl z-0"></div>
                          <div class="relative z-10 pl-2">
-                            <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" loading="lazy" alt="TwinStack Logo" width="48" height="48" class="h-12 w-12 rounded-full object-cover"><span><span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span></span></a>
+                            <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_100,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" loading="lazy" alt="TwinStack Logo" width="48" height="48" class="h-12 w-12 rounded-full object-cover"><span><span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span></span></a>
                             <p class="text-sm text-slate-700 max-w-xs font-medium">Empowering charities and businesses with Salesforce excellence since 2018.</p>
                          </div>
                     </div>
