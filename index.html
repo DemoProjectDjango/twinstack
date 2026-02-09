@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    
     <title>TwinStack Solutions | Premier Salesforce PDO Partner</title>
     <meta name="description" content="We build 5-star AppExchange products. TwinStack Solutions is your dedicated Product Development Outsourcer (PDO) for Salesforce.">
+    <link rel="canonical" href="https://twinstack.net/">
     <meta name="theme-color" content="#0f172a">
     
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/du42kbmmn/image/upload/v1769586320/Black_White_Minimalist_Professional_Initial_Logo_3_tlovgh.webp">
+    <meta property="og:title" content="TwinStack Solutions | Salesforce AppExchange Experts">
+    <meta property="og:description" content="We build and launch Salesforce AppExchange products—from architecture to security review.">
+    <meta property="og:url" content="https://twinstack.net/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://twinstack.net/assets/og-home.png">
+
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/du42kbmmn/image/upload/w_64,h_64,c_fill,r_max/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +26,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://twinstack.net/#org",
+          "name": "TwinStack Solutions",
+          "url": "https://twinstack.net/",
+          "logo": "https://res.cloudinary.com/du42kbmmn/image/upload/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png",
+          "sameAs": ["https://www.linkedin.com/company/twinforce-solutions"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://twinstack.net/#website",
+          "url": "https://twinstack.net/",
+          "name": "TwinStack Solutions"
+        }
+      ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -60,7 +98,6 @@
         
         /* Modal Transitions */
         #intro-modal { transition: opacity 0.5s ease-in-out, visibility 0.5s; }
-        /* Added class to hide modal initially */
         #intro-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
         
         /* Form Transitions */
@@ -114,8 +151,8 @@
         <div class="relative z-10 max-w-lg w-full mx-4 p-8 bg-slate-900/80 border border-white/10 rounded-3xl shadow-2xl backdrop-blur-md text-center overflow-hidden">
             
             <div id="step-1" class="modal-step active-step">
-                <div class="w-20 h-20 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-inner ring-1 ring-brand-500/30 p-4">
-                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769586320/Black_White_Minimalist_Professional_Initial_Logo_3_tlovgh.webp" alt="TwinStack Logo" class="w-full h-full object-contain">
+                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg ring-4 ring-brand-500/30 overflow-hidden p-1">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Logo" class="w-full h-full object-cover rounded-full">
                 </div>
                 
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3 tracking-tight">Have a Product Idea?</h2>
@@ -136,9 +173,10 @@
                 <h3 class="text-2xl font-bold text-white mb-4 text-center">Tell us about you</h3>
                 
                 <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DdN00000roILE" method="POST" id="leadForm">
-                    
                     <input type=hidden name="oid" value="00DdN00000roILE">
-                    <input type=hidden name="retURL" id="retURL_field"> <div class="grid grid-cols-2 gap-4 mb-3">
+                    <input type=hidden name="retURL" id="retURL_field">
+
+                    <div class="grid grid-cols-2 gap-4 mb-3">
                         <div>
                             <label for="first_name" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">First Name</label>
                             <input id="first_name" name="first_name" type="text" class="w-full px-4 py-2 rounded-lg glass-input text-sm" placeholder="John" maxlength="40" required oninput="checkForm()">
@@ -179,20 +217,22 @@
         </div>
     </div>
 
-    <div id="success-toast" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[300] bg-white/95 backdrop-blur-xl px-10 py-8 rounded-3xl shadow-2xl border border-green-500/20 text-center transform transition-all duration-500 scale-90 opacity-0 hidden min-w-[320px] max-w-md">
-        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-3xl mx-auto mb-6 shadow-inner ring-4 ring-green-50">
+    <div id="success-toast" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[300] bg-white/95 backdrop-blur-xl px-6 py-5 rounded-2xl shadow-2xl border border-green-500/20 flex flex-row items-center gap-5 w-full max-w-xl transform transition-all duration-500 scale-90 opacity-0 hidden">
+        <div class="shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl shadow-inner ring-2 ring-green-50">
             <i class="fas fa-check"></i>
         </div>
-        <h4 class="text-2xl font-bold text-slate-900 mb-3">Submission Successful</h4>
-        <p class="text-slate-600 text-lg leading-relaxed mb-6">
-            Thank you. Your information has been collected.<br>We will respond to your inquiry shortly.
-        </p>
-        <button onclick="closeToast()" class="text-sm font-medium text-slate-400 hover:text-slate-600 underline transition">Close Notification</button>
+        <div class="flex-1 text-left">
+            <h4 class="text-lg font-bold text-slate-900 mb-0.5">Submission Successful</h4>
+            <p class="text-slate-600 text-sm leading-tight">Thank you. We will respond to your inquiry shortly.</p>
+        </div>
+        <button onclick="closeToast()" class="shrink-0 text-slate-400 hover:text-slate-600 p-2 transition rounded-full hover:bg-slate-100">
+            <i class="fas fa-times text-lg"></i>
+        </button>
     </div>
 
-    <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl flex justify-between items-center px-4 md:px-8 h-20 transition-all duration-500 ease-in-out">
+    <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white border border-white/40 shadow-2xl flex justify-between items-center px-4 md:px-8 h-20 transition-all duration-500 ease-in-out">
         <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769586320/Black_White_Minimalist_Professional_Initial_Logo_3_tlovgh.webp" alt="TwinStack Solutions Logo" width="56" height="56" class="h-10 md:h-14 w-auto">
+            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Solutions Logo" width="56" height="56" class="h-14 w-14 rounded-full object-cover shadow-sm">
             <span class="font-bold text-xl md:text-2xl tracking-tight">
                 <span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span>
             </span>
@@ -239,11 +279,11 @@
                         <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 text-center lg:text-right drop-shadow-lg leading-tight w-full">Launch on <br> <span class="text-brand-300">AppExchange</span></h2>
                         <div class="bg-white/95 backdrop-blur-xl border border-white/20 p-8 md:p-10 rounded-3xl w-full max-w-lg relative z-10 shadow-2xl">
                             <div class="flex items-center gap-5 mb-6">
-                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769585847/Untitled_design_1_vksti6.webp" alt="Saiful I." width="96" height="96" fetchpriority="high" class="w-24 h-24 rounded-full object-cover border-4 border-brand-500 shadow-md">
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769585847/Untitled_design_1_vksti6.webp" loading="lazy" alt="Saiful I." width="96" height="96" fetchpriority="high" class="w-24 h-24 rounded-full object-cover border-4 border-brand-500 shadow-md">
                                 <div><h3 class="text-2xl font-bold text-slate-900">Saiful I.</h3><p class="text-brand-600 font-bold text-base mb-1">Salesforce Architect</p><a href="https://www.linkedin.com/in/saiful-neo" target="_blank" rel="noopener" aria-label="Saiful Islam LinkedIn" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition"><i class="fab fa-linkedin"></i></a></div>
                             </div>
                             <p class="text-slate-700 italic mb-8 text-base leading-relaxed font-medium">"We don't just write code; we navigate the entire ISV lifecycle. Let's get your product listed and generating revenue."</p>
-                            <a href="https://calendar.app.google/HP3LiuNFisCt6xLo6" target="_blank" rel="noopener" class="w-full px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg text-center transition shadow-lg flex items-center justify-center gap-3"><i class="far fa-calendar-alt"></i> Book a FREE Call</a>
+                            <a href="https://calendar.app.google/HP3LiuNFisCt6xLo6" id="bookCallLink" target="_blank" rel="noopener" class="w-full px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg text-center transition shadow-lg flex items-center justify-center gap-3"><i class="far fa-calendar-alt"></i> Book a FREE Call</a>
                         </div>
                     </div>
                 </div>
@@ -290,7 +330,7 @@
                 <div class="flex flex-col lg:flex-row items-start gap-16">
                     <div class="lg:w-1/2" data-aos="fade-right">
                         <div class="mb-8"><h3 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600 mb-2">AppExchange Products</h3><div class="h-1.5 w-24 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full"></div></div>
-                        <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769502627/Untitled_design_3_sgiog8.png" alt="Smart Lookup Data Loader Logo" width="100" height="80" loading="lazy" class="h-20 w-auto mb-6 block">
+                        <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769502627/Untitled_design_3_sgiog8.png" loading="lazy" alt="Smart Lookup Data Loader Logo" width="100" height="80" class="h-20 w-auto mb-6 block">
                         <h2 class="text-4xl font-bold text-slate-900 mb-6">Smart Lookup Data Loader</h2>
                         <p class="text-lg text-slate-700 mb-8 leading-relaxed">Simplify your data migration. Our 100% native tool simplifies CSV imports into Salesforce, supporting upserts and intelligent lookups without leaving the platform.</p>
                         <div class="flex flex-col sm:flex-row gap-4 mb-8">
@@ -304,7 +344,7 @@
                             <div><p class="text-xs text-brand-800 font-bold uppercase tracking-wide mb-1">Featured Guide</p><a href="blog-smart-lookup-intro.html" class="text-slate-900 hover:text-brand-600 font-bold leading-tight block">How to Effortlessly Import Data into Salesforce with Smart Lookup Data Loader</a></div>
                         </div>
                         <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer group" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/f6H8cGLyKwo?autoplay=1\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen class=\'w-full h-full\'></iframe>'">
-                            <img src="https://img.youtube.com/vi/f6H8cGLyKwo/maxresdefault.jpg" alt="Smart Lookup Demo Video" loading="lazy" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                            <img src="https://img.youtube.com/vi/f6H8cGLyKwo/maxresdefault.jpg" loading="lazy" alt="Smart Lookup Demo Video" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-16 h-12 bg-red-600 rounded-lg flex items-center justify-center group-hover:bg-red-700 transition shadow-lg"><div class="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1"></div></div>
                             </div>
@@ -323,7 +363,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300" data-aos="fade-right">
                         <div class="h-64 overflow-hidden bg-slate-200 relative">
-                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Travel & Hospitality Case Study" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Travel & Hospitality Case Study" class="w-full h-full object-cover">
                             <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769696008/Screenshot_2026-01-29_at_8.11.35_PM_idx7w6.webp" alt="RARO Logo" class="h-8 w-auto"></div>
                         </div>
                         <div class="p-8">
@@ -335,7 +375,7 @@
                     </div>
                     <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300" data-aos="fade-left">
                         <div class="h-64 overflow-hidden bg-slate-200 relative">
-                            <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Agribusiness Case Study" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Agribusiness Case Study" class="w-full h-full object-cover">
                             <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769696008/Agvantage_logo_bdf8fh.webp" alt="AgVantage Logo" class="h-8 w-auto"></div>
                         </div>
                         <div class="p-8">
@@ -467,12 +507,12 @@
                     <p class="text-slate-700">Ready to transform your business? Reach out to us directly via email or WhatsApp.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="zoom-in-up">
-                    <a href="mailto:info@twinstack.net" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-500 rounded-2xl transition group cursor-pointer shadow-sm">
+                    <a href="mailto:info@twinstack.net" id="emailLink" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-500 rounded-2xl transition group cursor-pointer shadow-sm">
                         <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition"><i class="fas fa-envelope"></i></div>
                         <h3 class="text-xl font-bold text-slate-900 mb-1">Email Us</h3>
                         <p class="text-slate-700">info@twinstack.net</p>
                     </a>
-                    <a href="https://wa.me/8801556777043" target="_blank" rel="noopener" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition group cursor-pointer shadow-sm">
+                    <a href="https://wa.me/8801556777043" id="whatsappLink" target="_blank" rel="noopener" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition group cursor-pointer shadow-sm">
                         <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition"><i class="fab fa-whatsapp"></i></div>
                         <h3 class="text-xl font-bold text-slate-900 mb-1">WhatsApp</h3>
                         <p class="text-slate-700">+880 1556-777043</p>
@@ -490,7 +530,7 @@
                          <div class="absolute -top-6 -left-12 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
                          <div class="absolute inset-y-0 left-[-3000px] right-[-3rem] bg-white rounded-r-3xl z-0"></div>
                          <div class="relative z-10 pl-2">
-                            <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769586320/Black_White_Minimalist_Professional_Initial_Logo_3_tlovgh.webp" alt="TwinStack Logo" width="48" height="48" class="h-12 w-auto"><span><span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span></span></a>
+                            <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" loading="lazy" alt="TwinStack Logo" width="48" height="48" class="h-12 w-12 rounded-full object-cover"><span><span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span></span></a>
                             <p class="text-sm text-slate-700 max-w-xs font-medium">Empowering charities and businesses with Salesforce excellence since 2018.</p>
                          </div>
                     </div>
@@ -535,7 +575,6 @@
         }
 
         function checkForm() {
-            // Check all visible required inputs
             const inputs = document.querySelectorAll('#leadForm input[required], #leadForm textarea[required]');
             let allFilled = true;
             inputs.forEach(input => { if (!input.value.trim()) allFilled = false; });
@@ -551,57 +590,38 @@
             }
         }
 
-        function timestamp() { 
-            var response = document.getElementById("g-recaptcha-response"); 
-            if (response == null || response.value.trim() == "") {
-                var elems = document.getElementsByName("captcha_settings");
-                if(elems.length > 0) {
-                    var jsonVal = JSON.parse(elems[0].value);
-                    jsonVal["ts"] = JSON.stringify(new Date().getTime());
-                    elems[0].value = JSON.stringify(jsonVal);
-                }
-            } 
-        } 
-        setInterval(timestamp, 500); 
-        
-        // --- LOGIC: Check for successful submission param ---
-        const urlParams = new URLSearchParams(window.location.search);
-        // Set dynamic return URL to include ?submitted=true
+        // Return URL Logic (Appends ?submitted=true to hide modal on reload)
         const baseUrl = window.location.href.split('?')[0];
         document.getElementById('retURL_field').value = baseUrl + '?submitted=true';
-        
-        const isSubmitted = urlParams.get('submitted') === 'true';
 
-        // 1. Success Message Logic
-        if (isSubmitted) {
-            // Show Success Center Modal
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('submitted') === 'true') {
+            modal.style.display = 'none'; // Instant hide
+            body.style.overflow = 'auto';
+            
+            // Show Horizontal Success Toast
             const toast = document.getElementById('success-toast');
             toast.classList.remove('hidden');
-            // Allow display:block to apply before animating opacity
             setTimeout(() => {
                 toast.classList.remove('opacity-0', 'scale-90');
                 toast.classList.add('opacity-100', 'scale-100');
             }, 10);
 
-            // UPDATED: Close after 3 seconds
+            // Auto-Close after 3 seconds
             setTimeout(() => {
                 closeToast();
             }, 3000);
-        } 
-        else {
-            // 2. UPDATED: Trigger Lead Form Modal after 30 seconds
-            // Only trigger if they haven't just submitted the form
+        } else {
+            // Trigger Lead Form Modal after 30 seconds
             setTimeout(() => {
                 const modal = document.getElementById('intro-modal');
-                // Ensure modal wasn't already closed or interacted with (optional check, here we just show it)
                 if (modal) {
                     modal.classList.remove('hidden-modal');
-                    body.style.overflow = 'hidden'; // Lock scroll
+                    body.style.overflow = 'hidden'; 
                 }
-            }, 30000); // 30000ms = 30 seconds
+            }, 30000); // 30 seconds
         }
 
-        // Blueprint Interaction
         const blueprintData = [
             { title: "Strategy & Architecture", icon: "fa-chess-knight", desc: "We start by validating your product idea against Salesforce limits. Our architects design a scalable data model that ensures your app performs flawlessly for 10 users or 10,000." },
             { title: "Development (LWC & Apex)", icon: "fa-code", desc: "Our developers build utilizing the latest Salesforce standards—Lightning Web Components (LWC) for UI and optimized Apex for logic—ensuring a native, seamless experience." },
@@ -624,17 +644,17 @@
             AOS.init({ once: true, offset: 50, duration: 600, disable: 'mobile' });
 
             const navbar = document.getElementById('navbar');
+            // Simplified scroll logic: keep navbar white but handle shadow
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     navbar.classList.remove('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'h-20');
-                    navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'h-16', 'bg-white/95', 'shadow-md');
+                    navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'h-16', 'shadow-md');
                 } else {
-                    navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'h-16', 'bg-white/95', 'shadow-md');
-                    navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'h-20', 'bg-white/80');
+                    navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'h-16', 'shadow-md');
+                    navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'h-20');
                 }
             });
 
-            // Stats Logic
             const counters = document.querySelectorAll('.counter');
             const observer = new IntersectionObserver((entries) => {
                 if(entries[0].isIntersecting) {
@@ -657,7 +677,6 @@
             const statsSection = document.querySelector('.counter')?.closest('section');
             if(statsSection) observer.observe(statsSection);
 
-            // Bot Eyes
             const pupils = document.querySelectorAll('.pupil');
             const botContainer = document.querySelector('.bot-container');
             document.addEventListener('mousemove', (e) => {
