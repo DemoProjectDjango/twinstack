@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth overflow-x-hidden w-full">
+<html lang="en" class="scroll-smooth w-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -16,15 +16,72 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://twinstack.net/assets/og-home.png">
 
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/du42kbmmn/image/upload/w_64,h_64,c_fill,r_max/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png">
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/du42kbmmn/image/upload/w_64,h_64,c_fill,r_max,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://res.cloudinary.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
+        .hero-bg-gradient {
+            position: absolute; inset: 0;
+            background-color: #0f172a; /* Fallback color */
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+        }
+        /* Optimize LCP: Ensure text is visible during font load */
+        @font-face { font-display: swap; }
+        
+        /* Modal Transitions */
+        #intro-modal { transition: opacity 0.5s ease-in-out, visibility 0.5s; }
+        #intro-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        
+        .modal-step { transition: opacity 0.4s ease, transform 0.4s ease; }
+        .hidden-step { display: none; opacity: 0; transform: translateX(20px); }
+        .active-step { display: block; opacity: 1; transform: translateX(0); }
+
+        .glass-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #0ea5e9;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+        }
+        
+        /* Chatbot Animation */
+        .bot-container { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 70px; height: 70px; cursor: pointer; animation: floatBot 3s ease-in-out infinite; }
+        .bot-head { width: 100%; height: 100%; background: linear-gradient(135deg, #0ea5e9, #2563eb); border-radius: 24px; position: relative; box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.6); border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s; display: flex; align-items: center; justify-content: center; }
+        .bot-head:hover { transform: scale(1.05); }
+        .bot-ears { position: absolute; top: -10px; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; }
+        .bot-ear { width: 12px; height: 12px; background: #60a5fa; border-radius: 50%; border: 2px solid #fff; }
+        .bot-face { width: 50px; height: 30px; background: rgba(0,0,0,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; position: relative; }
+        .eye { width: 12px; height: 12px; background: white; border-radius: 50%; position: relative; overflow: hidden; box-shadow: 0 0 5px rgba(255,255,255,0.8); }
+        .pupil { width: 5px; height: 5px; background: #0f172a; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        @keyframes floatBot { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* Hide scrollbar utility */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        [data-aos] { visibility: hidden; }
+        body.aos-ready [data-aos] { visibility: visible; }
+    </style>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -43,7 +100,7 @@
           "@id": "https://twinstack.net/#org",
           "name": "TwinStack Solutions",
           "url": "https://twinstack.net/",
-          "logo": "https://res.cloudinary.com/du42kbmmn/image/upload/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png",
+          "logo": "https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png",
           "sameAs": ["https://www.linkedin.com/company/twinforce-solutions"]
         },
         {
@@ -85,61 +142,9 @@
             }
         }
     </script>
-
-    <style>
-        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f8fafc; color: #1e293b; }
-        .hero-bg-gradient {
-            position: absolute; inset: 0;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
-        }
-        
-        /* Modal Transitions */
-        #intro-modal { transition: opacity 0.5s ease-in-out, visibility 0.5s; }
-        #intro-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
-        
-        /* Form Transitions */
-        .modal-step { transition: opacity 0.4s ease, transform 0.4s ease; }
-        .hidden-step { display: none; opacity: 0; transform: translateX(20px); }
-        .active-step { display: block; opacity: 1; transform: translateX(0); }
-
-        /* Form Styling */
-        .glass-input {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: all 0.3s;
-        }
-        .glass-input:focus {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #0ea5e9;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
-        }
-        .glass-input::placeholder { color: rgba(255, 255, 255, 0.4); }
-
-        /* Chatbot */
-        .bot-container { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 70px; height: 70px; cursor: pointer; animation: floatBot 3s ease-in-out infinite; }
-        .bot-head { width: 100%; height: 100%; background: linear-gradient(135deg, #0ea5e9, #2563eb); border-radius: 24px; position: relative; box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.6); border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s; display: flex; align-items: center; justify-content: center; }
-        .bot-head:hover { transform: scale(1.05); }
-        .bot-ears { position: absolute; top: -10px; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; }
-        .bot-ear { width: 12px; height: 12px; background: #60a5fa; border-radius: 50%; border: 2px solid #fff; }
-        .bot-face { width: 50px; height: 30px; background: rgba(0,0,0,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; position: relative; }
-        .eye { width: 12px; height: 12px; background: white; border-radius: 50%; position: relative; overflow: hidden; box-shadow: 0 0 5px rgba(255,255,255,0.8); }
-        .pupil { width: 5px; height: 5px; background: #0f172a; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-        @keyframes floatBot { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        [data-aos] { visibility: hidden; }
-        body.aos-ready [data-aos] { visibility: visible; }
-    </style>
 </head>
 
-<body class="font-sans antialiased text-slate-800 overflow-x-hidden" id="main-body">
+<body class="font-sans antialiased text-slate-800" id="main-body">
 
     <div id="intro-modal" class="hidden-modal fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/95 backdrop-blur-xl">
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -152,7 +157,7 @@
             
             <div id="step-1" class="modal-step active-step">
                 <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg ring-4 ring-brand-500/30 overflow-hidden p-1">
-                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Logo" class="w-full h-full object-cover rounded-full">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Logo" width="80" height="80" class="w-full h-full object-cover rounded-full" loading="lazy">
                 </div>
                 
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3 tracking-tight">Have a Product Idea?</h2>
@@ -232,7 +237,7 @@
 
     <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white border border-white/40 shadow-2xl flex justify-between items-center px-4 md:px-8 h-20 transition-all duration-500 ease-in-out">
         <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Solutions Logo" width="56" height="56" class="h-14 w-14 rounded-full object-cover shadow-sm">
+            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Solutions Logo" width="56" height="56" class="h-14 w-14 rounded-full object-cover shadow-sm">
             <span class="font-bold text-xl md:text-2xl tracking-tight">
                 <span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span>
             </span>
@@ -289,7 +294,7 @@
                         <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 text-center lg:text-right drop-shadow-lg leading-tight w-full">Launch on <br> <span class="text-brand-300">AppExchange</span></h2>
                         <div class="bg-white/95 backdrop-blur-xl border border-white/20 p-8 md:p-10 rounded-3xl w-full max-w-lg relative z-10 shadow-2xl">
                             <div class="flex items-center gap-5 mb-6">
-                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769585847/Untitled_design_1_vksti6.webp" loading="lazy" alt="Saiful I." width="96" height="96" fetchpriority="high" class="w-24 h-24 rounded-full object-cover border-4 border-brand-500 shadow-md">
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769585847/Untitled_design_1_vksti6.webp" loading="eager" fetchpriority="high" alt="Saiful I." width="96" height="96" class="w-24 h-24 rounded-full object-cover border-4 border-brand-500 shadow-md">
                                 <div><h3 class="text-2xl font-bold text-slate-900">Saiful I.</h3><p class="text-brand-600 font-bold text-base mb-1">Salesforce Architect</p><a href="https://www.linkedin.com/in/saiful-neo" target="_blank" rel="noopener" aria-label="Saiful Islam LinkedIn" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition"><i class="fab fa-linkedin"></i></a></div>
                             </div>
                             <p class="text-slate-700 italic mb-8 text-base leading-relaxed font-medium">"We don't just write code; we navigate the entire ISV lifecycle. Let's get your product listed and generating revenue."</p>
@@ -340,7 +345,7 @@
                 <div class="flex flex-col lg:flex-row items-start gap-16">
                     <div class="lg:w-1/2" data-aos="fade-right">
                         <div class="mb-8"><h3 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600 mb-2">AppExchange Products</h3><div class="h-1.5 w-24 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full"></div></div>
-                        <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769502627/Untitled_design_3_sgiog8.png" loading="lazy" alt="Smart Lookup Data Loader Logo" width="100" height="80" class="h-20 w-auto mb-6 block">
+                        <img src="https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769502627/Untitled_design_3_sgiog8.png" loading="lazy" alt="Smart Lookup Data Loader Logo" width="100" height="80" class="h-20 w-auto mb-6 block">
                         <h2 class="text-4xl font-bold text-slate-900 mb-6">Smart Lookup Data Loader</h2>
                         <p class="text-lg text-slate-700 mb-8 leading-relaxed">Simplify your data migration. Our 100% native tool simplifies CSV imports into Salesforce, supporting upserts and intelligent lookups without leaving the platform.</p>
                         <div class="flex flex-col sm:flex-row gap-4 mb-8">
