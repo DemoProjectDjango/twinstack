@@ -5,126 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TwinStack Insights | Salesforce Tips, Guides & News</title>
     <meta name="description" content="Expert articles on Salesforce data management, AppExchange tools, and cloud consulting from TwinStack Solutions.">
+    <link rel="canonical" href="https://twinstack.net/tsblog">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://res.cloudinary.com">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            500: '#0ea5e9', // Salesforce-ish Blue
-                            600: '#0284c7',
-                            900: '#0c4a6e',
-                        },
-                        dark: {
-                            800: '#1e293b',
-                            900: '#0f172a',
-                        }
+                        brand: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 500: '#0ea5e9', 600: '#0284c7', 900: '#0c4a6e' },
+                        dark: { 800: '#1e293b', 900: '#0f172a' }
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    borderRadius: {
-                        '4xl': '2rem',
-                        '5xl': '3rem',
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    borderRadius: { '4xl': '2rem', '5xl': '3rem' }
                 }
             }
         }
     </script>
 
     <style>
-        /* Shared Styles from Index */
-        body {
-            cursor: none;
-            background-color: #f8fafc;
-            overflow-x: hidden;
-        }
-
-        /* Custom Cursor */
-        .cursor-dot, .cursor-outline {
-            position: fixed; top: 0; left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%; z-index: 9999; pointer-events: none;
-        }
-        .cursor-dot { width: 8px; height: 8px; background-color: #0ea5e9; }
-        .cursor-outline {
-            width: 40px; height: 40px; border: 2px solid #0ea5e9;
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-        }
-        body.hovering .cursor-outline {
-            width: 60px; height: 60px;
-            background-color: rgba(14, 165, 233, 0.1); border-color: transparent;
-        }
-
-        /* Blog Specific Styles */
-        .blog-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
-        }
-        .blog-card img {
-            transition: transform 0.5s ease;
-        }
-        .blog-card:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Active Filter Style */
-        .filter-btn.active {
-            background-color: #0ea5e9;
-            color: white;
-        }
-
-        /* Navbar Transition */
-        #navbar {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Color Shifting Animation for "Stack" */
-        @keyframes colorShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .color-shift-text {
-            /* Gradient: Cyan -> Royal Blue -> Deep Indigo -> Cyan */
-            background: linear-gradient(270deg, #0ea5e9, #2563eb, #4f46e5, #0ea5e9);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-            animation: colorShift 5s ease infinite;
-        }
+        /* Shared Styles */
+        .blog-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1); }
+        .blog-card img { transition: transform 0.5s ease; }
+        .blog-card:hover img { transform: scale(1.05); }
+        .filter-btn.active { background-color: #0ea5e9; color: white; }
+        #navbar { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        @keyframes colorShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .color-shift-text { background: linear-gradient(270deg, #0ea5e9, #2563eb, #4f46e5, #0ea5e9); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: colorShift 5s ease infinite; }
     </style>
 </head>
 <body class="font-sans antialiased text-slate-800">
 
-    <div class="cursor-dot hidden md:block"></div>
-    <div class="cursor-outline hidden md:block"></div>
 
     <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl flex justify-between items-center px-6 lg:px-8 h-20 transition-all duration-300">
         <a href="index.html" class="flex-shrink-0 flex items-center gap-2 interactive-element">
-            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769180623/Black_White_Minimalist_Professional_Initial_Logo_3_p5ccfa.png" alt="TwinStack Logo" class="h-14 w-auto">
-            
+            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_120,f_auto,q_auto/v1769180623/Black_White_Minimalist_Professional_Initial_Logo_3_p5ccfa.png" alt="TwinStack Logo" width="56" height="56" class="h-14 w-auto">
             <span class="font-bold text-2xl tracking-tight">
                 <span class="text-[#343453]">Twin</span><span class="color-shift-text">Stack</span>
             </span>
@@ -134,13 +58,11 @@
             <a href="index.html#services" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Services</a>
             <a href="index.html#products" class="text-slate-600 hover:text-brand-600 font-medium transition interactive-element">Products</a>
             <a href="tsblog.html" class="text-brand-600 font-bold transition interactive-element">Blog</a>
-            <a href="index.html#contact" class="px-5 py-2.5 rounded-full bg-brand-600 text-white font-semibold hover:bg-brand-900 transition shadow-lg hover:shadow-brand-500/30 interactive-element">
-                Contact Us
-            </a>
+            <a href="index.html#contact" class="px-5 py-2.5 rounded-full bg-brand-600 text-white font-semibold hover:bg-brand-900 transition shadow-lg interactive-element">Contact Us</a>
         </div>
 
         <div class="md:hidden flex items-center">
-            <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none interactive-element p-2">
+            <button id="mobile-menu-btn" aria-label="Toggle Menu" class="text-slate-600 hover:text-slate-900 focus:outline-none interactive-element p-2">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
@@ -159,335 +81,286 @@
         </div>
     </div>
 
-    <header class="pt-40 pb-20 bg-slate-900 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-500 rounded-full blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 rounded-full blur-3xl"></div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-500/30 text-brand-100 text-sm font-semibold mb-6">
-                TwinStack Resources
-            </span>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">
-                TwinStack Insights & Updates
-            </h1>
-            <p class="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                Expert guides on Salesforce data management, AppExchange tools, and digital transformation strategies.
-            </p>
-        </div>
-    </header>
-
-    <section class="py-24 bg-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="flex flex-wrap gap-4 mb-12 justify-center text-sm font-medium text-slate-500">
-                <button class="filter-btn active px-4 py-2 rounded-full border border-slate-200 transition hover:border-brand-500 interactive-element" onclick="filterSelection('all')">All Posts</button>
-                <button class="filter-btn px-4 py-2 rounded-full border border-slate-200 transition hover:border-brand-500 interactive-element" onclick="filterSelection('guide')">Guides</button>
-                <button class="filter-btn px-4 py-2 rounded-full border border-slate-200 transition hover:border-brand-500 interactive-element" onclick="filterSelection('productivity')">Productivity</button>
-                <button class="filter-btn px-4 py-2 rounded-full border border-slate-200 transition hover:border-brand-500 interactive-element" onclick="filterSelection('integration')">Integration</button>
-                <button class="filter-btn px-4 py-2 rounded-full border border-slate-200 transition hover:border-brand-500 interactive-element" onclick="filterSelection('tips')">Tips & Tricks</button>
+    <main>
+        <header class="pt-40 pb-20 bg-slate-900 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-20">
+                <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-500 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 rounded-full blur-3xl"></div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Effortless Import" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Guide</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-smart-lookup-intro.html">How to Effortlessly Import Data into Salesforce with Smart Lookup Data Loader</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Walk users through the process of importing data into Salesforce using the tool, highlighting its ease of use and key benefits.
-                        </p>
-                        <a href="blog-smart-lookup-intro.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Manual Work" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Productivity</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-manual-vs-automated.html">Say Goodbye to Manual Data Imports in Salesforce: Smart Lookup Data Loader Makes It Easy</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Compare manual data import processes to using your tool, showing the time saved and reduction in errors.
-                        </p>
-                        <a href="blog-manual-vs-automated.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item tips">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mistakes" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Tips</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-5-common-mistakes.html">5 Common Salesforce Data Import Mistakes and How Smart Lookup Data Loader Solves Them</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Discuss errors like mismatched fields, duplicates, and incorrect lookups, and show how your product can handle these efficiently.
-                        </p>
-                        <a href="blog-5-common-mistakes.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mastery" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Best Practices</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-mastering-data-loading.html">Mastering Data Loading: Best Practices for Using Smart Lookup Data Loader</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Provide users with practical tips to get the most out of the tool, including field mapping, data preparation, and handling errors.
-                        </p>
-                        <a href="blog-mastering-data-loading.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bulk Data" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Ultimate Guide</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-bulk-data-guide.html">The Ultimate Guide to Bulk Data Imports in Salesforce</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Write a comprehensive guide on bulk data imports, explaining the need for efficient data loaders and showcasing your product as a top solution.
-                        </p>
-                        <a href="blog-bulk-data-guide.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item integration">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Integration" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Integration</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-data-integration.html">How to Streamline Data Integration and Imports with Salesforce</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Explain how Smart Lookup Data Loader integrates with Salesforce, making data syncing and imports easier and faster.
-                        </p>
-                        <a href="blog-data-integration.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Automation" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Automation</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-chaos-to-clarity.html">From Chaos to Clarity: Automating Salesforce Data Imports with Smart Lookup Data Loader</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Show how automating data imports helps teams avoid manual mistakes, speed up processes, and maintain cleaner Salesforce records.
-                        </p>
-                        <a href="blog-chaos-to-clarity.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Success Stories" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Case Studies</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-real-stories.html">Real Stories: How Smart Lookup Data Loader Is Helping Salesforce Users</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Feature real-world use cases where customers solved data import issues using your tool. Include testimonials and metrics.
-                        </p>
-                        <a href="blog-real-stories.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Game Changer" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Admin Tools</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-game-changer.html">Why Smart Lookup Data Loader is a Game Changer for Salesforce Admins</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Explain how the product simplifies workflows for admins and saves them hours of manual work.
-                        </p>
-                        <a href="blog-game-changer.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Free Tool" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Free Resources</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-free-tools-roundup.html">Free Salesforce Tools You Should Be Using: Smart Lookup Data Loader</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Compare your product to other free tools available in the Salesforce ecosystem, highlighting its unique benefits and ease of use.
-                        </p>
-                        <a href="blog-free-tools-roundup.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item tips">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Easy Management" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Efficiency</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-manage-imports-easily.html">How to Manage Salesforce Data Imports Without Breaking a Sweat</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Discuss how Smart Lookup Data Loader removes the complexity of traditional data imports and enhances productivity.
-                        </p>
-                        <a href="blog-manage-imports-easily.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Speed" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Speed</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-import-in-minutes.html">How to Import Data into Salesforce in Minutes with Smart Lookup Data Loader</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Highlight how users can quickly and efficiently import large datasets without errors.
-                        </p>
-                        <a href="blog-import-in-minutes.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item integration">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Future Tech" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Trends</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-future-of-data-loading.html">The Future of Salesforce Data Loading: Automation and Smart Lookup Data Loader</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Discuss the rise of automated tools and their role in streamlining data operations, positioning Smart Lookup as a key solution.
-                        </p>
-                        <a href="blog-future-of-data-loading.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item tips">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Error Free" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Troubleshooting</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-avoid-import-errors.html">How Smart Lookup Data Loader Helps Salesforce Users Avoid Import Errors</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Discuss the common import errors in Salesforce and how Smart Lookup Data Loader helps users avoid or fix them easily.
-                        </p>
-                        <a href="blog-avoid-import-errors.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Benefits" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Key Benefits</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-top-benefits.html">Top Benefits of Using Smart Lookup Data Loader for Salesforce Data Imports</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            List the key advantages of your tool, including time-saving, ease of use, and accurate data handling.
-                        </p>
-                        <a href="blog-top-benefits.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Comparison" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Best in Class</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-best-free-tool.html">What Makes Smart Lookup Data Loader the Best Free Data Import Tool for Salesforce?</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Compare it with similar tools, emphasizing your product's strengths, features, and how it stands out in the market.
-                        </p>
-                        <a href="blog-best-free-tool.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Knowledge Base" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Tutorial</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
-                            <a href="blog-import-need-to-know.html">Data Importing in Salesforce: What You Need to Know and How Smart Lookup Data Loader Can Help</a>
-                        </h3>
-                        <p class="text-slate-500 text-sm mb-4 flex-grow">
-                            Dive into the intricacies of data imports in Salesforce, then demonstrate how Smart Lookup Data Loader solves these challenges.
-                        </p>
-                        <a href="blog-import-need-to-know.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
-                    </div>
-                </article>
-
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-500/30 text-brand-100 text-sm font-semibold mb-6">TwinStack Resources</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">TwinStack Insights & Updates</h1>
+                <p class="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">Expert guides on Salesforce data management, AppExchange tools, and digital transformation strategies.</p>
             </div>
-        </div>
-    </section>
+        </header>
+
+        <section class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-wrap gap-4 mb-12 justify-center text-sm font-medium text-slate-500">
+                    <button class="filter-btn active px-4 py-2 rounded-full border border-slate-200 transition hover:border-brand-500 interactive-element" onclick="filterSelection('all')">All Posts</button>
+                    <button class="filter-btn px-4 py-2 rounded-full border border-slate-200 transition hover:border-brand-500 interactive-element" onclick="filterSelection('guide')">Guides</button>
+                    <button class="filter-btn px-4 py-2 rounded-full border border-slate-200 transition hover:border-brand-500 interactive-element" onclick="filterSelection('productivity')">Productivity</button>
+                    <button class="filter-btn px-4 py-2 rounded-full border border-slate-200 transition hover:border-brand-500 interactive-element" onclick="filterSelection('integration')">Integration</button>
+                    <button class="filter-btn px-4 py-2 rounded-full border border-slate-200 transition hover:border-brand-500 interactive-element" onclick="filterSelection('tips')">Tips & Tricks</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=400&q=75" alt="Effortless Import" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Guide</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-smart-lookup-intro.html">How to Effortlessly Import Data into Salesforce with Smart Lookup Data Loader</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Walk users through the process of importing data into Salesforce using the tool, highlighting its ease of use and key benefits.</p>
+                            <a href="blog-smart-lookup-intro.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=400&q=75" alt="Manual Work" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Productivity</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-manual-vs-automated.html">Say Goodbye to Manual Data Imports in Salesforce: Smart Lookup Data Loader Makes It Easy</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Compare manual data import processes to using your tool, showing the time saved and reduction in errors.</p>
+                            <a href="blog-manual-vs-automated.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item tips">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1594322436404-5a0526db4d13?auto=format&fit=crop&w=400&q=75" alt="Mistakes" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Tips</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-5-common-mistakes.html">5 Common Salesforce Data Import Mistakes and How Smart Lookup Data Loader Solves Them</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Discuss errors like mismatched fields, duplicates, and incorrect lookups, and show how your product can handle these efficiently.</p>
+                            <a href="blog-5-common-mistakes.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=400&q=75" alt="Mastery" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Best Practices</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-mastering-data-loading.html">Mastering Data Loading: Best Practices for Using Smart Lookup Data Loader</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Provide users with practical tips to get the most out of the tool, including field mapping, data preparation, and handling errors.</p>
+                            <a href="blog-mastering-data-loading.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=75" alt="Bulk Data" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Ultimate Guide</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-bulk-data-guide.html">The Ultimate Guide to Bulk Data Imports in Salesforce</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Write a comprehensive guide on bulk data imports, explaining the need for efficient data loaders and showcasing your product as a top solution.</p>
+                            <a href="blog-bulk-data-guide.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item integration">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=400&q=75" alt="Integration" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Integration</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-data-integration.html">How to Streamline Data Integration and Imports with Salesforce</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Explain how Smart Lookup Data Loader integrates with Salesforce, making data syncing and imports easier and faster.</p>
+                            <a href="blog-data-integration.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=75" alt="Automation" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Automation</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-chaos-to-clarity.html">From Chaos to Clarity: Automating Salesforce Data Imports with Smart Lookup Data Loader</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Show how automating data imports helps teams avoid manual mistakes, speed up processes, and maintain cleaner Salesforce records.</p>
+                            <a href="blog-chaos-to-clarity.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=400&q=75" alt="Success Stories" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Case Studies</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-real-stories.html">Real Stories: How Smart Lookup Data Loader Is Helping Salesforce Users</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Feature real-world use cases where customers solved data import issues using your tool. Include testimonials and metrics.</p>
+                            <a href="blog-real-stories.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=400&q=75" alt="Game Changer" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Admin Tools</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-game-changer.html">Why Smart Lookup Data Loader is a Game Changer for Salesforce Admins</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Explain how the product simplifies workflows for admins and saves them hours of manual work.</p>
+                            <a href="blog-game-changer.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=75" alt="Free Tool" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Free Resources</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-free-tools-roundup.html">Free Salesforce Tools You Should Be Using: Smart Lookup Data Loader</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Compare your product to other free tools available in the Salesforce ecosystem, highlighting its unique benefits and ease of use.</p>
+                            <a href="blog-free-tools-roundup.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item tips">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=75" alt="Easy Management" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Efficiency</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-manage-imports-easily.html">How to Manage Salesforce Data Imports Without Breaking a Sweat</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Discuss how Smart Lookup Data Loader removes the complexity of traditional data imports and enhances productivity.</p>
+                            <a href="blog-manage-imports-easily.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=400&q=75" alt="Speed" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Speed</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-import-in-minutes.html">How to Import Data into Salesforce in Minutes with Smart Lookup Data Loader</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Highlight how users can quickly and efficiently import large datasets without errors.</p>
+                            <a href="blog-import-in-minutes.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item integration">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=400&q=75" alt="Future Tech" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Trends</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-future-of-data-loading.html">The Future of Salesforce Data Loading: Automation and Smart Lookup Data Loader</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Discuss the rise of automated tools and their role in streamlining data operations, positioning Smart Lookup as a key solution.</p>
+                            <a href="blog-future-of-data-loading.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item tips">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?auto=format&fit=crop&w=400&q=75" alt="Error Free" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Troubleshooting</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-avoid-import-errors.html">How Smart Lookup Data Loader Helps Salesforce Users Avoid Import Errors</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Discuss the common import errors in Salesforce and how Smart Lookup Data Loader helps users avoid or fix them easily.</p>
+                            <a href="blog-avoid-import-errors.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item productivity">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=75" alt="Benefits" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Key Benefits</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-top-benefits.html">Top Benefits of Using Smart Lookup Data Loader for Salesforce Data Imports</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">List the key advantages of your tool, including time-saving, ease of use, and accurate data handling.</p>
+                            <a href="blog-top-benefits.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&w=400&q=75" alt="Comparison" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Best in Class</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-best-free-tool.html">What Makes Smart Lookup Data Loader the Best Free Data Import Tool for Salesforce?</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Compare it with similar tools, emphasizing your product's strengths, features, and how it stands out in the market.</p>
+                            <a href="blog-best-free-tool.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-full interactive-element filter-item guide">
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=400&q=75" alt="Knowledge Base" width="400" height="224" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur text-brand-600 text-xs font-bold px-3 py-1 rounded-full">Tutorial</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-slate-900 mb-3 hover:text-brand-600 transition">
+                                <a href="blog-import-need-to-know.html">Data Importing in Salesforce: What You Need to Know and How Smart Lookup Data Loader Can Help</a>
+                            </h3>
+                            <p class="text-slate-500 text-sm mb-4 flex-grow">Dive into the intricacies of data imports in Salesforce, then demonstrate how Smart Lookup Data Loader solves these challenges.</p>
+                            <a href="blog-import-need-to-know.html" class="text-brand-600 font-semibold text-sm flex items-center gap-2 mt-auto">Read More <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="relative bg-slate-900 text-slate-300 py-12 border-t border-slate-800 overflow-hidden">
-        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                
                 <div class="col-span-1 md:col-span-2 mt-4">
-                    
                     <div class="relative w-fit">
-                        
                         <div class="absolute -top-6 -bottom-6 -right-12 left-[-100vw] bg-white rounded-r-[50px] z-0"></div>
-
                         <div class="relative z-10">
                             <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl interactive-element">
-                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769180623/Black_White_Minimalist_Professional_Initial_Logo_3_p5ccfa.png" alt="TwinStack Logo" class="h-12 w-auto">
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_100,f_auto,q_auto/v1769180623/Black_White_Minimalist_Professional_Initial_Logo_3_p5ccfa.png" alt="TwinStack Logo" width="48" height="48" class="h-12 w-auto">
                                 <span><span class="text-[#343453]">Twin</span><span class="color-shift-text">Stack</span></span>
                             </a>
-                            <p class="text-sm text-slate-600 max-w-xs font-medium">
-                                Empowering charities and businesses with Salesforce excellence since 2018.
-                            </p>
+                            <p class="text-sm text-slate-600 max-w-xs font-medium">Empowering charities and businesses with Salesforce excellence since 2018.</p>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="mt-4 md:mt-0">
@@ -503,15 +376,9 @@
                 <div class="mt-4 md:mt-0">
                     <h4 class="text-white font-semibold mb-4">Connect</h4>
                     <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element">
-                            <i class="fab fa-github"></i>
-                        </a>
+                        <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white interactive-element"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -526,79 +393,49 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script>
-        // Init AOS
-        AOS.init({ once: true, offset: 100, duration: 800 });
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ once: true, offset: 50, duration: 800 });
 
-        // --- MOUSE CURSOR ---
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        
-        if (window.matchMedia("(min-width: 768px)").matches) {
-            window.addEventListener('mousemove', (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
-                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-            });
-            
-            document.querySelectorAll('.interactive-element, a, button, input').forEach(el => {
-                el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-                el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-            });
-        }
+    
 
-        // --- FLOATING MENU LOGIC ---
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.remove('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
-                navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
-            } else {
-                navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
-                navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
-            }
+            // Navbar Logic
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
+                    navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
+                } else {
+                    navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'bg-white/80');
+                    navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'bg-white/95');
+                }
+            });
+
+            // Mobile Menu Logic
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const toggleMenu = () => mobileMenu.classList.toggle('translate-x-full');
+            menuBtn.addEventListener('click', toggleMenu);
+            closeBtn.addEventListener('click', toggleMenu);
         });
 
-        // --- MOBILE MENU ---
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const closeBtn = document.getElementById('close-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        const toggleMenu = () => mobileMenu.classList.toggle('translate-x-full');
-        menuBtn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-
-        // --- BLOG FILTERING ---
+        // Blog Filtering
         function filterSelection(c) {
             const x = document.getElementsByClassName("filter-item");
-            if (c == "all") c = "";
+            const targetCategory = (c === "all") ? "" : c;
             for (let i = 0; i < x.length; i++) {
-                // Hide all first
                 x[i].style.display = "none";
-                // Show if matches
-                if (x[i].className.indexOf(c) > -1) {
-                    x[i].style.display = "flex"; // Restore flex layout
-                    // Re-trigger AOS for filtered items
+                if (x[i].className.indexOf(targetCategory) > -1) {
+                    x[i].style.display = "flex";
                     x[i].classList.remove('aos-animate');
                     setTimeout(() => x[i].classList.add('aos-animate'), 50);
                 }
             }
-            
-            // Update active button state
-            const btns = document.getElementsByClassName("filter-btn");
-            for (let i = 0; i < btns.length; i++) {
-                btns[i].classList.remove("active");
-                // The current clicked button logic:
-                // Since this function is called inline, we can't use 'this' easily in loop
-                // But we can match text content or assume the clicked element passed itself?
-                // Simpler approach: update UI based on matching onclick attribute or add 'this' to arguments
-            }
-            // A quick fix for active class without 'this':
-            // event.target will work because it's triggered by click
-            event.target.classList.add("active");
+            const btns = document.querySelectorAll(".filter-btn");
+            btns.forEach(btn => btn.classList.remove("active"));
+            if (event) event.target.classList.add("active");
         }
     </script>
 </body>
