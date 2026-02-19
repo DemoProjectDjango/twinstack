@@ -73,6 +73,8 @@
       gtag('js', new Date());
       gtag('config', 'G-XXXXXXXXXX');
     </script>
+    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script type="application/ld+json">
     [
@@ -97,6 +99,11 @@
               "@type": "Question",
               "name": "What is the Smart Lookup Data Loader?",
               "acceptedAnswer": { "@type": "Answer", "text": "It is our native AppExchange product that allows you to upload CSVs and map fields intelligently, including resolving lookups automatically, without leaving Salesforce." }
+            },
+            {
+              "@type": "Question",
+              "name": "Can you help migrate data from HubSpot to Salesforce?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. We provide end-to-end data migration services, ensuring your contacts, accounts, and deal history are transferred accurately with zero data loss." }
             }
           ]
         }
@@ -159,6 +166,7 @@
                 
                 <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DdN00000roILE" method="POST" id="leadForm">
                     
+                    <input type="hidden" name="captcha_settings" value='{"keyname":"SalesforceRecaptcaha","fallback":"true","orgId":"00DdN00000roILE","ts":""}'>
                     <input type=hidden name="oid" value="00DdN00000roILE">
                     <input type=hidden name="retURL" id="retURL_field">
                     <input type="hidden" name="lead_source" value="TwinStack">
@@ -194,6 +202,8 @@
                         <label for="description" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">Message</label>
                         <textarea name="description" id="description" rows="2" class="w-full px-4 py-2 rounded-lg glass-input text-sm resize-none" placeholder="Briefly describe your idea..." oninput="checkForm()"></textarea>
                     </div>
+
+                    <div class="g-recaptcha mb-4 flex justify-center" data-sitekey="6LdP1XAsAAAAALy0cqFTOSSp1hsaMuqB19CTezGp" data-theme="dark"></div>
 
                     <div class="flex gap-4 items-center">
                         <button type="button" onclick="closeIntro()" class="flex-1 py-3 bg-white/5 hover:bg-white/10 text-slate-300 font-semibold rounded-lg transition text-sm">Skip</button>
@@ -576,6 +586,7 @@
             }
         }
 
+        // Salesforce reCAPTCHA Validation Timestamp
         function timestamp() { 
             var response = document.getElementById("g-recaptcha-response"); 
             if (response == null || response.value.trim() == "") {
@@ -697,5 +708,3 @@
     </script>
 </body>
 </html>
-
-
