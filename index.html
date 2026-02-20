@@ -1,108 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth w-full">
+<html lang="en" class="scroll-smooth overflow-x-hidden w-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-    
     <title>TwinStack Solutions | Premier Salesforce PDO Partner</title>
     <meta name="description" content="We build 5-star AppExchange products. TwinStack Solutions is your dedicated Product Development Outsourcer (PDO) for Salesforce.">
-    <link rel="canonical" href="https://twinstack.net/">
     <meta name="theme-color" content="#0f172a">
     
-    <meta property="og:title" content="TwinStack Solutions | Salesforce AppExchange Experts">
-    <meta property="og:description" content="We build and launch Salesforce AppExchange products—from architecture to security review.">
-    <meta property="og:url" content="https://twinstack.net/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://twinstack.net/assets/og-home.png">
-
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/du42kbmmn/image/upload/w_32,h_32,c_fill,r_max,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png">
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/du42kbmmn/image/upload/v1769586320/Black_White_Minimalist_Professional_Initial_Logo_3_tlovgh.webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://res.cloudinary.com">
     
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
-        .hero-section { position: relative; background-color: #0f172a; padding-top: 8rem; padding-bottom: 10rem; overflow: hidden; }
-        .hero-bg-gradient {
-            position: absolute; inset: 0;
-            background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
-        }
-        .font-loaded body { font-family: 'Inter', sans-serif; }
-        img { max-width: 100%; height: auto; }
-        
-        /* Helpers */
-        .hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
-        #intro-modal { transition: opacity 0.5s ease-in-out, visibility 0.5s; }
-        .modal-step { transition: opacity 0.4s ease, transform 0.4s ease; }
-        .hidden-step { display: none; opacity: 0; transform: translateX(20px); }
-        .active-step { display: block; opacity: 1; transform: translateX(0); }
-        
-        .glass-input { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; transition: all 0.3s; }
-        .glass-input:focus { background: rgba(255, 255, 255, 0.1); border-color: #0ea5e9; outline: none; }
-        
-        /* Chatbot */
-        .bot-container { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 70px; height: 70px; cursor: pointer; animation: floatBot 3s ease-in-out infinite; }
-        .bot-head { width: 100%; height: 100%; background: linear-gradient(135deg, #0ea5e9, #2563eb); border-radius: 24px; position: relative; box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.6); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; }
-        .bot-ears { position: absolute; top: -10px; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; }
-        .bot-ear { width: 12px; height: 12px; background: #60a5fa; border-radius: 50%; border: 2px solid #fff; }
-        .bot-face { width: 50px; height: 30px; background: rgba(0,0,0,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .eye { width: 12px; height: 12px; background: white; border-radius: 50%; position: relative; overflow: hidden; }
-        .pupil { width: 5px; height: 5px; background: #0f172a; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-        @keyframes floatBot { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        [data-aos] { visibility: hidden; }
-        body.aos-ready [data-aos] { visibility: visible; }
-    </style>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </noscript>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-
-    <script type="application/ld+json">
-    [
-        {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "TwinStack Solutions",
-          "url": "https://twinstack.net/",
-          "logo": "https://res.cloudinary.com/du42kbmmn/image/upload/f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png",
-          "sameAs": ["https://www.linkedin.com/company/twinforce-solutions"]
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Do you offer support for custom Salesforce implementations?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes, absolutely. We specialize in tailoring Salesforce to your unique business logic, including custom Apex, LWC, and flow automation." }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the Smart Lookup Data Loader?",
-              "acceptedAnswer": { "@type": "Answer", "text": "It is our native AppExchange product that allows you to upload CSVs and map fields intelligently, including resolving lookups automatically, without leaving Salesforce." }
-            }
-          ]
-        }
-    ]
-    </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -114,7 +26,8 @@
                     },
                     animation: {
                         'blob': 'blob 7s infinite',
-                        'fade-in': 'fadeIn 0.5s ease-out forwards'
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
                     },
                     keyframes: {
                         blob: {
@@ -132,89 +45,201 @@
             }
         }
     </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f8fafc; color: #1e293b; }
+        .hero-bg-gradient {
+            position: absolute; inset: 0;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+        }
+        
+        /* --- AESTHETIC SATIN RIBBON SLIDER --- */
+        .slider-track-container {
+            position: relative;
+            width: 100%;
+            height: 70px;
+            background: transparent;
+            border: none;
+            overflow: visible;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            touch-action: none;
+            user-select: none;
+        }
+
+        /* Shared Ribbon Style (Solid Satin) */
+        .ribbon-style {
+            height: 12px;
+            background: linear-gradient(to bottom, #991b1b 0%, #ef4444 30%, #fca5a5 50%, #ef4444 70%, #991b1b 100%);
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* 1. Main Whole Ribbon */
+        .ribbon-line {
+            left: 0;
+            right: 0;
+            z-index: 1;
+            transition: opacity 0.2s;
+        }
+        
+        /* 2. Hidden Parts for Animation */
+        .ribbon-left-part, .ribbon-right-part {
+            width: 50%;
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
+            transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease-out;
+        }
+        .ribbon-left-part { left: 0; transform-origin: left center; border-top-right-radius: 0; border-bottom-right-radius: 0; }
+        .ribbon-right-part { right: 0; transform-origin: right center; border-top-left-radius: 0; border-bottom-left-radius: 0; }
+
+        /* Animation States */
+        .cut-anim .ribbon-line { opacity: 0; } 
+        
+        .cut-anim .ribbon-left-part {
+            opacity: 0;
+            transform: translateY(-50%) translateX(-120px) rotate(-5deg); /* Soft slide left */
+        }
+        .cut-anim .ribbon-right-part {
+            opacity: 0;
+            transform: translateY(-50%) translateX(120px) rotate(5deg); /* Soft slide right */
+        }
+        
+        .ribbon-ready .ribbon-left-part, 
+        .ribbon-ready .ribbon-right-part {
+            opacity: 1;
+        }
+
+        /* Soft Flash Effect */
+        .cut-flash {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 50px; height: 50px; background: white; border-radius: 50%;
+            opacity: 0; pointer-events: none; z-index: 20; filter: blur(12px);
+        }
+        .cut-anim .cut-flash { animation: softFlash 0.6s ease-out forwards; }
+        @keyframes softFlash { 0% { opacity: 0.8; scale: 0.5; } 100% { opacity: 0; scale: 2.5; } }
+
+        /* The Slider Handle (Logo) */
+        .slider-handle {
+            position: absolute;
+            left: 0;
+            width: 64px;
+            height: 64px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 0 0 4px rgba(255,255,255,0.6);
+            z-index: 10;
+            cursor: grab;
+            /* Important: We handle transform in JS to prevent jumping */
+            transition: transform 0.1s linear; 
+        }
+        .slider-handle:active { cursor: grabbing; transform: scale(1.05); }
+        
+        /* Success State Class (Visuals only, positioning handled in JS) */
+        .snip-action { 
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid #fff;
+        }
+
+        .slider-text {
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            z-index: 5;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            padding-left: 60px;
+        }
+
+        /* Intro Splash Modal */
+        #intro-modal { transition: opacity 1s ease-in-out, visibility 1s; }
+        #intro-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        /* Chatbot CSS */
+        .bot-container { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 70px; height: 70px; cursor: pointer; animation: floatBot 3s ease-in-out infinite; }
+        .bot-head { width: 100%; height: 100%; background: linear-gradient(135deg, #0ea5e9, #2563eb); border-radius: 24px; position: relative; box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.6); border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s; display: flex; align-items: center; justify-content: center; }
+        .bot-head:hover { transform: scale(1.05); }
+        .bot-ears { position: absolute; top: -10px; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; }
+        .bot-ear { width: 12px; height: 12px; background: #60a5fa; border-radius: 50%; border: 2px solid #fff; }
+        .bot-face { width: 50px; height: 30px; background: rgba(0,0,0,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; position: relative; }
+        .eye { width: 12px; height: 12px; background: white; border-radius: 50%; position: relative; overflow: hidden; box-shadow: 0 0 5px rgba(255,255,255,0.8); }
+        .pupil { width: 5px; height: 5px; background: #0f172a; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        @keyframes floatBot { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* Scrollbar Hide */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        [data-aos] { visibility: hidden; }
+        body.aos-ready [data-aos] { visibility: visible; }
+    </style>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+
+    <script>document.documentElement.className += ' no-js'; document.addEventListener('DOMContentLoaded', ()=> document.documentElement.classList.remove('no-js'));</script>
+    <style>.no-js [data-aos] { visibility: visible !important; opacity: 1 !important; transform: none !important; }</style>
 </head>
 
-<body class="font-sans antialiased text-slate-800" id="main-body">
+<body class="font-sans antialiased text-slate-800 overflow-hidden" id="main-body">
 
-    <div id="intro-modal" class="hidden-modal fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/95 backdrop-blur-xl">
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div id="intro-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/95 backdrop-blur-xl">
+        <div class="absolute inset-0 overflow-hidden">
             <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
             <div class="absolute top-0 -right-4 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
             <div class="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
         
-        <div class="relative z-10 max-w-lg w-full mx-4 p-8 bg-slate-900/80 border border-white/10 rounded-3xl shadow-2xl backdrop-blur-md text-center overflow-hidden">
-            <div id="step-1" class="modal-step active-step">
-                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg ring-4 ring-brand-500/30 overflow-hidden p-1">
-                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_150,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Logo" width="80" height="80" class="w-full h-full object-cover rounded-full" loading="lazy">
-                </div>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3 tracking-tight">Have a Product Idea?</h2>
-                <p class="text-base md:text-lg text-slate-300 mb-8 leading-relaxed max-w-sm mx-auto">We are <strong>AppExchange Experts</strong> ready to architect your vision. Let's start building together.</p>
-                <button onclick="goToForm()" class="w-full py-4 bg-gradient-to-r from-brand-600 to-blue-600 hover:from-brand-500 hover:to-blue-500 text-white font-bold text-lg rounded-xl shadow-lg transition transform hover:-translate-y-1">Continue <i class="fas fa-arrow-right ml-2"></i></button>
-                <button onclick="closeIntro()" class="mt-4 text-slate-400 hover:text-white text-sm font-medium transition duration-300">Skip</button>
+        <div class="relative z-10 max-w-lg w-full mx-4 p-10 bg-white/5 border border-white/10 rounded-3xl shadow-2xl backdrop-blur-md text-center">
+            <div class="w-16 h-16 bg-brand-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-inner ring-1 ring-brand-500/50">
+                <i class="fas fa-rocket text-3xl text-brand-400"></i>
             </div>
             
-            <div id="step-2" class="modal-step hidden-step text-left">
-                <h3 class="text-2xl font-bold text-white mb-4 text-center">Tell us about you</h3>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3 tracking-tight">Have a Product Idea?</h2>
+            <p class="text-base md:text-lg text-slate-300 mb-12 leading-relaxed max-w-sm mx-auto">
+                We are <strong>AppExchange Experts</strong> ready to architect your vision.
+            </p>
+            
+            <div class="slider-track-container" id="ribbon-slider">
+                <div class="ribbon-line ribbon-style" id="ribbon-bg"></div>
+                <div class="ribbon-left-part ribbon-style"></div>
+                <div class="ribbon-right-part ribbon-style"></div>
+                <div class="cut-flash"></div>
                 
-                <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DdN00000roILE" method="POST" id="leadForm">
-                    
-                    <input type=hidden name="oid" value="00DdN00000roILE">
-                    <input type=hidden name="retURL" id="retURL_field">
-                    <input type="hidden" name="lead_source" value="TwinStack">
-
-                    <div class="grid grid-cols-2 gap-4 mb-3">
-                        <div>
-                            <label for="first_name" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">First Name</label>
-                            <input id="first_name" name="first_name" type="text" class="w-full px-4 py-2 rounded-lg glass-input text-sm" placeholder="John" maxlength="40" required oninput="checkForm()">
-                        </div>
-                        <div>
-                            <label for="last_name" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">Last Name</label>
-                            <input id="last_name" name="last_name" type="text" class="w-full px-4 py-2 rounded-lg glass-input text-sm" placeholder="Doe" maxlength="80" required oninput="checkForm()">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4 mb-3">
-                        <div>
-                            <label for="email" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">Email</label>
-                            <input id="email" name="email" type="email" class="w-full px-4 py-2 rounded-lg glass-input text-sm" placeholder="john@company.com" maxlength="80" required oninput="checkForm()">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">Phone</label>
-                            <input id="phone" name="phone" type="text" class="w-full px-4 py-2 rounded-lg glass-input text-sm" placeholder="+1 555 000 0000" maxlength="40">
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="company" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">Company</label>
-                        <input id="company" name="company" type="text" class="w-full px-4 py-2 rounded-lg glass-input text-sm" placeholder="Company Name" maxlength="40" oninput="checkForm()">
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="description" class="block text-xs font-semibold text-slate-400 mb-1 ml-1">Message</label>
-                        <textarea name="description" id="description" rows="2" class="w-full px-4 py-2 rounded-lg glass-input text-sm resize-none" placeholder="Briefly describe your idea..." oninput="checkForm()"></textarea>
-                    </div>
-
-                    <div class="flex gap-4 items-center">
-                        <button type="button" onclick="closeIntro()" class="flex-1 py-3 bg-white/5 hover:bg-white/10 text-slate-300 font-semibold rounded-lg transition text-sm">Skip</button>
-                        <button type="submit" id="submitBtn" disabled class="flex-[2] py-3 bg-brand-600 text-white font-bold rounded-lg shadow-lg transition opacity-50 cursor-not-allowed">Continue</button>
-                    </div>
-                </form>
+                <div class="slider-text" id="slider-text">Slide to Explore <i class="fas fa-chevron-right ml-1 text-xs"></i></div>
+                
+                <div class="slider-handle" id="slider-handle">
+                    <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769586320/Black_White_Minimalist_Professional_Initial_Logo_3_tlovgh.webp" alt="TS Logo" class="w-10 h-10 object-contain pointer-events-none select-none">
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="success-toast" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[300] bg-white/95 backdrop-blur-xl px-6 py-5 rounded-2xl shadow-2xl border border-green-500/20 flex flex-row items-center gap-5 w-full max-w-xl transform transition-all duration-500 scale-90 opacity-0 hidden">
-        <div class="shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl shadow-inner ring-2 ring-green-50"><i class="fas fa-check"></i></div>
-        <div class="flex-1 text-left"><h4 class="text-lg font-bold text-slate-900 mb-0.5">Submission Successful</h4><p class="text-slate-600 text-sm leading-tight">Thank you. We will respond to your inquiry shortly.</p></div>
-        <button onclick="closeToast()" aria-label="Close Notification" class="shrink-0 text-slate-400 hover:text-slate-600 p-2 transition rounded-full hover:bg-slate-100"><i class="fas fa-times text-lg"></i></button>
-    </div>
-
-    <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white border border-white/40 shadow-2xl flex justify-between items-center px-4 md:px-8 h-20 transition-all duration-500 ease-in-out">
+    <nav id="navbar" class="fixed z-50 top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl flex justify-between items-center px-4 md:px-8 h-20 transition-all duration-500 ease-in-out">
         <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_100,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" alt="TwinStack Solutions Logo" width="56" height="56" class="h-14 w-14 rounded-full object-cover shadow-sm">
-            <span class="font-bold text-xl md:text-2xl tracking-tight"><span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span></span>
+            <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769586320/Black_White_Minimalist_Professional_Initial_Logo_3_tlovgh.webp" alt="TwinStack Solutions Logo" width="56" height="56" class="h-10 md:h-14 w-auto">
+            <span class="font-bold text-xl md:text-2xl tracking-tight">
+                <span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span>
+            </span>
         </div>
+
         <div class="hidden md:flex items-center gap-8 ml-auto">
             <a href="#pdo-journey" class="text-slate-700 hover:text-brand-600 font-medium transition">Expertise</a>
             <a href="#products" class="text-slate-700 hover:text-brand-600 font-medium transition">Products</a>
@@ -222,89 +247,137 @@
             <a href="#resources" class="text-slate-700 hover:text-brand-600 font-medium transition">Resources</a>
             <a href="#contact" class="px-6 py-2.5 rounded-full bg-brand-600 text-white font-semibold hover:bg-brand-900 transition shadow-lg hover:shadow-brand-500/30">Contact Us</a>
         </div>
+        
         <div class="md:hidden flex items-center">
-            <button id="mobile-menu-btn" aria-label="Open mobile menu" class="text-slate-700 hover:text-slate-900 focus:outline-none p-2"><i class="fas fa-bars text-2xl"></i></button>
+            <button id="mobile-menu-btn" aria-label="Open mobile menu" class="text-slate-700 hover:text-slate-900 focus:outline-none p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
     </nav>
 
     <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white/95 backdrop-blur-xl shadow-2xl z-[60] flex flex-col p-6 transition-transform duration-300 translate-x-full md:hidden">
-        <div class="flex justify-end mb-8"><button id="close-menu-btn" aria-label="Close mobile menu" class="text-slate-500 hover:text-slate-900 p-2"><i class="fas fa-times text-2xl"></i></button></div>
-        <div class="flex flex-col space-y-4">
-            <a href="#pdo-journey" class="block text-lg font-medium text-slate-800 hover:text-brand-600 py-4 border-b border-slate-100">Expertise</a>
-            <a href="#products" class="block text-lg font-medium text-slate-800 hover:text-brand-600 py-4 border-b border-slate-100">Products</a>
-            <a href="#case-studies" class="block text-lg font-medium text-slate-800 hover:text-brand-600 py-4 border-b border-slate-100">Case Studies</a>
-            <a href="#about" class="block text-lg font-medium text-slate-800 hover:text-brand-600 py-4 border-b border-slate-100">About</a>
-            <a href="#contact" class="block px-5 py-4 mt-4 rounded-lg bg-brand-600 text-white text-center font-semibold">Contact Us</a>
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-btn" aria-label="Close mobile menu" class="text-slate-500 hover:text-slate-900">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+            <a href="#pdo-journey" class="text-lg font-medium text-slate-800 hover:text-brand-600">Expertise</a>
+            <a href="#products" class="text-lg font-medium text-slate-800 hover:text-brand-600">Products</a>
+            <a href="#case-studies" class="text-lg font-medium text-slate-800 hover:text-brand-600">Case Studies</a>
+            <a href="#about" class="text-lg font-medium text-slate-800 hover:text-brand-600">About</a>
+            <a href="#contact" class="px-5 py-3 rounded-lg bg-brand-600 text-white text-center font-semibold">Contact Us</a>
         </div>
     </div>
 
     <main>
-        <section class="hero-section text-white">
-            <div class="hero-bg-gradient"></div>
+        <section class="hero-bg-gradient pt-32 pb-32 relative overflow-hidden bg-slate-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    
                     <div data-aos="fade-right" data-aos-duration="800" class="text-center lg:text-left flex flex-col items-center lg:items-start">
-                        <div class="inline-block px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-500/30 text-white text-sm font-semibold mb-8"><i class="fas fa-rocket mr-2 text-brand-400"></i> Premier Salesforce PDO Partner</div>
-                        <h1 class="text-4xl sm:text-5xl lg:text-7xl mb-8 text-white font-extrabold leading-tight text-center lg:text-left">Build your <br><span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-indigo-500">Salesforce product with us</span></h1>
-                        <p class="text-lg lg:text-2xl text-white font-light leading-relaxed mb-10 max-w-xl opacity-90 mx-auto lg:mx-0">Turn your concept into a 5-Star AppExchange Solution. We architect, build, and pass Security Review for B2B ISV partners.</p>
+                        <div class="inline-block px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-500/30 text-white text-sm font-semibold mb-8">
+                            <i class="fas fa-rocket mr-2 text-brand-400"></i> Premier Salesforce PDO Partner
+                        </div>
                         
-                        <div class="flex flex-col sm:flex-row gap-6 mb-12 w-full justify-center lg:justify-start items-center">
-                            <a href="#products" class="flex items-center justify-center gap-2 h-14 px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-base shadow-xl shadow-brand-500/20 transition transform hover:-translate-y-1 w-full sm:w-auto min-w-[200px]"><i class="fas fa-box-open"></i> Explore Products</a>
-                            
-                            <a href="https://appexchange.salesforce.com/appxConsultingListingDetail?listingId=a0NHu00000ozjVfMAI" target="_blank" rel="noopener" class="relative group flex flex-col items-center justify-center leading-tight h-14 px-8 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white font-semibold text-base transition w-full sm:w-auto min-w-[200px]">
-                                <div class="absolute -top-3 -right-3 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 z-10">
-                                    <i class="fab fa-salesforce text-2xl text-[#00a1e0]"></i>
-                                </div>
-                                <span class="tracking-wide">Salesforce Partner</span>
-                                <span class="flex text-yellow-400 text-xs gap-0.5 mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        <h1 class="text-4xl sm:text-5xl lg:text-7xl mb-8 text-white font-extrabold leading-tight text-center lg:text-left">
+                            Build your <br>
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-indigo-500">Salesforce product with us</span>
+                        </h1>
+                        
+                        <p class="text-lg lg:text-2xl text-white font-light leading-relaxed mb-10 max-w-xl opacity-90 mx-auto lg:mx-0">
+                            Turn your concept into a 5-Star AppExchange Solution. We architect, build, and pass Security Review for B2B ISV partners.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-5 mb-12 w-full justify-center lg:justify-start">
+                            <a href="#products" class="px-8 py-3 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-bold text-base shadow-xl shadow-brand-500/20 transition transform hover:-translate-y-1 text-center flex items-center justify-center gap-2">
+                                <i class="fas fa-box-open"></i> Explore Products
+                            </a>
+                            <a href="https://appexchange.salesforce.com/appxConsultingListingDetail?listingId=a0NHu00000ozjVfMAI" target="_blank" rel="noopener" class="px-8 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white font-semibold text-base transition text-center flex flex-col items-center justify-center leading-tight">
+                                Salesforce Partner 
+                                <span class="flex text-yellow-400 text-xs gap-0.5 mt-1">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </span>
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="relative flex flex-col items-center lg:items-end" data-aos="fade-left" data-aos-delay="100">
-                        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 text-center lg:text-right drop-shadow-lg leading-tight w-full">Launch on <br> <span class="text-brand-300">AppExchange</span></h2>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 text-center lg:text-right drop-shadow-lg leading-tight w-full">
+                            Launch on <br> <span class="text-brand-300">AppExchange</span>
+                        </h2>
+
                         <div class="bg-white/95 backdrop-blur-xl border border-white/20 p-8 md:p-10 rounded-3xl w-full max-w-lg relative z-10 shadow-2xl">
                             <div class="flex items-center gap-5 mb-6">
-                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_400,h_400,c_thumb,g_face,f_auto,q_auto/v1769585847/Untitled_design_1_vksti6.webp" width="96" height="96" loading="eager" fetchpriority="high" alt="Saiful I." class="w-24 h-24 rounded-full object-cover border-4 border-brand-500 shadow-md">
-                                <div class="text-slate-900"><h3 class="text-2xl font-bold">Saiful I.</h3><p class="text-brand-600 font-bold text-base mb-1">Salesforce Architect</p><a href="https://www.linkedin.com/in/saiful-neo" target="_blank" rel="noopener" aria-label="Saiful Islam LinkedIn" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition"><i class="fab fa-linkedin"></i></a></div>
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769585847/Untitled_design_1_vksti6.webp" alt="Saiful I." width="96" height="96" fetchpriority="high" class="w-24 h-24 rounded-full object-cover border-4 border-brand-500 shadow-md">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900">Saiful I.</h3>
+                                    <p class="text-brand-600 font-bold text-base mb-1">Salesforce Architect</p>
+                                    <a href="https://www.linkedin.com/in/saiful-neo" target="_blank" rel="noopener" aria-label="Saiful Islam LinkedIn" class="text-[#0077b5] text-2xl hover:scale-110 inline-block transition">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </div>
                             </div>
-                            <p class="text-slate-700 italic mb-8 text-base leading-relaxed font-medium">"We don't just write code; we navigate the entire ISV lifecycle. Let's get your product listed and generating revenue."</p>
-                            <a href="https://calendar.app.google/HP3LiuNFisCt6xLo6" id="bookCallLink" target="_blank" rel="noopener" class="w-full px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg text-center transition shadow-lg flex items-center justify-center gap-3"><i class="far fa-calendar-alt"></i> Book a FREE Call</a>
+                            <p class="text-slate-700 italic mb-8 text-base leading-relaxed font-medium">
+                                "We don't just write code; we navigate the entire ISV lifecycle. Let's get your product listed and generating revenue."
+                            </p>
+                            
+                            <a href="https://calendar.app.google/HP3LiuNFisCt6xLo6" target="_blank" rel="noopener" class="w-full px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg text-center transition shadow-lg flex items-center justify-center gap-3">
+                                <i class="far fa-calendar-alt"></i> Book a Consult
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="absolute bottom-0 w-full leading-none z-10"><svg class="block w-full h-24 text-slate-50" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="currentColor" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1248,320,1152,320,1056,320C960,320,864,320,768,320C672,320,576,320,480,320C384,320,288,320,192,320C96,320,48,320,0,320Z"></path></svg></div>
+            
+            <div class="absolute bottom-0 w-full leading-none z-10">
+                <svg class="block w-full h-24 text-slate-50" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="currentColor" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1248,320,1152,320,1056,320C960,320,864,320,768,320C672,320,576,320,480,320C384,320,288,320,192,320C96,320,48,320,0,320Z"></path>
+                </svg>
+            </div>
         </section>
 
         <section id="pdo-journey" class="py-24 bg-slate-50 relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-16" data-aos="fade-up">
                     <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">The PDO Blueprint</h2>
-                    <h3 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Your Path to the AppExchange</h3>
-                    <p class="text-slate-600 max-w-2xl mx-auto text-lg">We handle the complexities of the Salesforce ecosystem so you can focus on your business vision.</p>
+                    <h4 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Your Path to the AppExchange</h4>
+                    <p class="text-slate-600 max-w-2xl mx-auto text-lg">
+                        We handle the complexities of the Salesforce ecosystem so you can focus on your business vision.
+                    </p>
                 </div>
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" data-aos="fade-up">
                     <div class="space-y-4">
                         <div class="pdo-step group cursor-pointer p-6 rounded-2xl border-l-4 border-slate-200 hover:border-brand-500 bg-white hover:shadow-lg transition-all duration-300" onmouseenter="updateBlueprint(0)">
-                            <h4 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">1. Strategy & Architecture</h4><p class="text-slate-500 text-sm mt-2">Feasibility analysis and scalable data modeling.</p>
+                            <h5 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">1. Strategy & Architecture</h5>
+                            <p class="text-slate-500 text-sm mt-2">Feasibility analysis and scalable data modeling.</p>
                         </div>
                         <div class="pdo-step group cursor-pointer p-6 rounded-2xl border-l-4 border-slate-200 hover:border-brand-500 bg-white hover:shadow-lg transition-all duration-300" onmouseenter="updateBlueprint(1)">
-                            <h4 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">2. Development (LWC & Apex)</h4><p class="text-slate-500 text-sm mt-2">Building robust, native Salesforce applications.</p>
+                            <h5 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">2. Development (LWC & Apex)</h5>
+                            <p class="text-slate-500 text-sm mt-2">Building robust, native Salesforce applications.</p>
                         </div>
                         <div class="pdo-step group cursor-pointer p-6 rounded-2xl border-l-4 border-slate-200 hover:border-brand-500 bg-white hover:shadow-lg transition-all duration-300" onmouseenter="updateBlueprint(2)">
-                            <h4 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">3. Security Review Specialist</h4><p class="text-slate-500 text-sm mt-2">We guarantee passing the rigorous Salesforce security audit.</p>
+                            <h5 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">3. Security Review Specialist</h5>
+                            <p class="text-slate-500 text-sm mt-2">We guarantee passing the rigorous Salesforce security audit.</p>
                         </div>
                         <div class="pdo-step group cursor-pointer p-6 rounded-2xl border-l-4 border-slate-200 hover:border-brand-500 bg-white hover:shadow-lg transition-all duration-300" onmouseenter="updateBlueprint(3)">
-                            <h4 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">4. Packaging & Listing</h4><p class="text-slate-500 text-sm mt-2">Managed package creation and AppExchange listing optimization.</p>
+                            <h5 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">4. Packaging & Listing</h5>
+                            <p class="text-slate-500 text-sm mt-2">Managed package creation and AppExchange listing optimization.</p>
                         </div>
                     </div>
+
                     <div class="relative h-[400px] w-full bg-slate-900 rounded-3xl p-8 shadow-2xl flex flex-col items-center justify-center text-center overflow-hidden border border-slate-800">
                         <div class="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-900/40 via-slate-900 to-slate-900 animate-spin-slow pointer-events-none"></div>
+                        
                         <div id="blueprint-content" class="relative z-10 transition-all duration-300">
-                            <div class="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-brand-500/50 mx-auto"><i class="fas fa-chess-knight"></i></div>
-                            <h4 class="text-3xl font-bold text-white mb-4">Strategy & Architecture</h4>
-                            <p class="text-slate-300 text-lg leading-relaxed max-w-sm mx-auto">We validate your idea against Salesforce governor limits and design a data model that scales from 10 to 10k users.</p>
+                            <div class="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-brand-500/50 mx-auto">
+                                <i class="fas fa-chess-knight"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-4">Strategy & Architecture</h3>
+                            <p class="text-slate-300 text-lg leading-relaxed max-w-sm mx-auto">
+                                We validate your idea against Salesforce governor limits and design a data model that scales from 10 to 10k users.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -315,25 +388,105 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col lg:flex-row items-start gap-16">
                     <div class="lg:w-1/2" data-aos="fade-right">
-                        <div class="mb-8"><h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600 mb-2">AppExchange Products</h2><div class="h-1.5 w-24 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full"></div></div>
-                        <img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_600,f_auto,q_auto/v1769502627/Untitled_design_3_sgiog8.png" loading="lazy" alt="Smart Lookup Data Loader Logo" width="100" height="80" class="h-20 w-auto mb-6 block">
-                        <h3 class="text-4xl font-bold text-slate-900 mb-6">Smart Lookup Data Loader</h3>
-                        <p class="text-lg text-slate-700 mb-8 leading-relaxed">Simplify your data migration. Our 100% native tool simplifies CSV imports into Salesforce, supporting upserts and intelligent lookups without leaving the platform.</p>
+                        <div class="mb-8">
+                            <h3 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600 mb-2">
+                                AppExchange Products
+                            </h3>
+                            <div class="h-1.5 w-24 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full"></div>
+                        </div>
+                        
+                        <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769502627/Untitled_design_3_sgiog8.png" alt="Smart Lookup Data Loader Logo" width="100" height="80" loading="lazy" class="h-20 w-auto mb-6 block">
+                        <h2 class="text-4xl font-bold text-slate-900 mb-6">Smart Lookup Data Loader</h2>
+                        <p class="text-lg text-slate-700 mb-8 leading-relaxed">
+                            Simplify your data migration. Our 100% native tool simplifies CSV imports into Salesforce, supporting upserts and intelligent lookups without leaving the platform.
+                        </p>
+                        
                         <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                            <a href="https://appexchange.salesforce.com/appxListingDetail?listingId=f020d7cb-6467-4dcc-adda-c1ce6c620257" target="_blank" rel="noopener" class="px-8 py-3 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-bold text-lg shadow-lg text-center">Get it Now on AppExchange</a>
-                            <a href="tsblog.html" class="px-8 py-3 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-lg text-center">Learn more</a>
+                            <a href="https://appexchange.salesforce.com/appxListingDetail?listingId=f020d7cb-6467-4dcc-adda-c1ce6c620257" target="_blank" rel="noopener" class="px-8 py-3 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-bold text-lg shadow-lg text-center">
+                                Get it Now on AppExchange
+                            </a>
+                            <a href="tsblog.html" class="px-8 py-3 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-lg text-center">
+                                Learn more
+                            </a>
                         </div>
                     </div>
+                    
                     <div class="lg:w-1/2 w-full flex flex-col gap-6" data-aos="fade-left">
                         <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-brand-100 p-5 rounded-xl shadow-md flex items-start gap-4">
                             <div class="bg-brand-500 text-white rounded-full p-2 mt-1"><i class="fas fa-book-open"></i></div>
-                            <div><p class="text-xs text-brand-800 font-bold uppercase tracking-wide mb-1">Featured Guide</p><a href="blog-smart-lookup-intro.html" class="text-slate-900 hover:text-brand-600 font-bold leading-tight block">How to Effortlessly Import Data into Salesforce with Smart Lookup Data Loader</a></div>
-                        </div>
-                        <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer group" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/R3W4xx4F_xo?autoplay=1\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen class=\'w-full h-full\'></iframe>'">
-                            <img src="https://img.youtube.com/vi/R3W4xx4F_xo/maxresdefault.jpg" loading="lazy" alt="Smart Lookup Demo Video" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-16 h-12 bg-red-600 rounded-lg flex items-center justify-center group-hover:bg-red-700 transition shadow-lg"><div class="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1"></div></div>
+                            <div>
+                                <p class="text-xs text-brand-800 font-bold uppercase tracking-wide mb-1">Featured Guide</p>
+                                <a href="blog-smart-lookup-intro.html" class="text-slate-900 hover:text-brand-600 font-bold leading-tight block">How to Effortlessly Import Data into Salesforce with Smart Lookup Data Loader</a>
                             </div>
+                        </div>
+
+                        <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer group" 
+                             onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/f6H8cGLyKwo?autoplay=1\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen class=\'w-full h-full\'></iframe>'">
+                            <img src="https://img.youtube.com/vi/f6H8cGLyKwo/maxresdefault.jpg" alt="Smart Lookup Demo Video" loading="lazy" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-12 bg-red-600 rounded-lg flex items-center justify-center group-hover:bg-red-700 transition shadow-lg">
+                                    <div class="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-brand-600 text-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/20">
+                    <div data-aos="zoom-in">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="50">0</div>
+                        <div class="text-sm md:text-base font-medium opacity-80">Projects Delivered</div>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="100">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="5">0</div>
+                        <div class="text-sm md:text-base font-medium opacity-80">Certified Experts</div>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="200">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="7">0</div>
+                        <div class="text-sm md:text-base font-medium opacity-80">Years Experience</div>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="300">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="100">0</div>
+                        <div class="text-sm md:text-base font-medium opacity-80">% Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Testimonials</h2>
+                    <h3 class="text-4xl font-bold text-slate-900 mb-4">Trusted by Clients Worldwide</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-slate-700 italic mb-4">"Saiful was very professional, personable and helped with our needs within our time constraints. I would recommend him for more projects."</p>
+                        <div class="text-sm text-slate-500">
+                            <p class="font-bold text-slate-900">Education</p>
+                            <p>United States &bull; 39 months project</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-slate-700 italic mb-4">"Saiful & Tushar have been great to work with. Can't say enough good things about them. Very happy and want to continue our relationship."</p>
+                        <div class="text-sm text-slate-500">
+                            <p class="font-bold text-slate-900">Financial Services</p>
+                            <p>United States &bull; 19 months project</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-slate-700 italic mb-4">"Saiful and his team are amazing! They are my go-to team... always responsive and great at execution. HIGHLY RECOMMEND!"</p>
+                        <div class="text-sm text-slate-500">
+                            <p class="font-bold text-slate-900">Healthcare & Life Sciences</p>
+                            <p>United States &bull; 16 months project</p>
                         </div>
                     </div>
                 </div>
@@ -346,29 +499,39 @@
                     <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Case Studies</h2>
                     <h3 class="text-4xl font-bold text-slate-900 mb-4">Success Stories</h3>
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300" data-aos="fade-right">
                         <div class="h-64 overflow-hidden bg-slate-200 relative">
-                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Travel and Hospitality Case Study" class="w-full h-full object-cover">
-                            <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_200,f_auto,q_auto/v1769696008/Screenshot_2026-01-29_at_8.11.35_PM_idx7w6.webp" alt="RARO Logo" class="h-8 w-auto"></div>
+                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Travel & Hospitality Case Study" width="800" height="600" loading="lazy" class="w-full h-full object-cover">
+                            <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm">
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769696008/Screenshot_2026-01-29_at_8.11.35_PM_idx7w6.webp" alt="RARO Logo" class="h-8 w-auto">
+                            </div>
                         </div>
                         <div class="p-8">
                             <div class="text-xs font-bold text-brand-600 uppercase mb-2">Travel & Hospitality</div>
                             <h4 class="text-2xl font-bold text-slate-900 mb-4">RARO Case Study</h4>
-                            <p class="text-slate-700 mb-6">A travel agent company facilitating bookings for Italy, Greece, and the Philippines.</p>
-                            <a href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V000017sXnLUAU" target="_blank" rel="noopener" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800 p-2" aria-label="View RARO Case Study">View RARO Case Study <i class="fas fa-arrow-right ml-2"></i></a>
+                            <p class="text-slate-700 mb-6">A travel agent company facilitating bookings for Italy, Greece, and the Philippines. Features a custom booking system with wallets, installment payments, and Stripe integration.</p>
+                            <a href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V000017sXnLUAU" target="_blank" rel="noopener" aria-label="View RARO Case Study" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800">
+                                View Case Study <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
                         </div>
                     </div>
+
                     <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300" data-aos="fade-left">
                         <div class="h-64 overflow-hidden bg-slate-200 relative">
-                            <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Agribusiness Case Study" class="w-full h-full object-cover">
-                            <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_200,f_auto,q_auto/v1769696008/Agvantage_logo_bdf8fh.webp" alt="AgVantage Logo" class="h-8 w-auto"></div>
+                            <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Agribusiness Case Study" width="800" height="600" loading="lazy" class="w-full h-full object-cover">
+                            <div class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-lg backdrop-blur-sm">
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769696008/Agvantage_logo_bdf8fh.webp" alt="AgVantage Logo" class="h-8 w-auto">
+                            </div>
                         </div>
                         <div class="p-8">
                             <div class="text-xs font-bold text-brand-600 uppercase mb-2">Agribusiness</div>
                             <h4 class="text-2xl font-bold text-slate-900 mb-4">AgVantage Commodities Pty Ltd</h4>
-                            <p class="text-slate-700 mb-6">Streamlined trading processes for a leading agribusiness player.</p>
-                            <a href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V000017sXnQUAU" target="_blank" rel="noopener" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800 p-2" aria-label="View AgVantage Case Study">View AgVantage Case Study <i class="fas fa-arrow-right ml-2"></i></a>
+                            <p class="text-slate-700 mb-6">Streamlined trading processes for a leading agribusiness player. Replaced manual bid/offer management with a transparent, efficient, and user-friendly digital marketplace.</p>
+                            <a href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V000017sXnQUAU" target="_blank" rel="noopener" aria-label="View AgVantage Case Study" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800">
+                                View Case Study <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -381,7 +544,9 @@
                     <div data-aos="fade-right">
                          <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Seamless Connectivity</h2>
                          <h3 class="text-4xl font-bold text-slate-900 mb-6">Integration Solutions</h3>
-                         <p class="text-lg text-slate-700 mb-6">We don't just work in silos. We connect your Salesforce org to the rest of your business ecosystem.</p>
+                         <p class="text-lg text-slate-700 mb-6">
+                             We don't just work in silos. We connect your Salesforce org to the rest of your business ecosystem. Whether it's ERP, Marketing Automation, or Payment Gateways, we bridge the gaps.
+                         </p>
                          <ul class="space-y-4 mb-8">
                              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500 text-xl"></i> <span class="font-medium">REST/SOAP API Development</span></li>
                              <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500 text-xl"></i> <span class="font-medium">MuleSoft Anypoint Platform</span></li>
@@ -406,13 +571,26 @@
              <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#4b5563 1px, transparent 1px); background-size: 32px 32px;"></div>
              <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                  <div data-aos="zoom-in">
-                     <div class="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6 shadow-lg shadow-brand-500/50"><i class="fas fa-database"></i></div>
+                     <div class="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6 shadow-lg shadow-brand-500/50">
+                         <i class="fas fa-database"></i>
+                     </div>
                      <h2 class="text-3xl md:text-5xl font-bold mb-6">Secure Data Migration</h2>
-                     <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-10">Moving from Legacy systems to Salesforce? We ensure 100% data integrity, mapping, and sanitization so you start clean.</p>
+                     <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-10">
+                         Moving from Legacy systems to Salesforce? We ensure 100% data integrity, mapping, and sanitization so you start clean.
+                     </p>
                      <div class="flex flex-col md:flex-row justify-center gap-6">
-                         <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10 w-full md:w-64"><h4 class="font-bold text-xl mb-2 text-brand-300">Analysis</h4><p class="text-sm text-slate-300">Deep audit of source data structures.</p></div>
-                         <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10 w-full md:w-64"><h4 class="font-bold text-xl mb-2 text-brand-300">Mapping</h4><p class="text-sm text-slate-300">Precise field-to-field transformation logic.</p></div>
-                         <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10 w-full md:w-64"><h4 class="font-bold text-xl mb-2 text-brand-300">Transfer</h4><p class="text-sm text-slate-300">Secure execution using ETL tools.</p></div>
+                         <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10 w-full md:w-64">
+                             <h4 class="font-bold text-xl mb-2 text-brand-300">Analysis</h4>
+                             <p class="text-sm text-slate-300">Deep audit of source data structures.</p>
+                         </div>
+                         <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10 w-full md:w-64">
+                             <h4 class="font-bold text-xl mb-2 text-brand-300">Mapping</h4>
+                             <p class="text-sm text-slate-300">Precise field-to-field transformation logic.</p>
+                         </div>
+                         <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10 w-full md:w-64">
+                             <h4 class="font-bold text-xl mb-2 text-brand-300">Transfer</h4>
+                             <p class="text-sm text-slate-300">Secure execution using ETL tools.</p>
+                         </div>
                      </div>
                  </div>
              </div>
@@ -421,67 +599,72 @@
         <section id="resources" class="py-20 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-end mb-12" data-aos="fade-up">
-                    <div><h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Knowledge Hub</h2><h3 class="text-4xl font-bold text-slate-900">Latest Salesforce Updates</h3></div>
+                    <div>
+                        <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Knowledge Hub</h2>
+                        <h3 class="text-4xl font-bold text-slate-900">Latest Salesforce Updates</h3>
+                    </div>
                     <a href="#" class="hidden md:inline-block text-brand-600 font-bold hover:underline">View All Resources <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
                         <div class="h-48 bg-blue-600 flex items-center justify-center text-white text-5xl"><i class="fab fa-salesforce"></i></div>
-                        <div class="p-6"><span class="text-xs font-bold text-brand-500 uppercase">Spring '26 Release</span><h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">Top 5 Features in the New Release</h4><a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800" aria-label="Read article about Spring '26 Release">Read Article</a></div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-brand-500 uppercase">Spring '26 Release</span>
+                            <h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">Top 5 Features in the New Release</h4>
+                            <a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800">Read Article</a>
+                        </div>
                     </article>
                     <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
                         <div class="h-48 bg-indigo-600 flex items-center justify-center text-white text-5xl"><i class="fas fa-robot"></i></div>
-                        <div class="p-6"><span class="text-xs font-bold text-brand-500 uppercase">AI & Automation</span><h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">AgentForce: The Future of Service</h4><a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800" aria-label="Read article about AgentForce">Read Article</a></div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-brand-500 uppercase">AI & Automation</span>
+                            <h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">AgentForce: The Future of Service</h4>
+                            <a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800">Read Article</a>
+                        </div>
                     </article>
                     <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="300">
                         <div class="h-48 bg-teal-600 flex items-center justify-center text-white text-5xl"><i class="fas fa-shield-alt"></i></div>
-                        <div class="p-6"><span class="text-xs font-bold text-brand-500 uppercase">Security</span><h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">Best Practices for Data Security</h4><a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800" aria-label="Read article about Data Security">Read Article</a></div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-brand-500 uppercase">Security</span>
+                            <h4 class="text-xl font-bold text-slate-900 mt-2 mb-3">Best Practices for Data Security</h4>
+                            <a href="#" class="text-brand-600 font-semibold text-sm hover:text-brand-800">Read Article</a>
+                        </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 bg-brand-600 text-white overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/20">
-                    <div data-aos="zoom-in"><div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="50">0</div><div class="text-sm md:text-base font-medium opacity-80">Projects Delivered</div></div>
-                    <div data-aos="zoom-in" data-aos-delay="100"><div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="5">0</div><div class="text-sm md:text-base font-medium opacity-80">Certified Experts</div></div>
-                    <div data-aos="zoom-in" data-aos-delay="200"><div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="7">0</div><div class="text-sm md:text-base font-medium opacity-80">Years Experience</div></div>
-                    <div data-aos="zoom-in" data-aos-delay="300"><div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="100">0</div><div class="text-sm md:text-base font-medium opacity-80">% Client Satisfaction</div></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials" class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Testimonials</h2><h3 class="text-4xl font-bold text-slate-900 mb-4">Trusted by Clients Worldwide</h3></div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200" data-aos="fade-up" data-aos-delay="100">
-                        <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="text-slate-700 italic mb-4">"Saiful was very professional, personable and helped with our needs within our time constraints. I would recommend him for more projects."</p>
-                        <div class="text-sm text-slate-500"><p class="font-bold text-slate-900">Education</p><p>United States &bull; 39 months project</p></div>
-                    </div>
-                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="text-slate-700 italic mb-4">"Saiful & Tushar have been great to work with. Can't say enough good things about them. Very happy and want to continue our relationship."</p>
-                        <div class="text-sm text-slate-500"><p class="font-bold text-slate-900">Financial Services</p><p>United States &bull; 19 months project</p></div>
-                    </div>
-                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200" data-aos="fade-up" data-aos-delay="300">
-                        <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="text-slate-700 italic mb-4">"Saiful and his team are amazing! They are my go-to team... always responsive and great at execution. HIGHLY RECOMMEND!"</p>
-                        <div class="text-sm text-slate-500"><p class="font-bold text-slate-900">Healthcare & Life Sciences</p><p>United States &bull; 16 months project</p></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20 bg-slate-50">
+        <section class="py-20 bg-white">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up"><h2 class="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2></div>
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+                </div>
+                
                 <div class="space-y-4" data-aos="fade-up">
-                    <details class="group bg-white p-6 rounded-xl border border-slate-200 open:shadow-md transition-all"><summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none text-slate-900"><span>Do you offer support for custom Salesforce implementations?</span><span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-500"></i></span></summary><p class="text-slate-600 mt-4 leading-relaxed">Yes, absolutely. We specialize in tailoring Salesforce to your unique business logic, including custom Apex, LWC, and flow automation.</p></details>
-                    <details class="group bg-white p-6 rounded-xl border border-slate-200 open:shadow-md transition-all"><summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none text-slate-900"><span>What is the Smart Lookup Data Loader?</span><span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-500"></i></span></summary><p class="text-slate-600 mt-4 leading-relaxed">It is our native AppExchange product that allows you to upload CSVs and map fields intelligently, including resolving lookups automatically, without leaving Salesforce.</p></details>
-                    <details class="group bg-white p-6 rounded-xl border border-slate-200 open:shadow-md transition-all"><summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none text-slate-900"><span>Can you help migrate data from HubSpot to Salesforce?</span><span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-500"></i></span></summary><p class="text-slate-600 mt-4 leading-relaxed">Yes. We provide end-to-end data migration services, ensuring your contacts, accounts, and deal history are transferred accurately with zero data loss.</p></details>
+                    <details class="group bg-slate-50 p-6 rounded-xl border border-slate-200 open:bg-white open:shadow-md transition-all">
+                        <summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none text-slate-900">
+                            <span>Do you offer support for custom Salesforce implementations?</span>
+                            <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-500"></i></span>
+                        </summary>
+                        <p class="text-slate-600 mt-4 leading-relaxed">Yes, absolutely. We specialize in tailoring Salesforce to your unique business logic, including custom Apex, LWC, and flow automation.</p>
+                    </details>
+                    
+                    <details class="group bg-slate-50 p-6 rounded-xl border border-slate-200 open:bg-white open:shadow-md transition-all">
+                        <summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none text-slate-900">
+                            <span>What is the Smart Lookup Data Loader?</span>
+                            <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-500"></i></span>
+                        </summary>
+                        <p class="text-slate-600 mt-4 leading-relaxed">It is our native AppExchange product that allows you to upload CSVs and map fields intelligently, including resolving lookups automatically, without leaving Salesforce.</p>
+                    </details>
+                    
+                    <details class="group bg-slate-50 p-6 rounded-xl border border-slate-200 open:bg-white open:shadow-md transition-all">
+                        <summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none text-slate-900">
+                            <span>Can you help migrate data from HubSpot to Salesforce?</span>
+                            <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-brand-500"></i></span>
+                        </summary>
+                        <p class="text-slate-600 mt-4 leading-relaxed">Yes. We provide end-to-end data migration services, ensuring your contacts, accounts, and deal history are transferred accurately with zero data loss.</p>
+                    </details>
                 </div>
             </div>
         </section>
@@ -490,16 +673,24 @@
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12" data-aos="fade-up">
                     <h2 class="text-3xl font-bold text-slate-900 mb-4">Let's Discuss Your Project</h2>
-                    <p class="text-slate-700">Ready to transform your business? Reach out to us directly via email or WhatsApp.</p>
+                    <p class="text-slate-700">
+                        Ready to transform your business? Reach out to us directly via email or WhatsApp.
+                    </p>
                 </div>
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="zoom-in-up">
-                    <a href="mailto:info@twinstack.net" id="emailLink" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-500 rounded-2xl transition group cursor-pointer shadow-sm" aria-label="Email Us">
-                        <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition"><i class="fas fa-envelope"></i></div>
+                    <a href="mailto:info@twinstack.net" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-500 rounded-2xl transition group cursor-pointer shadow-sm">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                            <i class="fas fa-envelope"></i>
+                        </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-1">Email Us</h3>
                         <p class="text-slate-700">info@twinstack.net</p>
                     </a>
-                    <a href="https://wa.me/8801556777043" id="whatsappLink" target="_blank" rel="noopener" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition group cursor-pointer shadow-sm" aria-label="Message on WhatsApp">
-                        <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition"><i class="fab fa-whatsapp"></i></div>
+                    
+                    <a href="https://wa.me/8801556777043" target="_blank" rel="noopener" class="flex flex-col items-center justify-center p-8 bg-slate-50 hover:bg-green-50 border border-slate-200 hover:border-green-500 rounded-2xl transition group cursor-pointer shadow-sm">
+                        <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-1">WhatsApp</h3>
                         <p class="text-slate-700">+880 1556-777043</p>
                     </a>
@@ -516,145 +707,194 @@
                          <div class="absolute -top-6 -left-12 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
                          <div class="absolute inset-y-0 left-[-3000px] right-[-3rem] bg-white rounded-r-3xl z-0"></div>
                          <div class="relative z-10 pl-2">
-                            <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl" aria-label="TwinStack Solutions Home"><img src="https://res.cloudinary.com/du42kbmmn/image/upload/w_100,f_auto,q_auto/v1769165197/Black_White_Minimalist_Professional_Initial_Logo_1_eoam8g.png" loading="lazy" alt="TwinStack Logo" width="48" height="48" class="h-12 w-12 rounded-full object-cover"><span><span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span></span></a>
-                            <p class="text-sm text-slate-700 max-w-xs font-medium">Empowering charities and businesses with Salesforce excellence since 2018.</p>
+                            <a href="index.html" class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-2xl">
+                                <img src="https://res.cloudinary.com/du42kbmmn/image/upload/v1769586320/Black_White_Minimalist_Professional_Initial_Logo_3_tlovgh.webp" alt="TwinStack Logo" width="48" height="48" class="h-12 w-auto">
+                                <span><span class="text-[#343453]">Twin</span><span class="bg-gradient-to-r from-brand-500 to-indigo-500 text-transparent bg-clip-text">Stack</span></span>
+                            </a>
+                            <p class="text-sm text-slate-700 max-w-xs font-medium">
+                                Empowering charities and businesses with Salesforce excellence since 2018.
+                            </p>
                          </div>
                     </div>
                 </div>
-                <div class="mt-4 md:mt-0"><h4 class="text-white font-semibold mb-4">Products</h4><ul class="space-y-4 text-sm"><li><a href="#" class="hover:text-brand-400 transition p-3 block" aria-label="View Smart Lookup Data Loader">Smart Lookup Data Loader</a></li><li><a href="#" class="hover:text-brand-400 transition p-3 block" aria-label="View Experience Templates">Experience Templates</a></li></ul></div>
-                <div class="mt-4 md:mt-0"><h4 class="text-white font-semibold mb-4">Connect</h4><div class="flex gap-4"><a href="https://www.linkedin.com/company/twinforce-solutions" aria-label="Follow us on LinkedIn" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white"><i class="fab fa-linkedin-in text-xl"></i></a></div></div>
+                
+                <div class="mt-4 md:mt-0">
+                    <h4 class="text-white font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-brand-400 transition">Smart Lookup Data Loader</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition">Experience Templates</a></li>
+                    </ul>
+                </div>
+
+                <div class="mt-4 md:mt-0">
+                    <h4 class="text-white font-semibold mb-4">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/company/twinforce-solutions" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500"><p>&copy; 2026 TwinStack Solutions. All rights reserved.</p></div>
+            
+            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
+                <p>&copy; 2026 TwinStack Solutions. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <div class="bot-container" id="chatbot-trigger" title="Chat with us"><div class="bot-head"><div class="bot-ears"><div class="bot-ear"></div><div class="bot-ear"></div></div><div class="bot-face"><div class="eye"><div class="pupil"></div></div><div class="eye"><div class="pupil"></div></div></div></div></div>
+    <div class="bot-container" id="chatbot-trigger" title="Chat with us">
+        <div class="bot-head">
+            <div class="bot-ears">
+                <div class="bot-ear"></div>
+                <div class="bot-ear"></div>
+            </div>
+            <div class="bot-face">
+                <div class="eye"><div class="pupil"></div></div>
+                <div class="eye"><div class="pupil"></div></div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
-        const modal = document.getElementById('intro-modal');
-        const body = document.getElementById('main-body');
-
-        function goToForm() {
-            document.getElementById('step-1').classList.remove('active-step');
-            document.getElementById('step-1').classList.add('hidden-step');
-            setTimeout(() => {
-                document.getElementById('step-1').style.display = 'none';
-                const step2 = document.getElementById('step-2');
-                step2.style.display = 'block';
-                void step2.offsetWidth; 
-                step2.classList.remove('hidden-step');
-                step2.classList.add('active-step');
-            }, 300);
-        }
-
-        function closeIntro() {
-            modal.classList.add('hidden-modal');
-            body.style.overflow = 'auto'; 
-        }
-
-        function closeToast() {
-            const toast = document.getElementById('success-toast');
-            toast.classList.remove('opacity-100', 'scale-100');
-            toast.classList.add('opacity-0', 'scale-90');
-            setTimeout(() => toast.classList.add('hidden'), 500);
-        }
-
-        function checkForm() {
-            const inputs = document.querySelectorAll('#leadForm input[required], #leadForm textarea[required]');
-            let allFilled = true;
-            inputs.forEach(input => { if (!input.value.trim()) allFilled = false; });
-            const btn = document.getElementById('submitBtn');
-            if (allFilled) {
-                btn.disabled = false;
-                btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                btn.classList.add('hover:bg-brand-700', 'cursor-pointer');
-            } else {
-                btn.disabled = true;
-                btn.classList.add('opacity-50', 'cursor-not-allowed');
-                btn.classList.remove('hover:bg-brand-700', 'cursor-pointer');
-            }
-        }
-
-        function timestamp() { 
-            var response = document.getElementById("g-recaptcha-response"); 
-            if (response == null || response.value.trim() == "") {
-                var elems = document.getElementsByName("captcha_settings");
-                if(elems.length > 0) {
-                    var jsonVal = JSON.parse(elems[0].value);
-                    jsonVal["ts"] = JSON.stringify(new Date().getTime());
-                    elems[0].value = JSON.stringify(jsonVal);
-                }
-            } 
-        } 
-        setInterval(timestamp, 500); 
-        
-        const urlParams = new URLSearchParams(window.location.search);
-        const baseUrl = window.location.href.split('?')[0];
-        document.getElementById('retURL_field').value = baseUrl + '?submitted=true';
-
-        const isSubmitted = urlParams.get('submitted') === 'true';
-
-        if (isSubmitted) {
-            modal.style.display = 'none'; // Instant hide
-            body.style.overflow = 'auto';
-            
-            // Show Horizontal Success Toast
-            const toast = document.getElementById('success-toast');
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.remove('opacity-0', 'scale-90');
-                toast.classList.add('opacity-100', 'scale-100');
-            }, 10);
-
-            // Auto-Close after 3 seconds
-            setTimeout(() => {
-                closeToast();
-            }, 3000);
-        } else {
-            // Trigger Lead Form Modal after 30 seconds
-            setTimeout(() => {
-                const modal = document.getElementById('intro-modal');
-                if (modal) {
-                    modal.classList.remove('hidden-modal');
-                    body.style.overflow = 'hidden'; 
-                }
-            }, 30000); // 30 seconds
-        }
-
+        // Data for the Interactive Blueprint Section
         const blueprintData = [
-            { title: "Strategy & Architecture", icon: "fa-chess-knight", desc: "We start by validating your product idea against Salesforce limits. Our architects design a scalable data model that ensures your app performs flawlessly for 10 users or 10,000." },
-            { title: "Development (LWC & Apex)", icon: "fa-code", desc: "Our developers build utilizing the latest Salesforce standards—Lightning Web Components (LWC) for UI and optimized Apex for logic—ensuring a native, seamless experience." },
-            { title: "Security Review Specialist", icon: "fa-shield-alt", desc: "Passing the Salesforce Security Review is the hardest part. We pre-scan code, fix vulnerabilities (CRUD/FLS, Injection), and manage the submission process to guarantee success." },
-            { title: "Packaging & Listing", icon: "fa-box-open", desc: "We create your Managed Package, configure license management (LMA), and design a high-converting AppExchange listing with compelling visuals and documentation." }
+            {
+                title: "Strategy & Architecture",
+                icon: "fas fa-chess-knight",
+                desc: "We start by validating your product idea against Salesforce limits. Our architects design a scalable data model that ensures your app performs flawlessly for 10 users or 10,000."
+            },
+            {
+                title: "Development (LWC & Apex)",
+                icon: "fas fa-code",
+                desc: "Our developers build utilizing the latest Salesforce standards—Lightning Web Components (LWC) for UI and optimized Apex for logic—ensuring a native, seamless experience."
+            },
+            {
+                title: "Security Review Specialist",
+                icon: "fas fa-shield-alt",
+                desc: "Passing the Salesforce Security Review is the hardest part. We pre-scan code, fix vulnerabilities (CRUD/FLS, Injection), and manage the submission process to guarantee success."
+            },
+            {
+                title: "Packaging & Listing",
+                icon: "fas fa-box-open",
+                desc: "We create your Managed Package, configure license management (LMA), and design a high-converting AppExchange listing with compelling visuals and documentation."
+            }
         ];
 
         function updateBlueprint(index) {
             const contentDiv = document.getElementById('blueprint-content');
             const data = blueprintData[index];
+            
             contentDiv.style.opacity = '0';
             setTimeout(() => {
-                contentDiv.innerHTML = `<div class="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-brand-500/50 mx-auto"><i class="fas ${data.icon}"></i></div><h4 class="text-3xl font-bold text-white mb-4">${data.title}</h4><p class="text-slate-300 text-lg leading-relaxed max-w-sm mx-auto">${data.desc}</p>`;
+                contentDiv.innerHTML = `
+                    <div class="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-brand-500/50 mx-auto">
+                        <i class="${data.icon}"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-4">${data.title}</h3>
+                    <p class="text-slate-300 text-lg leading-relaxed max-w-sm mx-auto">
+                        ${data.desc}
+                    </p>
+                `;
                 contentDiv.style.opacity = '1';
             }, 200);
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.classList.add('font-loaded');
-            document.body.classList.add('aos-ready');
-            AOS.init({ once: true, offset: 50, duration: 600, disable: 'mobile' });
+        // Close Intro Modal
+        function closeIntro() {
+            const modal = document.getElementById('intro-modal');
+            const body = document.getElementById('main-body');
+            modal.classList.add('hidden-modal');
+            body.style.overflow = 'auto'; // Re-enable scrolling
+        }
 
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('aos-ready');
+
+            AOS.init({
+                once: true,
+                offset: 50,
+                duration: 600,
+                disable: 'mobile' 
+            });
+
+            // Navbar Scroll Logic
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     navbar.classList.remove('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'h-20');
-                    navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'h-16', 'shadow-md');
+                    navbar.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'h-16', 'bg-white/95', 'shadow-md');
                 } else {
-                    navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'h-16', 'shadow-md');
-                    navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'h-20');
+                    navbar.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'h-16', 'bg-white/95', 'shadow-md');
+                    navbar.classList.add('top-6', 'w-[95%]', 'max-w-7xl', 'rounded-2xl', 'h-20', 'bg-white/80');
                 }
             });
 
+            // Slider Logic for Modal
+            const sliderTrack = document.getElementById('ribbon-slider');
+            const sliderHandle = document.getElementById('slider-handle');
+            const ribbonBg = document.getElementById('ribbon-bg');
+            const sliderText = document.getElementById('slider-text');
+            const ribbonLeft = document.querySelector('.ribbon-left-part');
+            const ribbonRight = document.querySelector('.ribbon-right-part');
+            
+            let isDragging = false;
+            let startX, currentX;
+            const maxDrag = sliderTrack.clientWidth - sliderHandle.clientWidth - 0;
+
+            // Pre-reveal logic for animation readiness
+            sliderTrack.classList.add('ribbon-parts-ready');
+
+            function startDrag(e) {
+                isDragging = true;
+                startX = (e.type === 'touchstart') ? e.touches[0].clientX : e.clientX;
+                sliderHandle.style.transition = 'none';
+            }
+
+            function drag(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = (e.type === 'touchmove') ? e.touches[0].clientX : e.clientX;
+                let moveX = currentX - startX;
+                
+                if (moveX < 0) moveX = 0;
+                if (moveX > maxDrag) moveX = maxDrag;
+                
+                sliderHandle.style.transform = `translateX(${moveX}px)`;
+                sliderText.style.opacity = 1 - (moveX / maxDrag);
+                
+                // Trigger Cut
+                if (moveX > maxDrag * 0.9) {
+                    isDragging = false;
+                    
+                    // Visual updates
+                    sliderHandle.style.transform = `translateX(${maxDrag}px) scale(1.15)`; // Lock handle at end
+                    sliderHandle.classList.add('snip-action');
+                    
+                    ribbonBg.classList.add('cut'); // Hide main ribbon
+                    sliderTrack.classList.add('cut-anim'); // Trigger soft split animations
+                    
+                    setTimeout(closeIntro, 800);
+                }
+            }
+
+            function endDrag() {
+                if (!isDragging) return;
+                isDragging = false;
+                sliderHandle.style.transition = 'transform 0.3s';
+                sliderHandle.style.transform = 'translateX(0)';
+                sliderText.style.opacity = 1;
+            }
+
+            sliderHandle.addEventListener('mousedown', startDrag);
+            sliderHandle.addEventListener('touchstart', startDrag);
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('touchmove', drag);
+            document.addEventListener('mouseup', endDrag);
+            document.addEventListener('touchend', endDrag);
+
+            // Stats Counter
             const counters = document.querySelectorAll('.counter');
             const observer = new IntersectionObserver((entries) => {
                 if(entries[0].isIntersecting) {
@@ -677,6 +917,7 @@
             const statsSection = document.querySelector('.counter')?.closest('section');
             if(statsSection) observer.observe(statsSection);
 
+            // Chatbot Eyes Tracking
             const pupils = document.querySelectorAll('.pupil');
             const botContainer = document.querySelector('.bot-container');
             document.addEventListener('mousemove', (e) => {
